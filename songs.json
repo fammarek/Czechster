@@ -1,0 +1,13 @@
+{
+  "_hinweis": "Kurzcode -> Song. 'v' = YouTube-Video-ID (identisch mit YouTube Music). 't' = Startsekunde, optional, zum Überspringen langer Intros. 'j'/'i'/'n' = Jahr/Interpret/Titel, nur fuer die Aufloesen-Funktion und den Kartendruck. Codes frei waehlbar, kurz halten (2-3 Zeichen) damit der QR grob bleibt und schnell scannt.",
+
+  "a1": { "v": "sivzYnF_7a0", "t": 0, "j": 0, "i": "? aus deiner Playlist", "n": "? Titel nachtragen" },
+
+  "a2": { "v": "", "t": 0, "j": 1985, "i": "Elán", "n": "Stužková" },
+  "a3": { "v": "", "t": 0, "j": 1979, "i": "Katapult", "n": "Až" },
+  "a4": { "v": "", "t": 0, "j": 1966, "i": "Václav Neckář / Helena Vondráčková", "n": "Stín katedrál" },
+  "a5": { "v": "", "t": 0, "j": 1970, "i": "Pavel Dydovič", "n": "Bláznova ukolébavka" },
+  "a6": { "v": "", "t": 0, "j": 2000, "i": "No Name", "n": "Žily" },
+  "a7": { "v": "", "t": 0, "j": 2008, "i": "Marek Ztracený", "n": "Ztrácíš" },
+  "a8": { "v": "", "t": 0, "j": 2008, "i": "Xindl X", "n": "Anděl" }
+}

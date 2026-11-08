@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hitster CZ/SK — Kartendruck</title>
+<style>
+  :root{ --line:#111; }
+  *{box-sizing:border-box}
+  body{margin:0;background:#f4f4f2;color:#111;
+    font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .panel{max-width:760px;margin:0 auto;padding:24px 20px 40px}
+  h1{font-size:20px;margin:0 0 4px}
+  p.sub{color:#555;margin:0 0 20px}
+  label{display:block;font-weight:600;font-size:13px;margin:14px 0 4px}
+  input{width:100%;padding:11px 12px;border:1px solid #bbb;border-radius:8px;font:inherit;background:#fff}
+  button{margin-top:18px;padding:13px 20px;border:0;border-radius:8px;background:#e0533d;color:#fff;
+    font:600 16px inherit}
+  .warn{background:#fff6e5;border:1px solid #e8c583;border-radius:8px;padding:12px;font-size:14px;margin-top:16px}
+
+  /* --- Druckbogen: 2 Spalten x 4 Zeilen, 65x65 mm --- */
+  .sheet{display:none}
+  @media print{
+    .panel{display:none}
+    .sheet{display:block}
+    @page{size:A4;margin:10mm}
+    body{background:#fff}
+  }
+  .page{
+    width:190mm;height:277mm;
+    display:grid;grid-template-columns:repeat(2,95mm);grid-template-rows:repeat(4,65mm);
+    page-break-after:always;
+  }
+  .card{
+    border:0.3mm dashed #999;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:3mm;padding:5mm;text-align:center;
+    break-inside:avoid;
+  }
+  .card canvas,.card img{width:42mm;height:42mm;image-rendering:pixelated}
+  .code{font:600 9pt ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#777}
+  .back .yr{font:800 34pt/1 -apple-system,sans-serif;letter-spacing:-.02em}
+  .back .ar{font:600 11pt/1.25 -apple-system,sans-serif;margin-top:2mm}
+  .back .ti{font:400 10pt/1.3 -apple-system,sans-serif;color:#444}
+  .back .cd{font:600 8pt ui-monospace,monospace;color:#aaa;margin-top:3mm}
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h1>Kartendruck</h1>
+  <p class="sub">Erzeugt druckfertige A4-Bögen, 8 Karten pro Seite, 95 × 65 mm.</p>
+
+  <label for="base">Basis-URL deiner GitHub-Pages-Seite</label>
+  <input id="base" value="https://BENUTZERNAME.github.io/hitster-cz/" spellcheck="false">
+
+  <label for="only">Nur diese Codes (leer = alle mit Video-ID), kommagetrennt</label>
+  <input id="only" placeholder="a1, a2, a7" spellcheck="false">
+
+  <button id="go">Bögen erzeugen</button>
+
+  <div class="warn">
+    <b>Duplexdruck:</b> Die Rückseiten sind spaltenweise gespiegelt, passend für
+    <i>beidseitig, an langer Kante wenden</i>. Drucke zuerst <b>ein einzelnes Blatt</b>
+    zur Probe, bevor du 20 Seiten durchjagst — Drucker handhaben das Wenden unterschiedlich.
+  </div>
+  <div id="status" style="margin-top:14px;color:#555"></div>
+</div>
+
+<div class="sheet" id="sheet"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var $=function(i){return document.getElementById(i)};
+
+  $("go").onclick=function(){
+    var base=$("base").value.trim();
+    if(!/\/$/.test(base)) base+="/";
+    var filter=$("only").value.split(",").map(function(s){return s.trim()}).filter(Boolean);
+
+    fetch("songs.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
+      delete d._hinweis;
+      var codes=Object.keys(d).filter(function(c){
+        if(filter.length) return filter.indexOf(c)>-1;
+        return !!d[c].v;
+      });
+      if(!codes.length){ $("status").textContent="Keine Karten gefunden — in songs.json fehlen die Video-IDs."; return; }
+      render(codes,d,base);
+      $("status").innerHTML="<b>"+codes.length+" Karten</b> auf "+Math.ceil(codes.length/8)*2+
+        " Seiten erzeugt. Jetzt drucken (Cmd/Strg + P).";
+      setTimeout(function(){window.print()},400);
+    }).catch(function(){ $("status").textContent="songs.json nicht gefunden."; });
+  };
+
+  function render(codes,data,base){
+    var sheet=$("sheet"); sheet.innerHTML="";
+    for(var p=0;p<codes.length;p+=8){
+      var chunk=codes.slice(p,p+8);
+
+      // Vorderseiten
+      var front=document.createElement("div"); front.className="page";
+      chunk.forEach(function(c){ front.appendChild(frontCard(c,base)); });
+      pad(front,chunk.length);
+      sheet.appendChild(front);
+
+      // Rückseiten, spaltenweise gespiegelt (lange Kante wenden)
+      var order=[]; for(var r=0;r<4;r++){ order.push(chunk[r*2+1],chunk[r*2]); }
+      var back=document.createElement("div"); back.className="page";
+      order.forEach(function(c){ back.appendChild(c?backCard(c,data[c]):empty()); });
+      sheet.appendChild(back);
+    }
+  }
+
+  function frontCard(code,base){
+    var d=document.createElement("div"); d.className="card";
+    var q=document.createElement("div"); d.appendChild(q);
+    new QRCode(q,{ text:base+"#"+code, width:170, height:170,
+                   correctLevel:QRCode.CorrectLevel.M });
+    var s=document.createElement("div"); s.className="code"; s.textContent=code;
+    d.appendChild(s);
+    return d;
+  }
+
+  function backCard(code,s){
+    var d=document.createElement("div"); d.className="card back";
+    d.innerHTML='<div class="yr">'+(s.j||"????")+'</div>'+
+                '<div class="ar">'+esc(s.i||"")+'</div>'+
+                '<div class="ti">'+esc(s.n||"")+'</div>'+
+                '<div class="cd">'+code+'</div>';
+    return d;
+  }
+
+  function empty(){ var d=document.createElement("div"); d.className="card"; return d; }
+  function pad(page,n){ for(var i=n;i<8;i++) page.appendChild(empty()); }
+  function esc(s){ return String(s).replace(/[<>&]/g,function(c){
+    return {"<":"&lt;",">":"&gt;","&":"&amp;"}[c]; }); }
+})();
+</script>
+</body>
+</html>

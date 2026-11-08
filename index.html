@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#101418">
+<title>Hitster CZ/SK</title>
+<style>
+  :root{
+    --bg:#101418; --bg2:#171d23; --line:#2a333c;
+    --fg:#eef2f5; --dim:#8d9aa6; --accent:#e0533d; --ok:#4ea86b;
+    --r:16px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    display:flex;flex-direction:column;
+    padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+    overscroll-behavior:none;user-select:none;
+  }
+  header{padding:14px 0 6px;display:flex;justify-content:space-between;align-items:baseline}
+  h1{font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin:0;color:var(--dim);font-weight:600}
+  #count{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
+  main{flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;padding-bottom:12px}
+
+  .btn{
+    display:block;width:100%;border:0;border-radius:var(--r);
+    font:600 19px/1 inherit;padding:22px 18px;color:#fff;background:var(--accent);
+    transition:transform .08s ease, opacity .15s ease;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg);font-size:16px;padding:16px}
+  .btn[disabled]{opacity:.4}
+
+  /* Plattenteller: deckt den Player ab, verraet nichts */
+  .stage{
+    position:relative;aspect-ratio:1;max-height:46vh;margin:0 auto;width:min(78vw,340px);
+    border-radius:50%;background:
+      radial-gradient(circle at 50% 50%, #2b3views 0 0),
+      repeating-radial-gradient(circle at 50% 50%, #1b2127 0 2px, #161b21 2px 4px);
+    display:grid;place-items:center;border:1px solid var(--line);
+    box-shadow:0 18px 50px -20px #000;
+  }
+  .stage::after{
+    content:"";position:absolute;width:30%;aspect-ratio:1;border-radius:50%;
+    background:var(--accent);opacity:.9;
+  }
+  .stage.spin{animation:spin 3.6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .stage .lbl{position:relative;z-index:2;font:700 13px/1 inherit;letter-spacing:.1em;
+    text-transform:uppercase;color:#fff;mix-blend-mode:normal}
+
+  /* Scanner */
+  #scanWrap{position:fixed;inset:0;background:#000;z-index:50;display:none}
+  #scanWrap.on{display:block}
+  #cam{width:100%;height:100%;object-fit:cover}
+  #scanUI{position:absolute;inset:0;display:flex;flex-direction:column;
+    justify-content:space-between;padding:calc(env(safe-area-inset-top) + 20px) 20px calc(env(safe-area-inset-bottom) + 24px)}
+  #reticle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:64vw;aspect-ratio:1;border:2px solid #fff6;border-radius:24px}
+  #scanMsg{color:#fff;text-align:center;font-size:15px;text-shadow:0 2px 8px #000}
+
+  .row{display:flex;gap:10px}
+  .row>*{flex:1}
+  #reveal{text-align:center;min-height:62px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+  #year{font:800 46px/1 inherit;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  #meta{font-size:14px;color:var(--dim)}
+  .hide{display:none !important}
+  #err{background:#3a1f1c;border:1px solid #6b3027;border-radius:12px;padding:14px;font-size:14px}
+  #err a{color:var(--fg)}
+  /* Player liegt sichtbar, aber vom Plattenteller verdeckt dahinter */
+  #ytBox{position:absolute;inset:0;border-radius:50%;overflow:hidden;opacity:.001;pointer-events:none}
+  footer{padding:10px 0 16px;text-align:center;font-size:12px;color:#5c6973}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hitster CZ / SK</h1>
+  <span id="count"></span>
+</header>
+
+<main>
+  <div class="stage" id="stage">
+    <div id="ytBox"><div id="yt"></div></div>
+    <span class="lbl" id="stageLbl">bereit</span>
+  </div>
+
+  <div id="reveal" class="hide">
+    <div id="year"></div>
+    <div id="meta"></div>
+  </div>
+
+  <div id="err" class="hide"></div>
+
+  <button class="btn" id="main">Karte scannen</button>
+  <div class="row hide" id="controls">
+    <button class="btn ghost" id="toggle">Pause</button>
+    <button class="btn ghost" id="revealBtn">Auflösen</button>
+  </div>
+</main>
+
+<footer id="foot">Ein Handy scannt und spielt — reihum weitergeben.</footer>
+
+<div id="scanWrap">
+  <video id="cam" playsinline muted></video>
+  <div id="reticle"></div>
+  <div id="scanUI">
+    <div></div>
+    <div>
+      <p id="scanMsg">QR-Code der Karte ins Feld halten</p>
+      <button class="btn ghost" id="cancelScan" style="background:#0009;margin-top:14px">Abbrechen</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var songs={}, player=null, ready=false, current=null, unlocked=false;
+  var $=function(id){return document.getElementById(id)};
+  var stage=$("stage"), lbl=$("stageLbl"), mainBtn=$("main"),
+      controls=$("controls"), revealBox=$("reveal"), errBox=$("err");
+
+  /* ---------- Daten ---------- */
+  fetch("songs.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
+    delete d._hinweis; songs=d;
+    var n=0; for(var k in songs){ if(songs[k].v) n++; }
+    $("count").textContent=n+" Karten aktiv";
+    var h=location.hash.replace(/^#/,"");
+    if(h) queue(h);
+  }).catch(function(){ fail("songs.json konnte nicht geladen werden."); });
+
+  /* ---------- YouTube IFrame API ---------- */
+  var tag=document.createElement("script");
+  tag.src="https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
+  window.onYouTubeIframeAPIReady=function(){ ready=true; };
+
+  function buildPlayer(videoId,start,cb){
+    player=new YT.Player("yt",{
+      height:"240", width:"240", videoId:videoId,
+      playerVars:{playsinline:1,controls:0,rel:0,modestbranding:1,disablekb:1,fs:0,start:start||0},
+      events:{
+        onReady:function(e){ e.target.unMute(); e.target.setVolume(100); e.target.playVideo(); unlocked=true; if(cb)cb(); },
+        onError:function(e){ embedBlocked(e.data); },
+        onStateChange:function(e){
+          if(e.data===YT.PlayerState.PLAYING){ stage.classList.add("spin"); lbl.textContent="läuft"; $("toggle").textContent="Pause"; }
+          if(e.data===YT.PlayerState.PAUSED){ stage.classList.remove("spin"); lbl.textContent="pause"; $("toggle").textContent="Weiter"; }
+          if(e.data===YT.PlayerState.ENDED){ stage.classList.remove("spin"); lbl.textContent="Ende"; }
+        }
+      }
+    });
+  }
+
+  /* ---------- Abspielen ---------- */
+  var pending=null;
+  function queue(code){ pending=normalise(code); play(pending); }
+
+  function normalise(raw){
+    raw=(raw||"").trim();
+    var m=raw.match(/#([A-Za-z0-9_-]{1,12})$/);     // volle URL von der iOS-Kamera
+    if(m) return m[1];
+    m=raw.match(/[?&]v=([A-Za-z0-9_-]{11})/);        // falls doch mal eine YT-URL im QR steht
+    if(m) return "!"+m[1];
+    return raw;
+  }
+
+  function resolve(code){
+    if(code.charAt(0)==="!") return {v:code.slice(1),t:0,j:0,i:"",n:""};
+    return songs[code]||null;
+  }
+
+  function play(code){
+    hide(errBox); hide(revealBox); controls.classList.remove("hide");
+    var s=resolve(code);
+    if(!s){ fail("Code <b>"+esc(code)+"</b> steht nicht in songs.json."); return; }
+    if(!s.v){ fail("Für <b>"+esc(code)+"</b> ist noch keine Video-ID eingetragen."); return; }
+    current=s;
+    history.replaceState(null,"",( code.charAt(0)==="!" ? location.pathname : "#"+code ));
+    lbl.textContent="lädt";
+    mainBtn.textContent="Nächste Karte scannen";
+
+    if(!ready){ setTimeout(function(){play(code)},300); return; }
+    if(!player){ buildPlayer(s.v,s.t); return; }
+    player.loadVideoById({videoId:s.v,startSeconds:s.t||0});
+    player.unMute(); player.playVideo();
+    // iOS kann den Autostart nach Ablauf der Geste verweigern:
+    setTimeout(function(){
+      if(player.getPlayerState&&player.getPlayerState()!==YT.PlayerState.PLAYING&&
+         player.getPlayerState()!==YT.PlayerState.BUFFERING){
+        lbl.textContent="antippen"; stage.onclick=function(){ player.playVideo(); stage.onclick=null; };
+      }
+    },1400);
+  }
+
+  function embedBlocked(codeNum){
+    stage.classList.remove("spin"); lbl.textContent="blockiert";
+    var id=current?current.v:"";
+    fail("Dieses Video erlaubt kein Einbetten (Fehler "+codeNum+"). "+
+         "<a href='https://music.youtube.com/watch?v="+id+"' target='_blank' rel='noopener'>In YouTube Music öffnen</a> "+
+         "— Achtung, dort ist der Titel sichtbar. Besser: eine andere Aufnahme desselben Songs in songs.json eintragen.");
+  }
+
+  /* ---------- Bedienung ---------- */
+  $("toggle").onclick=function(){
+    if(!player) return;
+    var st=player.getPlayerState();
+    if(st===YT.PlayerState.PLAYING) player.pauseVideo(); else player.playVideo();
+  };
+  $("revealBtn").onclick=function(){
+    if(!current) return;
+    $("year").textContent=current.j||"—";
+    $("meta").textContent=((current.i||"")+(current.n?" · "+current.n:""))||"keine Angaben hinterlegt";
+    revealBox.classList.remove("hide");
+  };
+
+  /* ---------- Scanner ---------- */
+  var wrap=$("scanWrap"), cam=$("cam"), stream=null, raf=null,
+      cv=document.createElement("canvas"), ctx=cv.getContext("2d",{willReadFrequently:true});
+
+  mainBtn.onclick=function(){
+    // Erste Geste nutzen, um den Player freizuschalten (iOS-Autoplay-Sperre)
+    if(!unlocked&&ready&&!player){ buildPlayer("sivzYnF_7a0",0,function(){ player.pauseVideo(); }); }
+    startScan();
+  };
+  $("cancelScan").onclick=stopScan;
+
+  function startScan(){
+    if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+      fail("Dieser Browser gibt keinen Kamerazugriff. Scanne mit der iOS-Kamera-App, der Link öffnet diese Seite.");
+      return;
+    }
+    wrap.classList.add("on");
+    navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}},audio:false})
+      .then(function(st){
+        stream=st; cam.srcObject=st; cam.setAttribute("playsinline",""); cam.play();
+        raf=requestAnimationFrame(tick);
+      })
+      .catch(function(){
+        wrap.classList.remove("on");
+        fail("Kein Kamerazugriff. In Safari: aA-Symbol in der Adresszeile → Website-Einstellungen → Kamera erlauben.");
+      });
+  }
+
+  function stopScan(){
+    if(raf) cancelAnimationFrame(raf); raf=null;
+    if(stream){ stream.getTracks().forEach(function(t){t.stop()}); stream=null; }
+    wrap.classList.remove("on");
+  }
+
+  function tick(){
+    if(cam.readyState===cam.HAVE_ENOUGH_DATA){
+      var w=cam.videoWidth, h=cam.videoHeight;
+      var side=Math.min(w,h)*0.7, sx=(w-side)/2, sy=(h-side)/2;
+      cv.width=cv.height=420;
+      ctx.drawImage(cam,sx,sy,side,side,0,0,420,420);
+      var img=ctx.getImageData(0,0,420,420);
+      var hit=window.jsQR?jsQR(img.data,420,420,{inversionAttempts:"dontInvert"}):null;
+      if(hit&&hit.data){
+        if(navigator.vibrate) navigator.vibrate(30);
+        stopScan(); play(normalise(hit.data)); return;
+      }
+    }
+    raf=requestAnimationFrame(tick);
+  }
+
+  /* ---------- Hilfsfunktionen ---------- */
+  function fail(html){ errBox.innerHTML=html; errBox.classList.remove("hide"); }
+  function hide(el){ el.classList.add("hide"); }
+  function esc(s){ return String(s).replace(/[<>&]/g,function(c){return {"<":"&lt;",">":"&gt;","&":"&amp;"}[c]}); }
+
+  window.addEventListener("hashchange",function(){
+    var h=location.hash.replace(/^#/,""); if(h) play(normalise(h));
+  });
+})();
+</script>
+</body>
+</html>
