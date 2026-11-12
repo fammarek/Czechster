@@ -28,8 +28,11 @@ Kein Build, keine Abhängigkeiten. HTML-Seiten sind eigenständig; Python nutzt 
 
 1. **Kein Jahr aus dem Gedächtnis.** Ein früherer Versuch, Jahre aus dem Modellwissen einzutragen, lag bei
    5 von 6 Stichproben falsch, teils um ein Jahrzehnt. Jedes Jahr braucht eine nachlesbare Quelle im Feld `q`.
-2. **`ok: true` nur bei zwei übereinstimmenden Quellen** (oder einer Primärquelle wie dem Supraphon-Katalog,
-   „Rok prvního vydání“). Im Zweifel `ok: false` lassen und in `pruefbericht.md` aufführen.
+2. **`ok: true` nur, wenn zwei Quellen ein Jahr liefern** (oder eine Primärquelle wie der Supraphon-Katalog,
+   „Rok prvního vydání“). Stimmen sie überein, gilt dieses Jahr. Weichen sie ab, gilt automatisch das
+   **ältere** (Entscheidung des Besitzers, Nov. 2026; bei den Startwerten in 4 von 5 Fällen richtig, sonst
+   ein Jahr daneben); `q` nennt dann beide Jahre. Nur eine oder keine Quelle: `ok: false` lassen und in
+   `pruefbericht.md` aufführen.
 3. **Gemeint ist das Jahr der Erstveröffentlichung dieser Aufnahme** — nicht das Album-, Best-of- oder
    Remaster-Jahr, und bei Coverversionen nicht das Jahr des Originals.
 4. **Codes und Video-IDs in `songs.json` nie ändern oder neu vergeben.** Gedruckte Karten hängen daran.

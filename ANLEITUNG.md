@@ -156,7 +156,7 @@ pruefbericht.md zusammen: wie viele geprüft, wie viele offen, Verteilung nach J
 
 ## Schritt 10 — Offene Fälle klären
 
-Was die beiden Datenbanken nicht übereinstimmend liefern, steht in `pruefbericht.md`.
+Wofür nur eine oder keine Datenbank ein Jahr liefert, steht in `pruefbericht.md` (bei abweichenden Jahren gilt automatisch das ältere).
 Zwei Wege, auch kombinierbar:
 
 **Claude Code recherchiert:**

@@ -4,9 +4,10 @@
 Prueft das Jahr der Erstveroeffentlichung gegen zwei unabhaengige Quellen:
 MusicBrainz (frei) und Discogs (Token in der Umgebungsvariable DISCOGS_TOKEN).
 
-Ein Jahr gilt nur als geprueft (ok = true), wenn BEIDE Quellen dasselbe Jahr liefern
-und dieses Jahr nicht in beiden Quellen ausschliesslich von einer Kompilation stammt.
-Alles andere bleibt ok = false und landet mit beiden Kandidaten in pruefbericht.md.
+Ein Jahr gilt als geprueft (ok = true), wenn BEIDE Quellen ein Jahr liefern:
+- gleiches Jahr (ausser es stammt in beiden Quellen nur von einer Kompilation), oder
+- verschiedene Jahre: dann gilt das aeltere (Entscheidung des Besitzers, Nov. 2026).
+Liefert nur eine oder keine Quelle ein Jahr, bleibt ok = false und der Fall landet in pruefbericht.md.
 
 Aufruf (im Projektordner):
     python tools/jahre_pruefen.py                    songs.json pruefen
@@ -157,8 +158,8 @@ def urteil(mb, dg):
         return False, 0, "in keiner Quelle gefunden"
     if not a or not b:
         return False, kand, "nur eine Quelle: MusicBrainz %s / Discogs %s" % (a or "–", b or "–")
-    if a != b:
-        return False, kand, "Quellen weichen ab: MusicBrainz %d / Discogs %d" % (a, b)
+    if a != b:                                   # Entscheidung des Besitzers: das aeltere Jahr gilt
+        return True, kand, "älteres Jahr von MusicBrainz %d / Discogs %d" % (a, b)
     if mb["nur_kompilation"] and dg["nur_kompilation"]:
         return False, kand, "beide Quellen kennen %d nur von einer Kompilation" % a
     return True, a, "MusicBrainz+Discogs"

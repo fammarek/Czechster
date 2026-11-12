@@ -38,7 +38,7 @@ def check(name, cond, extra=""):
     if not cond: fehler += 1
 
 r = J.pruefe("Elán", "Stužková", "x");            check("beide Quellen gleich -> geprueft 1985", r["ok"] and r["jahr"] == 1985, r)
-r = J.pruefe("Katapult", "Až", "x");              check("Abweichung -> offen, Vorschlag = fruehestes Jahr", not r["ok"] and r["jahr"] == 1979 and "weichen ab" in r["grund"], r)
+r = J.pruefe("Katapult", "Až", "x");              check("Abweichung -> aelteres Jahr gilt als geprueft", r["ok"] and r["jahr"] == 1979 and "älteres Jahr" in r["grund"], r)
 r = J.pruefe("Naďa Urbánková", "Závidím", "x");   check("nur Kompilationen -> offen", not r["ok"] and "Kompilation" in r["grund"], r)
 r = J.pruefe("Citron", "Radegast", "x");          check("nur eine Quelle -> offen", not r["ok"] and r["jahr"] == 1987 and "nur eine Quelle" in r["grund"], r)
 r = J.pruefe("Niemand", "Nichts", "x");           check("nichts gefunden -> offen ohne Jahr", not r["ok"] and r["jahr"] == 0, r)
@@ -60,11 +60,11 @@ class A: songs = "songs.json"; nur = None; limit = 0; neu = False
 J.lauf_songs(A, "x")
 out = json.load(open(os.path.join(tmp, "songs.json"), encoding="utf-8"))
 check("songs.json: bestaetigt", out["k1"] == {"v": "AAAAAAAAAAA", "t": 12, "j": 1985, "i": "Elán", "n": "Stužková", "ok": True, "q": "MusicBrainz+Discogs"}, out["k1"])
-check("songs.json: offen mit Vorschlag, nicht geprueft", out["k2"]["j"] == 1979 and out["k2"]["ok"] is False and out["k2"]["v"] == "BBBBBBBBBBB", out["k2"])
+check("songs.json: Abweichung -> aelteres Jahr, geprueft, Quelle nennt beide", out["k2"]["j"] == 1979 and out["k2"]["ok"] is True and "1980" in out["k2"]["q"] and out["k2"]["v"] == "BBBBBBBBBBB", out["k2"])
 check("songs.json: bereits geprueftes bleibt unberuehrt", out["k3"] == songs["k3"])
 check("songs.json: Reihenfolge und Hinweis erhalten", list(out) == list(songs))
 rep = open(os.path.join(tmp, "pruefbericht.md"), encoding="utf-8").read()
-check("Bericht nennt offene Faelle", "| k2 |" in rep and "| k4 |" in rep and "| k1 |" not in rep)
+check("Bericht nennt offene Faelle", "| k2 |" not in rep and "| k4 |" in rep and "| k1 |" not in rep)
 shutil.rmtree(tmp)
 print("\n%s" % ("ALLE BESTANDEN" if not fehler else "%d FEHLGESCHLAGEN" % fehler))
 sys.exit(1 if fehler else 0)
