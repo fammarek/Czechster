@@ -29,6 +29,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, "tools", ".cache")
 UA = "Czechster/1.0 (privates Kartenspiel; https://github.com/fammarek/Czechster)"
 PAUSE = {"musicbrainz.org": 1.1, "api.discogs.com": 1.1}   # Sekunden zwischen zwei Anfragen
+VERSUCHE = 15                                              # MusicBrainz drosselt zeitweise (503, Verbindungsabbruch)
 _last = {}
 
 
@@ -61,7 +62,7 @@ def http_json(url, headers=None, cache_key=None):
         with open(path, encoding="utf-8") as f:
             return json.load(f)
     host = urllib.parse.urlparse(url).netloc
-    for versuch in range(5):
+    for versuch in range(VERSUCHE):
         warte = PAUSE.get(host, 1.0) - (time.time() - _last.get(host, 0))
         if warte > 0:
             time.sleep(warte)
@@ -75,14 +76,14 @@ def http_json(url, headers=None, cache_key=None):
             return data
         except urllib.error.HTTPError as e:
             if e.code in (429, 503):
-                time.sleep(5 * (versuch + 1))
+                time.sleep(min(60, 5 * (versuch + 1)))
                 continue
             if e.code == 401:
                 raise SystemExit("Discogs lehnt das Token ab (401). DISCOGS_TOKEN pruefen.")
             raise
-        except (urllib.error.URLError, TimeoutError):
-            time.sleep(3 * (versuch + 1))
-    raise SystemExit("Keine Antwort von " + host + " nach 5 Versuchen. Internetverbindung pruefen und neu starten.")
+        except (urllib.error.URLError, TimeoutError, ConnectionError):
+            time.sleep(min(60, 3 * (versuch + 1)))
+    raise SystemExit("Keine Antwort von " + host + " nach %d Versuchen." % VERSUCHE + " Internetverbindung pruefen und neu starten.")
 
 
 # ---------- MusicBrainz ----------
