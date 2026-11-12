@@ -1,13 +1,11 @@
 {
-  "_hinweis": "Kurzcode -> Song. 'v' = YouTube-Video-ID (identisch mit YouTube Music). 't' = Startsekunde, optional, zum Überspringen langer Intros. 'j'/'i'/'n' = Jahr/Interpret/Titel, nur fuer die Aufloesen-Funktion und den Kartendruck. Codes frei waehlbar, kurz halten (2-3 Zeichen) damit der QR grob bleibt und schnell scannt.",
-
-  "a1": { "v": "sivzYnF_7a0", "t": 0, "j": 0, "i": "? aus deiner Playlist", "n": "? Titel nachtragen" },
-
-  "a2": { "v": "", "t": 0, "j": 1985, "i": "Elán", "n": "Stužková" },
-  "a3": { "v": "", "t": 0, "j": 1979, "i": "Katapult", "n": "Až" },
-  "a4": { "v": "", "t": 0, "j": 1966, "i": "Václav Neckář / Helena Vondráčková", "n": "Stín katedrál" },
-  "a5": { "v": "", "t": 0, "j": 1970, "i": "Pavel Dydovič", "n": "Bláznova ukolébavka" },
-  "a6": { "v": "", "t": 0, "j": 2000, "i": "No Name", "n": "Žily" },
-  "a7": { "v": "", "t": 0, "j": 2008, "i": "Marek Ztracený", "n": "Ztrácíš" },
-  "a8": { "v": "", "t": 0, "j": 2008, "i": "Xindl X", "n": "Anděl" }
+ "_hinweis": "Erzeugt in redaktion.html. v=Video-ID, t=Startsekunde, j=Jahr der Erstveroeffentlichung, i=Interpret, n=Titel, ok=Jahr geprueft, q=Quelle des Jahres.",
+ "a1": {"v": "sivzYnF_7a0", "t": 0, "j": 0, "i": "", "n": "Testkarte – Titel in der Redaktion nachtragen", "ok": false, "q": ""},
+ "a2": {"v": "", "t": 0, "j": 1985, "i": "Elán", "n": "Stužková", "ok": true, "q": "Supraphon"},
+ "a3": {"v": "", "t": 0, "j": 1979, "i": "Katapult", "n": "Až", "ok": true, "q": "katapult.cz, SP 1.10.1979"},
+ "a4": {"v": "", "t": 0, "j": 1966, "i": "Václav Neckář & Helena Vondráčková", "n": "Stín katedrál", "ok": true, "q": "Supraphon"},
+ "a5": {"v": "", "t": 0, "j": 1970, "i": "Pavel Dydovič", "n": "Bláznova ukolébavka", "ok": true, "q": "Supraphon"},
+ "a6": {"v": "", "t": 0, "j": 2000, "i": "No Name", "n": "Žily", "ok": true, "q": "Album Počkám si na zázrak"},
+ "a7": {"v": "", "t": 0, "j": 2008, "i": "Marek Ztracený", "n": "Ztrácíš", "ok": true, "q": "Debütsingle"},
+ "a8": {"v": "", "t": 0, "j": 2008, "i": "Xindl X", "n": "Anděl", "ok": true, "q": "Wikipedia"}
 }

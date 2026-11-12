@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Czechster — Redaktion</title>
+<style>
+  :root{--line:#d8d8d4;--accent:#e0533d;--ok:#1f7a45;--dim:#666}
+  *{box-sizing:border-box}
+  body{margin:0;background:#f5f5f3;color:#16181a;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1100px;margin:0 auto;padding:26px 16px 80px}
+  h1{font-size:21px;margin:0 0 4px} h2{font-size:15px;margin:26px 0 8px;text-transform:uppercase;letter-spacing:.08em;color:#777}
+  p.sub{color:#555;margin:0 0 14px;max-width:70ch}
+  textarea,input[type=text],input[type=number]{font:inherit;border:1px solid #bbb;border-radius:6px;background:#fff;padding:6px 8px}
+  textarea{width:100%;min-height:74px}
+  button{padding:10px 16px;border:0;border-radius:8px;background:var(--accent);color:#fff;font-family:inherit;font-weight:600;font-size:15px;cursor:pointer}
+  button.sec{background:#fff;color:#16181a;border:1px solid #bbb}
+  button.x{background:none;color:#999;padding:2px 8px;font-size:18px}
+  button[disabled]{opacity:.45}
+  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+  #log{font-size:13px;color:var(--dim);min-height:20px}
+  .tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:880px}
+  th,td{text-align:left;padding:6px;border-bottom:1px solid #eee;vertical-align:middle}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#777;position:sticky;top:0;background:#fafaf8}
+  td.c{font:600 12px ui-monospace,Menlo,monospace;color:#666}
+  td.y{color:#777;font-size:12px;max-width:220px}
+  td input[type=text]{width:100%} td input.j{width:74px} td input.t{width:58px} td input.q{width:120px}
+  tr.done td.c{color:var(--ok)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .stat b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+  .stat span{font-size:12px;color:var(--dim)}
+  .hist{display:flex;gap:8px;align-items:flex-end;height:120px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 12px 8px;overflow-x:auto}
+  .hist div{flex:1;min-width:38px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;font-size:11px;color:var(--dim)}
+  .hist i{display:block;width:100%;background:var(--accent);border-radius:3px 3px 0 0;min-height:1px}
+  .hist em{font-style:normal;font-weight:600;color:#16181a}
+  #hidden{position:fixed;left:-9999px;top:0;width:220px;height:220px}
+  code{background:#ececea;padding:1px 5px;border-radius:4px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Redaktion</h1>
+  <p class="sub">Hier entsteht die <code>songs.json</code>. Playlist einlesen, Jahr und Schreibweise pflegen,
+  Datei herunterladen und im Repository ersetzen. Bereits vergebene Codes bleiben erhalten — einmal gedruckte Karten funktionieren weiter.</p>
+
+  <h2>1 · Lieder einlesen</h2>
+  <textarea id="src" placeholder="Playlist-Link aus YouTube Music einfügen — oder einzelne Lied-Links, einer pro Zeile"></textarea>
+  <div class="bar"><button id="read">Einlesen</button><span id="log"></span></div>
+
+  <h2>2 · Stand</h2>
+  <div class="stats">
+    <div class="stat"><b id="sAll">0</b><span>Karten</span></div>
+    <div class="stat"><b id="sYear">0</b><span>mit Jahr</span></div>
+    <div class="stat"><b id="sOk">0</b><span>Jahr geprüft → druckbar</span></div>
+  </div>
+  <p class="sub" style="margin:14px 0 6px">Verteilung der geprüften Karten nach Jahrzehnt. Lücken hier machen das Spiel einseitig.</p>
+  <div class="hist" id="hist"></div>
+
+  <h2>3 · Karten pflegen</h2>
+  <p class="sub">Das Jahr ist das <b>Jahr der Erstveröffentlichung</b>, nicht das Jahr eines Best-of-Albums oder Remasters.
+  „Geprüft“ erst ankreuzen, wenn das Jahr aus einer Quelle stammt (Supraphon „Rok prvního vydání“, Discogs, Wikipedia) — die Quelle daneben notieren.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Code</th><th>Interpret</th><th>Titel</th><th>Jahr</th><th>Start s</th><th>Geprüft</th><th>Quelle</th><th>YouTube-Titel</th><th></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+
+  <div class="bar" style="margin-top:16px">
+    <button id="dl">songs.json herunterladen</button>
+    <button class="sec" id="cp">In die Zwischenablage</button>
+    <span id="saved" style="font-size:13px;color:#666"></span>
+  </div>
+</div>
+<div id="hidden"><div id="yt"></div></div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(i){return document.getElementById(i)};
+  var rows=[];              // {code,v,t,j,i,n,ok,q,yt}
+  var apiReady=false, player=null, playerReady=false;
+
+  /* ---------- vorhandene Datei laden ---------- */
+  fetch("songs.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
+    for(var k in d){ if(k.charAt(0)==="_") continue; var s=d[k];
+      rows.push({code:k,v:s.v||"",t:s.t||0,j:s.j||0,i:s.i||"",n:s.n||"",ok:!!s.ok,q:s.q||"",yt:""}); }
+    draft(); render();
+  }).catch(function(){ draft(); render(); });
+
+  /* Entwurf: jede Aenderung bleibt in diesem Browser erhalten, bis die Datei ersetzt ist */
+  function draft(){
+    try{
+      var d=JSON.parse(localStorage.getItem("czechster-entwurf")||"null");
+      if(d&&d.length&&confirm("In diesem Browser liegt ein ungespeicherter Entwurf mit "+d.length+" Karten. Weiterbearbeiten?\n\nAbbrechen verwirft ihn und lädt die veröffentlichte songs.json.")) rows=d;
+      else localStorage.removeItem("czechster-entwurf");
+    }catch(x){}
+  }
+  function keep(){ try{ localStorage.setItem("czechster-entwurf",JSON.stringify(rows)); }catch(x){} }
+
+  /* ---------- YouTube ---------- */
+  var tag=document.createElement("script");
+  tag.src="https://www.youtube.com/iframe_api"; document.head.appendChild(tag);
+  window.onYouTubeIframeAPIReady=function(){
+    apiReady=true;
+    player=new YT.Player("yt",{height:"200",width:"200",playerVars:{playsinline:1},
+      events:{onReady:function(){ playerReady=true; }}});
+  };
+
+  function wait(test,ms){            // wartet, bis test() etwas liefert
+    return new Promise(function(res){
+      var t0=Date.now();
+      (function poll(){ var v=null; try{ v=test(); }catch(x){}
+        if(v) return res(v);
+        if(Date.now()-t0>ms) return res(null);
+        setTimeout(poll,200); })();
+    });
+  }
+
+  $("read").onclick=async function(){
+    var txt=$("src").value, ids=[];
+    var pl=txt.match(/[?&]list=([A-Za-z0-9_-]+)/);
+    var re=/(?:[?&]v=|youtu\.be\/|\/embed\/)([A-Za-z0-9_-]{11})/g, m;
+    while((m=re.exec(txt))) ids.push(m[1]);
+    if(!pl&&!ids.length){ log("Kein Playlist- oder Lied-Link erkannt."); return; }
+    $("read").disabled=true;
+    if(!(await wait(function(){return playerReady},10000))){ log("YouTube-Player nicht erreichbar."); $("read").disabled=false; return; }
+
+    if(pl){
+      log("Lese Playlist …");
+      player.cuePlaylist({listType:"playlist",list:pl[1]});
+      var list=await wait(function(){ var p=player.getPlaylist(); return p&&p.length?p:null; },12000);
+      if(!list){ log("Playlist nicht lesbar. Ist sie öffentlich oder „nicht gelistet“? Private Playlists gehen nicht."); $("read").disabled=false; return; }
+      ids=ids.concat(list);
+      if(list.length>=200) alert("YouTube liefert höchstens 200 Titel pro Playlist. Längere Listen bitte aufteilen.");
+    }
+    var have={}; rows.forEach(function(r){ if(r.v) have[r.v]=1; });
+    var fresh=ids.filter(function(v,i){ return !have[v]&&ids.indexOf(v)===i; });
+    var added=0;
+    for(var k=0;k<fresh.length;k++){
+      var v=fresh[k];
+      log("Lese Titel "+(k+1)+" von "+fresh.length+" …");
+      player.cueVideoById(v);
+      var vd=await wait(function(){ var d=player.getVideoData(); return d&&d.video_id===v&&d.title?d:null; },6000);
+      var title=vd?vd.title:"", author=vd?(vd.author||"").replace(/\s*-\s*Topic$/,""):"";
+      var i=author, n=title, sp=title.split(/\s+[-–—]\s+/);
+      if(sp.length===2){ i=sp[0]; n=sp[1]; }           // "Interpret - Titel"
+      n=n.replace(/\s*[\(\[](official|oficiální|oficiálny|video|audio|lyric|hd|hq)[^\)\]]*[\)\]]/ig,"").trim();
+      rows.push({code:nextCode(),v:v,t:0,j:0,i:i,n:n,ok:false,q:"",yt:title||"(Titel nicht lesbar)"});
+      added++;
+    }
+    render(); keep();
+    log(added+" neue Karten angelegt"+(ids.length-fresh.length?" · "+(ids.length-fresh.length)+" waren schon vorhanden":"")+".");
+    $("read").disabled=false;
+  };
+
+  function nextCode(){
+    var used={}; rows.forEach(function(r){ used[r.code]=1; });
+    for(var n=1;;n++){ var c="k"+n.toString(36); if(!used[c]) return c; }
+  }
+
+  /* ---------- Tabelle ---------- */
+  function render(){
+    var tb=$("rows"); tb.innerHTML="";
+    rows.forEach(function(r,ix){
+      var tr=document.createElement("tr"); if(r.ok&&r.j&&r.v) tr.className="done";
+      tr.innerHTML='<td class="c">'+esc(r.code)+'</td>'+
+        '<td><input type="text" data-f="i" value="'+att(r.i)+'"></td>'+
+        '<td><input type="text" data-f="n" value="'+att(r.n)+'"></td>'+
+        '<td><input type="number" class="j" data-f="j" min="1900" max="2100" value="'+(r.j||"")+'"></td>'+
+        '<td><input type="number" class="t" data-f="t" min="0" value="'+(r.t||"")+'"></td>'+
+        '<td><input type="checkbox" data-f="ok"'+(r.ok?" checked":"")+'></td>'+
+        '<td><input type="text" class="q" data-f="q" value="'+att(r.q)+'" placeholder="z. B. Supraphon"></td>'+
+        '<td class="y">'+esc(r.yt||(r.v?r.v:"kein Video"))+'</td>'+
+        '<td><button class="x" title="Karte entfernen" data-del="1">×</button></td>';
+      tr.addEventListener("input",function(e){
+        var f=e.target.getAttribute("data-f"); if(!f) return;
+        if(f==="ok") r.ok=e.target.checked;
+        else if(f==="j"||f==="t") r[f]=parseInt(e.target.value,10)||0;
+        else r[f]=e.target.value;
+        tr.className=(r.ok&&r.j&&r.v)?"done":""; stats(); keep();
+      });
+      tr.addEventListener("click",function(e){
+        if(e.target.getAttribute("data-del")&&confirm("Karte "+r.code+" entfernen? Eine bereits gedruckte Karte mit diesem Code funktioniert dann nicht mehr.")){ rows.splice(ix,1); render(); keep(); }
+      });
+      tb.appendChild(tr);
+    });
+    stats();
+  }
+
+  function stats(){
+    $("sAll").textContent=rows.length;
+    $("sYear").textContent=rows.filter(function(r){return r.j}).length;
+    var ok=rows.filter(function(r){return r.ok&&r.j&&r.v});
+    $("sOk").textContent=ok.length;
+    var dec={}, min=1960, max=2020;
+    ok.forEach(function(r){ var d=Math.floor(r.j/10)*10; dec[d]=(dec[d]||0)+1; if(d<min)min=d; if(d>max)max=d; });
+    var top=Math.max.apply(null,Object.keys(dec).map(function(k){return dec[k]}).concat([1]));
+    var h=""; for(var d=min;d<=max;d+=10){ var c=dec[d]||0;
+      h+='<div><em>'+c+'</em><i style="height:'+Math.round(c/top*70)+'px"></i>'+d+'er</div>'; }
+    $("hist").innerHTML=h;
+  }
+
+  /* ---------- Ausgabe ---------- */
+  function build(){
+    var out={"_hinweis":"Erzeugt in redaktion.html. v=Video-ID, t=Startsekunde, j=Jahr der Erstveroeffentlichung, i=Interpret, n=Titel, ok=Jahr geprueft, q=Quelle des Jahres."};
+    rows.forEach(function(r){ out[r.code]={v:r.v,t:r.t||0,j:r.j||0,i:r.i,n:r.n,ok:!!r.ok,q:r.q||""}; });
+    return JSON.stringify(out,null,1);
+  }
+  $("dl").onclick=function(){
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob([build()],{type:"application/json"}));
+    a.download="songs.json"; document.body.appendChild(a); a.click(); a.remove();
+    try{ localStorage.removeItem("czechster-entwurf"); }catch(x){}
+    $("saved").textContent="Heruntergeladen — jetzt im Repository die alte songs.json ersetzen.";
+  };
+  $("cp").onclick=function(){
+    navigator.clipboard.writeText(build()).then(function(){ $("saved").textContent="Kopiert."; },
+      function(){ $("saved").textContent="Kopieren nicht möglich — bitte herunterladen."; });
+  };
+
+  function log(t){ $("log").textContent=t; }
+  function esc(s){ return String(s).replace(/[<>&]/g,function(c){return {"<":"&lt;",">":"&gt;","&":"&amp;"}[c]}); }
+  function att(s){ return esc(s||"").replace(/"/g,"&quot;"); }
+})();
+</script>
+</body>
+</html>

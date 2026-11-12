@@ -1,86 +1,41 @@
-# Hitster CZ/SK — Jukebox
+# Czechster
 
-Drei Dateien, kein Build, kein Server. Läuft auf GitHub Pages.
+Musik-Ratespiel mit tschechischen und slowakischen Liedern. Kein Build, kein Server — läuft auf GitHub Pages.
 
-```
-index.html     Scanner + Player  (das Jukebox-Handy)
-karten.html    Kartendruck       (QR vorne, Jahr hinten)
-songs.json     die Daten
-```
-
-## In fünf Minuten online
-
-1. Auf github.com → **New repository** → Name `hitster-cz` → **Public** (Pages ist bei privaten Repos kostenpflichtig).
-2. **Add file → Upload files** → die drei Dateien hochladen → Commit.
-3. **Settings → Pages** → Source: *Deploy from a branch* → Branch `main`, Ordner `/ (root)` → Save.
-4. Nach ein bis zwei Minuten liegt die Seite auf
-   `https://BENUTZERNAME.github.io/hitster-cz/`
-5. Diese URL in `karten.html` oben eintragen, Bögen erzeugen, drucken.
-
-HTTPS liefert GitHub automatisch — das ist der Grund für GitHub Pages und nicht
-irgendeinen Webspace: ohne HTTPS gibt iOS keinen Kamerazugriff frei.
-
-## Songs eintragen
-
-In `songs.json` pro Karte eine Zeile:
-
-```json
-"a2": { "v": "dQw4w9WgXcQ", "t": 18, "j": 1985, "i": "Elán", "n": "Stužková" }
-```
-
-| Feld | Bedeutung |
+| Datei | Zweck |
 |---|---|
-| Schlüssel | Kurzcode, steht im QR. 2–3 Zeichen halten. |
-| `v` | YouTube-Video-ID — der Teil hinter `watch?v=`. YouTube Music benutzt dieselben IDs. |
-| `t` | Startsekunde. Nützlich bei langen Intros: direkt in den Refrain springen. |
-| `j` `i` `n` | Jahr, Interpret, Titel. Nur für Kartenrückseite und „Auflösen". |
+| `index.html` | Spielseite: scannt die Karte und spielt das Lied, ohne den Titel zu zeigen |
+| `redaktion.html` | Liest die YouTube-Music-Playlist ein, hier werden Jahr und Schreibweise gepflegt |
+| `check.html` | Testet, ob jedes Video wirklich anläuft |
+| `karten.html` | Erzeugt die Druckbögen |
+| `songs.json` | Die Daten — wird von `redaktion.html` erzeugt, nicht von Hand geschrieben |
 
-Jahreszahl ändern heißt neue Karte drucken — deshalb erst die Jahre prüfen,
-dann drucken.
+## Ablauf
 
-## Wie es gespielt wird
+1. **Playlist anlegen** in YouTube Music. Sie muss „öffentlich“ oder „nicht gelistet“ sein.
+2. **`redaktion.html` öffnen**, Playlist-Link einfügen, „Einlesen“. Jedes Lied bekommt einen Code.
+3. **Jahr eintragen und prüfen.** Gemeint ist das Jahr der Erstveröffentlichung. Das Jahr, das YouTube Music
+   anzeigt, ist das Jahr des *Albums* — bei Best-of-Platten und Remasters also oft Jahrzehnte daneben.
+   Verlässlich sind der Supraphon-Katalog („Rok prvního vydání“), Discogs und die Wikipedia-Diskografien.
+   Erst dann „geprüft“ ankreuzen.
+4. **`songs.json` herunterladen** und im Repository ersetzen (Add file → Upload files).
+5. **`check.html` laufen lassen.** Gesperrte Videos in der Playlist durch eine andere Aufnahme ersetzen, zurück zu 2.
+6. **`karten.html`**: druckt nur Karten mit Video, Jahr und Häkchen.
 
-Ein Handy ist die Jukebox und wandert reihum. Das ist kein Kompromiss, sondern
-Absicht:
+Die Jahrzehnt-Balken in der Redaktion zeigen, wo das Deck Lücken hat. Faustregel: kein Jahrzehnt unter 15 Karten,
+kein einzelnes Jahr mit mehr als vier.
 
-- Nur dieses eine Gerät braucht Internet.
-- Hast du YouTube Premium und bist in Safari bei Google angemeldet, sind die
-  Embeds auf diesem Gerät werbefrei. Auf fremden Handys nicht.
-- Der Player sitzt hinter dem Plattenteller-Kreis und ist nicht lesbar. Es gibt
-  keinen Moment, in dem Interpret oder Titel aufblitzen.
+## Spielen
 
-Ablauf: **Karte scannen** antippen → QR vor die Kamera → Musik läuft sofort.
-Nach dem Raten **Auflösen** antippen, oder einfach die Karte umdrehen.
+Ein Handy ist die Jukebox und wandert reihum. Auf diesem Gerät in Safari bei Google angemeldet sein — mit
+YouTube Premium läuft dann keine Werbung. „Karte scannen“ antippen, Code vor die Kamera, Musik läuft.
+Startet sie nicht von selbst, den Plattenteller antippen.
 
-## Was schiefgehen kann
+## Grenzen
 
-**„Dieses Video erlaubt kein Einbetten."** Manche Labels sperren Embeds,
-bei tschechischem Katalogmaterial schätzungsweise jeder fünfte bis zehnte
-Titel. Die App zeigt dann einen Notfall-Link in YouTube Music (mit sichtbarem
-Titel). Die richtige Lösung: eine andere Aufnahme desselben Songs suchen und
-deren ID eintragen. **Teste jede ID einmal, bevor du die Karte druckst** —
-einfach `…github.io/hitster-cz/#a2` im Handy aufrufen.
-
-**Die Musik startet nicht von selbst.** iOS blockiert Ton ohne Nutzergeste. Die
-App schaltet den Player beim ersten Tap auf „Karte scannen" frei, danach läuft
-es meist ohne weiteres Antippen. Klappt es nicht, steht „antippen" auf dem
-Plattenteller — einmal drauf, dann spielt es.
-
-**Kein Kamerazugriff.** Safari fragt beim ersten Mal. Abgelehnt? aA-Symbol in
-der Adresszeile → Website-Einstellungen → Kamera → Erlauben. Alternativ mit der
-normalen iOS-Kamera-App scannen: der Link öffnet dieselbe Seite, der Kurzcode
-verrät nichts.
-
-**Offline geht nicht.** Die Seite selbst ließe sich cachen, der Ton kommt von
-YouTube. Ohne Netz keine Musik.
-
-## Zwei Hinweise zum Schluss
-
-Das Repository ist öffentlich, also auch `songs.json`. Darin stehen nur
-Video-IDs und Jahreszahlen, nichts Urheberrechtliches — aber wer die URL kennt,
-kann die Lösungen nachlesen. Für den Küchentisch irrelevant.
-
-Der verdeckte Player bewegt sich formal am Rand dessen, was die
-YouTube-Einbettungsbedingungen vorsehen (der Player soll sichtbar sein). Für
-ein privates Spiel ohne Reichweite ist das unkritisch, für etwas
-Veröffentlichtes wäre es das nicht.
+- **Ohne Internet keine Musik.**
+- **Codes nie ändern**, sobald Karten gedruckt sind. Die Redaktion behält vergebene Codes von sich aus bei.
+- **Playlists über 200 Titel** liefert YouTube nicht vollständig — aufteilen und nacheinander einlesen.
+- Auf dem Sperrbildschirm kann iOS den Videotitel anzeigen. Handy während der Runde entsperrt lassen oder umdrehen.
+- Das Repository ist öffentlich, also auch die Lösungen in `songs.json`.
+- Der Player ist verdeckt eingebettet. Für ein privates Spiel unkritisch, zum Veröffentlichen nicht gedacht.

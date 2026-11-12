@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Czechster — Wiedergabetest</title>
+<style>
+  :root{--ok:#1f7a45;--bad:#b3261e;--warn:#8a6100;--line:#d8d8d4}
+  *{box-sizing:border-box}
+  body{margin:0;background:#f5f5f3;color:#16181a;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:900px;margin:0 auto;padding:26px 16px 60px}
+  h1{font-size:21px;margin:0 0 6px}
+  p.sub{color:#555;margin:0 0 20px;max-width:62ch}
+  button{padding:13px 22px;border:0;border-radius:8px;background:#e0533d;color:#fff;font-family:inherit;font-weight:600;font-size:16px}
+  button[disabled]{opacity:.45}
+  #bar{height:6px;background:#e3e3df;border-radius:3px;overflow:hidden;margin:20px 0 6px}
+  #fill{height:100%;width:0;background:#e0533d;transition:width .2s}
+  #stat{font-size:13px;color:#666;font-variant-numeric:tabular-nums}
+  .tw{overflow-x:auto;margin-top:22px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#777}
+  td.c{font:600 12px ui-monospace,Menlo,monospace;color:#666;white-space:nowrap}
+  td.y{color:#555}
+  .ok{color:var(--ok);font-weight:600}.bad{color:var(--bad);font-weight:600}.warn{color:var(--warn);font-weight:600}
+  #sum{margin-top:22px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:#fff}
+  #sum b{font-size:17px}
+  #hidden{position:fixed;left:-9999px;top:0;width:220px;height:220px}
+  code{background:#ececea;padding:1px 5px;border-radius:4px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Wiedergabetest</h1>
+  <p class="sub">Startet jedes Video aus <code>songs.json</code> stumm in einem versteckten Player.
+  Als bestanden gilt nur, was wirklich anläuft — ein Video, das nur lädt, aber nicht spielt, fällt durch.
+  Die Spalte „YouTube-Titel“ zeigt, was hinter der ID tatsächlich steckt: so fällt auf, wenn ein Link zum falschen Lied führt.</p>
+
+  <button id="go">Test starten</button>
+  <div id="bar"><div id="fill"></div></div>
+  <div id="stat"></div>
+  <div id="sum" hidden></div>
+
+  <div class="tw"><table id="tbl" hidden>
+    <thead><tr><th>Code</th><th>Karte</th><th>YouTube-Titel</th><th>Status</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+</div>
+<div id="hidden"></div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(i){return document.getElementById(i)};
+  var apiReady=false, player=null, queue=[], idx=0, songs={}, results=[];
+
+  var tag=document.createElement("script");
+  tag.src="https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
+  window.onYouTubeIframeAPIReady=function(){ apiReady=true; };
+
+  $("go").onclick=function(){
+    $("go").disabled=true; results=[]; idx=0;
+    document.querySelector("#tbl tbody").innerHTML=""; $("sum").hidden=true;
+    fetch("songs.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
+      songs={}; for(var k in d){ if(k.charAt(0)!=="_") songs[k]=d[k]; }
+      queue=Object.keys(songs);
+      if(!queue.length){ $("stat").textContent="songs.json enthält keine Karten."; $("go").disabled=false; return; }
+      $("tbl").hidden=false; step();
+    }).catch(function(){ $("stat").textContent="songs.json nicht gefunden."; $("go").disabled=false; });
+  };
+
+  function step(){
+    if(idx>=queue.length){ finish(); return; }
+    var code=queue[idx], s=songs[code];
+    $("stat").textContent="Prüfe "+(idx+1)+" von "+queue.length+" …";
+    $("fill").style.width=((idx/queue.length)*100)+"%";
+    if(!s.v){ record(code,s,"","warn","kein Video eingetragen"); next(); return; }
+    if(!apiReady){ setTimeout(step,300); return; }
+
+    var done=false, timer=null;
+    function end(cls,txt){
+      if(done) return; done=true; clearTimeout(timer);
+      var title=""; try{ var vd=player.getVideoData(); title=(vd&&vd.title)||""; }catch(x){}
+      try{ player.destroy(); }catch(x){}
+      player=null; record(code,s,title,cls,txt); next();
+    }
+    var host=document.createElement("div");
+    $("hidden").innerHTML=""; $("hidden").appendChild(host);
+    timer=setTimeout(function(){ end("warn","lief nicht an — von Hand prüfen"); },12000);
+    player=new YT.Player(host,{
+      height:"200",width:"200",videoId:s.v,
+      playerVars:{playsinline:1,controls:0},
+      events:{
+        onReady:function(e){ e.target.mute(); e.target.playVideo(); },
+        onStateChange:function(e){ if(e.data===YT.PlayerState.PLAYING) end("ok","spielt"); },
+        onError:function(e){ end("bad",errText(e.data)); }
+      }
+    });
+  }
+  function next(){ idx++; setTimeout(step,300); }
+
+  function errText(n){
+    if(n===101||n===150) return "Einbetten gesperrt";
+    if(n===100) return "gelöscht oder privat";
+    if(n===2) return "Video-ID ungültig";
+    return "Fehler "+n;
+  }
+  function record(code,s,title,cls,txt){
+    results.push(cls);
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td class="c">'+esc(code)+'</td><td>'+esc([s.i,s.n].filter(Boolean).join(" — "))+
+      '</td><td class="y">'+esc(title||"—")+'</td><td class="'+cls+'">'+esc(txt)+'</td>';
+    document.querySelector("#tbl tbody").appendChild(tr);
+  }
+  function finish(){
+    $("fill").style.width="100%"; $("stat").textContent="Fertig.";
+    var c=function(k){return results.filter(function(r){return r===k}).length};
+    var box=$("sum"); box.hidden=false;
+    box.innerHTML="<b>"+c("ok")+" spielen</b> · "+c("bad")+" gesperrt · "+c("warn")+" offen";
+    $("go").disabled=false; $("go").textContent="Nochmal testen";
+  }
+  function esc(s){ return String(s).replace(/[<>&]/g,function(c){return {"<":"&lt;",">":"&gt;","&":"&amp;"}[c]}); }
+})();
+</script>
+</body>
+</html>
