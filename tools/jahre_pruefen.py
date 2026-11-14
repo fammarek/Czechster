@@ -160,6 +160,8 @@ def urteil(mb, dg):
     if not a or not b:
         return False, kand, "nur eine Quelle: MusicBrainz %s / Discogs %s" % (a or "–", b or "–")
     if a != b:                                   # Entscheidung des Besitzers: das aeltere Jahr gilt
+        if (mb if a < b else dg)["nur_kompilation"]:           # aelteres Jahr nur von Kompilation: Original fehlt
+            return False, kand, "älteres Jahr %d nur von einer Kompilation: MusicBrainz %d / Discogs %d" % (kand, a, b)
         return True, kand, "älteres Jahr von MusicBrainz %d / Discogs %d" % (a, b)
     if mb["nur_kompilation"] and dg["nur_kompilation"]:
         return False, kand, "beide Quellen kennen %d nur von einer Kompilation" % a
