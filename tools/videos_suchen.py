@@ -21,7 +21,7 @@ Auswahl des Treffers: bevorzugt die automatisch erzeugten "Interpret - Topic"-Ka
 Liedtitel und dessen Titel oder Kanal den Interpreten enthaelt. Live-, Cover- und
 Karaoke-Fassungen werden abgewertet. Jeder Treffer muss trotzdem angehoert werden.
 """
-import argparse, csv, json, os, re, sys, unicodedata
+import argparse, csv, json, os, re, sys, time, unicodedata
 import urllib.error, urllib.parse, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,17 +48,23 @@ def suche(interpret, titel, key):
         "part": "snippet", "type": "video", "maxResults": 10, "regionCode": "CZ",
         "q": "%s %s" % (hauptinterpret(interpret), titel)})
     req = urllib.request.Request(url, headers={"X-Goog-Api-Key": key, "Accept": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            return json.loads(r.read().decode("utf-8")).get("items", [])
-    except urllib.error.HTTPError as e:
-        text = e.read().decode("utf-8", "replace")
-        if e.code == 403 and "quota" in text.lower():
-            return None                                      # Tageskontingent aufgebraucht
-        if e.code in (400, 403):
-            raise SystemExit("YouTube lehnt den Schluessel ab (%d). YT_API_KEY und Freischaltung der "
-                             "YouTube Data API v3 pruefen.\n%s" % (e.code, text[:300]))
-        raise
+    for versuch in range(6):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.loads(r.read().decode("utf-8")).get("items", [])
+        except urllib.error.HTTPError as e:
+            text = e.read().decode("utf-8", "replace")
+            if e.code == 403 and "quota" in text.lower():
+                return None                                  # Tageskontingent aufgebraucht
+            if e.code in (429, 500, 503):                    # Drosselung: warten und wiederholen
+                time.sleep(10 * (versuch + 1)); continue
+            if e.code in (400, 403):
+                raise SystemExit("YouTube lehnt den Schluessel ab (%d). YT_API_KEY und Freischaltung der "
+                                 "YouTube Data API v3 pruefen.\n%s" % (e.code, text[:300]))
+            raise
+        except (urllib.error.URLError, TimeoutError, ConnectionError):
+            time.sleep(5 * (versuch + 1))
+    return None                                              # anhaltend gedrosselt: wie Kontingentende behandeln
 
 
 def bewerte(item, interpret, titel):
@@ -83,6 +89,17 @@ def waehle(items, interpret, titel):
         return None, 0
     p, _, it = besten[0]
     return it, p
+
+
+def schreibe(liste, fertig):
+    tmp = ZIEL + ".tmp"
+    with open(tmp, "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=FELDER, delimiter=";")
+        w.writeheader()
+        for z in liste:
+            r = fertig.get((z["interpret"], z["titel"])) or z
+            w.writerow({k: r.get(k, "") for k in FELDER})
+    os.replace(tmp, ZIEL)
 
 
 def main():
@@ -141,10 +158,11 @@ def main():
             row.update(bewertung="nichts gefunden")
         print("%-26s %-30s %-11s %-8s %s" % (z["interpret"][:26], z["titel"][:30], row["video"] or "-", row["bewertung"], row["kanal"][:30]))
         zeilen.append(row)
+        fertig[(z["interpret"], z["titel"])] = row
+        schreibe(liste, fertig)                              # nach jeder Suche sichern
 
-    with open(ZIEL, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=FELDER, delimiter=";")
-        w.writeheader(); w.writerows(zeilen)
+    schreibe(liste, fertig)
+    zeilen = [fertig.get((z["interpret"], z["titel"]), z) for z in liste]
     mit = sum(1 for z in zeilen if z.get("video"))
     print("\n%d gesucht in diesem Lauf · %d von %d mit Video · %s" % (n, mit, len(zeilen), os.path.relpath(ZIEL, ROOT)))
 
