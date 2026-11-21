@@ -21,6 +21,8 @@ Der Besitzer spricht Deutsch. Antworte auf Deutsch, knapp, und stelle Rückfrage
 | `daten/interpretenliste.md` | Dieselben Kandidaten als Abhakliste für den Menschen |
 | `daten/jahre_startwerte.csv` | 29 Jahre, die bereits von Hand gegen Quellen geprüft wurden |
 | `daten/zlaty_slavik_1962-1991.csv` | Sieger der Publikumswahl, als Maß für historische Bedeutung |
+| `daten/kandidaten_videos.csv` | Gefundene YouTube-Videos zu den Kandidaten (`tools/videos_suchen.py`) |
+| `design/spezifikation.md` | **Verbindliches Kartendesign** für den Druck bei meinspiel.de (vom Besitzer vorgegeben) |
 
 Kein Build, keine Abhängigkeiten. HTML-Seiten sind eigenständig; Python nutzt nur die Standardbibliothek.
 
@@ -62,6 +64,16 @@ das Skript korrigieren und den Selbsttest anpassen — nicht die Regeln oben auf
 
 Zu erwarten: Bei älterem Supraphon- und Opus-Material fehlt in MusicBrainz oft die Originalsingle. Dann liefert
 es ein zu spätes Jahr, und der Fall landet zu Recht im Prüfbericht.
+
+## Kartendesign und Druck
+
+Druckerei: meinspiel.de, Format 59 × 91 mm, höchstens 110 Karten pro Spiel (mehr Karten → mehrere Spiele).
+Gestaltung nach `design/spezifikation.md`. Darin widersprechen sich zwei Stellen dem Sicherheitsabstand aus
+Abschnitt 1; Abschnitt 1 hat Vorrang (die Spezifikation sagt selbst „niemals“):
+- Jahr: Archivo Black mit `font-size: 22mm` ist 57,6 mm breit und reicht bis 0,7 mm an die Schnittkante.
+  Schriftgröße so wählen, dass das breiteste Jahr in 51 mm passt (gemessen: etwa 18 mm).
+- Kartencode: „6–7 mm vom Dateirand“ liegt teils außerhalb der sicheren Zone; mindestens 7 mm verwenden.
+Druckdateien erst erzeugen, wenn der Besitzer es sagt (alle Jahre geprüft, alle Lieder angehört).
 
 ## Veröffentlichen
 
