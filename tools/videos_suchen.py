@@ -44,9 +44,19 @@ def hauptinterpret(a):
 
 
 def suche(interpret, titel, key):
+    """Erst "Interpret Titel"; liefert YouTube dafuer nichts (kommt bei manchen Anfragen vor),
+    dann "Titel Nachname" und zuletzt nur den Titel. Jede Suche kostet 100 Einheiten."""
+    ha = hauptinterpret(interpret)
+    for q in ("%s %s" % (ha, titel), "%s %s" % (titel, ha.split()[-1] if ha else ""), titel):
+        items = suche_einmal(q.strip(), key)
+        if items is None or items:
+            return items
+    return []
+
+
+def suche_einmal(q, key):
     url = "https://www.googleapis.com/youtube/v3/search?" + urllib.parse.urlencode({
-        "part": "snippet", "type": "video", "maxResults": 10, "regionCode": "CZ",
-        "q": "%s %s" % (hauptinterpret(interpret), titel)})
+        "part": "snippet", "type": "video", "maxResults": 10, "regionCode": "CZ", "q": q})
     req = urllib.request.Request(url, headers={"X-Goog-Api-Key": key, "Accept": "application/json"})
     for versuch in range(6):
         try:
