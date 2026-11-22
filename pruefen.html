@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101418">
+<title>Czechster · Anhören</title>
+<style>
+  :root{--bg:#101418;--card:#171d23;--line:#2a333c;--fg:#eef2f5;--dim:#8d9aa6;--ja:#2f9e5b;--nein:#d2453a;--accent:#e0533d;--r:16px}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    display:flex;flex-direction:column;max-width:560px;margin:0 auto;
+    padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 12px);
+    overscroll-behavior:none}
+  header{padding:14px 0 8px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  h1{font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin:0;color:var(--dim);font-weight:600}
+  select{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:14px}
+  .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:4px 0 4px}
+  .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
+  #stand{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums;display:flex;justify-content:space-between}
+  .song{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-top:12px}
+  .song .jahr{font-size:14px;color:var(--dim);font-variant-numeric:tabular-nums}
+  .song .i{font-size:22px;font-weight:700;line-height:1.2;margin-top:2px}
+  .song .n{font-size:19px;line-height:1.25;margin-top:2px}
+  .song .quelle{font-size:13px;color:var(--dim);margin-top:10px;line-height:1.35;word-break:break-word}
+  .song .quelle b{color:var(--fg);font-weight:600}
+  .tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--dim);margin-top:8px}
+  .tag.fan{border-color:#a8841e;color:#e3c25a}
+  .player{margin-top:12px;border-radius:12px;overflow:hidden;background:#000;aspect-ratio:16/9}
+  .player iframe,.player>div{width:100%;height:100%;display:block;border:0}
+  .tools{display:flex;gap:8px;margin-top:10px}
+  .tools button{flex:1}
+  button{font:inherit;cursor:pointer;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--fg);padding:12px 10px;font-size:15px}
+  button:active{transform:scale(.97)}
+  .vote{display:flex;gap:12px;margin-top:14px}
+  .vote button{flex:1;border:0;color:#fff;font-size:24px;font-weight:800;letter-spacing:.06em;padding:24px 10px;border-radius:var(--r)}
+  #ja{background:var(--ja)}#nein{background:var(--nein)}
+  #gruende{display:none;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px}
+  #gruende p{margin:0 0 8px;color:var(--dim);font-size:14px}
+  #gruende .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  #gruende button{font-size:15px;padding:14px 8px}
+  .msg{margin-top:12px;padding:12px;border-radius:12px;background:#3a2a12;color:#f3d79a;font-size:14px;display:none}
+  .done{text-align:center;padding:30px 10px}
+  .done h2{margin:0 0 8px}
+  .done p{color:var(--dim)}
+  .send{width:100%;margin-top:12px;background:var(--accent);border:0;color:#fff;font-weight:700;font-size:17px;padding:16px}
+  footer{margin-top:auto;padding-top:16px;display:flex;gap:8px}
+  footer button{flex:1;font-size:14px;color:var(--dim)}
+  textarea{width:100%;height:120px;margin-top:10px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px;font:12px ui-monospace,Menlo,monospace;display:none}
+</style>
+</head>
+<body>
+<header>
+  <h1>Czechster · Anhören</h1>
+  <select id="filter" aria-label="Auswahl">
+    <option value="fan">Unsichere Quellen</option>
+    <option value="alle">Alle Lieder</option>
+  </select>
+</header>
+<div class="bar"><i id="fort"></i></div>
+<div id="stand"><span id="pos"></span><span id="zahl"></span></div>
+
+<div class="done" id="fertig" style="display:none"><h2>Fertig 🎧</h2><p>Alle Lieder dieser Auswahl sind bewertet.<br>Tippe auf „Ergebnis senden“ und schick es an Claude.</p></div>
+<main id="main">
+  <div class="song">
+    <div class="jahr" id="jahr"></div>
+    <div class="i" id="interpret">Lade Liste …</div>
+    <div class="n" id="titel"></div>
+    <div class="quelle" id="quelle"></div>
+    <span class="tag" id="tag"></span>
+  </div>
+  <div class="player"><div id="yt"></div></div>
+  <div class="msg" id="msg"></div>
+  <div class="tools">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="vor30">+30 s</button>
+    <button id="weiter">Später ▶</button>
+  </div>
+  <div class="vote">
+    <button id="nein">NEIN</button>
+    <button id="ja">JA</button>
+  </div>
+  <div id="gruende">
+    <p>Was stimmt nicht?</p>
+    <div class="chips">
+      <button data-g="andere Aufnahme">Andere Aufnahme / Neuaufnahme</button>
+      <button data-g="live">Live-Fassung</button>
+      <button data-g="falsches Lied">Falsches Lied</button>
+      <button data-g="schlechter Ton">Schlechter Ton</button>
+      <button data-g="nicht bekannt">Kennt keiner – raus</button>
+      <button data-g="">Ohne Grund</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <button id="senden">Ergebnis senden</button>
+</footer>
+<textarea id="ausgabe" readonly></textarea>
+
+<script>
+(function(){
+  var KEY = "czechster-pruefung-v1";
+  var liste = [], sicht = [], idx = 0, player = null, bereit = false, urteil = {};
+  try { urteil = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { urteil = {}; }
+  function sichern(){ try { localStorage.setItem(KEY, JSON.stringify(urteil)); } catch (e) {} }
+  function $(id){ return document.getElementById(id); }
+
+  function filtern(){
+    var f = $("filter").value;
+    sicht = liste.filter(function(s){ return f === "alle" || !s.o; });
+    idx = 0;
+    for (var k = 0; k < sicht.length; k++) if (!urteil[sicht[k].v]) { idx = k; break; }
+    if (sicht.every(function(s){ return urteil[s.v]; })) idx = sicht.length;
+    zeige(true);
+  }
+
+  function zaehle(){
+    var n = sicht.filter(function(s){ return urteil[s.v]; }).length;
+    var ja = sicht.filter(function(s){ return urteil[s.v] && urteil[s.v].u === "ja"; }).length;
+    $("fort").style.width = (sicht.length ? 100 * n / sicht.length : 0) + "%";
+    $("zahl").textContent = n + " von " + sicht.length + " bewertet · " + ja + " JA · " + (n - ja) + " NEIN/Fehler";
+  }
+
+  function zeige(laden){
+    zaehle();
+    $("gruende").style.display = "none";
+    $("msg").style.display = "none";
+    if (idx >= sicht.length){
+      $("pos").textContent = "";
+      $("main").style.display = "none"; $("fertig").style.display = "block";
+      if (player && bereit) try { player.stopVideo(); } catch (e) {}
+      return;
+    }
+    $("main").style.display = ""; $("fertig").style.display = "none";
+    var s = sicht[idx], u = urteil[s.v];
+    $("pos").textContent = "Lied " + (idx + 1) + (u ? " · bereits: " + (u.u === "ja" ? "JA" : u.u === "fehler" ? "Fehler" : "NEIN") : "");
+    $("jahr").textContent = s.j ? s.j : "Jahr noch offen";
+    $("interpret").textContent = s.i;
+    $("titel").textContent = s.n;
+    $("quelle").innerHTML = "Video: <b></b><br>Kanal: <span></span>";
+    $("quelle").querySelector("b").textContent = s.vt || "–";
+    $("quelle").querySelector("span").textContent = s.k || "–";
+    $("tag").textContent = s.o ? "offizieller Kanal" : "Fan-Kanal";
+    $("tag").className = "tag" + (s.o ? "" : " fan");
+    if (laden && player && bereit) player.loadVideoById(s.v);
+  }
+
+  function bewerte(u, grund){
+    var s = sicht[idx]; if (!s) return;
+    urteil[s.v] = { u: u, g: grund || "", i: s.i, n: s.n };
+    sichern();
+    naechstes();
+  }
+  function naechstes(){
+    var start = idx;
+    for (var k = idx + 1; k < sicht.length; k++) if (!urteil[sicht[k].v]) { idx = k; zeige(true); return; }
+    idx = sicht.length;
+    for (var m = 0; m < sicht.length; m++) if (!urteil[sicht[m].v]) { idx = m; break; }
+    if (idx === start && urteil[sicht[start].v]) idx = sicht.length;
+    zeige(true);
+  }
+
+  $("ja").onclick = function(){ bewerte("ja"); };
+  $("nein").onclick = function(){ $("gruende").style.display = "block"; $("gruende").scrollIntoView({behavior:"smooth", block:"nearest"}); };
+  Array.prototype.forEach.call(document.querySelectorAll("#gruende button"), function(b){
+    b.onclick = function(){ bewerte("nein", b.getAttribute("data-g")); };
+  });
+  $("weiter").onclick = function(){ if (idx < sicht.length - 1) { idx++; zeige(true); } };
+  $("zurueck").onclick = function(){ if (idx > 0) { idx--; zeige(true); } };
+  $("vor30").onclick = function(){ if (player && bereit) player.seekTo((player.getCurrentTime() || 0) + 30, true); };
+  $("filter").onchange = filtern;
+
+  $("senden").onclick = function(){
+    var zeilen = Object.keys(urteil).map(function(v){ var x = urteil[v]; return v + ";" + x.u + ";" + (x.g || "") + ";" + x.i + " – " + x.n; });
+    var text = "Czechster Anhör-Ergebnis (" + zeilen.length + " Lieder)\n" + zeilen.join("\n");
+    var ta = $("ausgabe"); ta.value = text; ta.style.display = "block";
+    if (navigator.share) { navigator.share({ title: "Czechster Anhör-Ergebnis", text: text }).catch(function(){}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(function(){ alert("Ergebnis kopiert – jetzt bei Claude einfügen."); }, function(){ ta.select(); });
+    else ta.select();
+  };
+
+  window.onYouTubeIframeAPIReady = function(){
+    player = new YT.Player("yt", {
+      width: "100%", height: "100%",
+      playerVars: { playsinline: 1, rel: 0, modestbranding: 1 },
+      events: {
+        onReady: function(){ bereit = true; if (sicht[idx]) player.cueVideoById(sicht[idx].v); },
+        onError: function(e){
+          var s = sicht[idx]; if (!s) return;
+          var t = e.data === 100 ? "Video gelöscht oder privat." : (e.data === 101 || e.data === 150) ? "Video darf nicht eingebettet werden – läuft im Spiel nicht." : "Video lässt sich nicht abspielen (Fehler " + e.data + ").";
+          $("msg").textContent = t + " Als Fehler vermerkt – weiter mit „Später ▶“ oder JA/NEIN.";
+          $("msg").style.display = "block";
+          urteil[s.v] = { u: "fehler", g: "Fehler " + e.data, i: s.i, n: s.n }; sichern(); zaehle();
+        }
+      }
+    });
+  };
+
+  fetch("daten/pruefliste.json", { cache: "no-store" }).then(function(r){ return r.json(); }).then(function(d){
+    liste = d; filtern();
+    var tag = document.createElement("script"); tag.src = "https://www.youtube.com/iframe_api"; document.head.appendChild(tag);
+  }).catch(function(){ $("interpret").textContent = "Liste konnte nicht geladen werden."; });
+})();
+</script>
+</body>
+</html>
