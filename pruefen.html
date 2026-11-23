@@ -55,7 +55,7 @@
 <header>
   <h1>Czechster · Anhören</h1>
   <select id="filter" aria-label="Auswahl">
-    <option value="fan">Unsichere Quellen</option>
+    <option value="fan">Unsichere Quellen + Ersatz</option>
     <option value="alle">Alle Lieder</option>
   </select>
 </header>
@@ -110,7 +110,7 @@
 
   function filtern(){
     var f = $("filter").value;
-    sicht = liste.filter(function(s){ return f === "alle" || !s.o; });
+    sicht = liste.filter(function(s){ return f === "alle" || !s.o || s.e; });
     idx = 0;
     for (var k = 0; k < sicht.length; k++) if (!urteil[sicht[k].v]) { idx = k; break; }
     if (sicht.every(function(s){ return urteil[s.v]; })) idx = sicht.length;
@@ -143,8 +143,8 @@
     $("quelle").innerHTML = "Video: <b></b><br>Kanal: <span></span>";
     $("quelle").querySelector("b").textContent = s.vt || "–";
     $("quelle").querySelector("span").textContent = s.k || "–";
-    $("tag").textContent = s.o ? "offizieller Kanal" : "Fan-Kanal";
-    $("tag").className = "tag" + (s.o ? "" : " fan");
+    $("tag").textContent = (s.e ? "Ersatzvideo · " : "") + (s.o ? "offizieller Kanal" : "Fan-Kanal");
+    $("tag").className = "tag" + (s.o && !s.e ? "" : " fan");
     if (laden && player && bereit) player.loadVideoById(s.v);
   }
 
