@@ -1,11 +1,3027 @@
 {
  "_hinweis": "Erzeugt in redaktion.html. v=Video-ID, t=Startsekunde, j=Jahr der Erstveroeffentlichung, i=Interpret, n=Titel, ok=Jahr geprueft, q=Quelle des Jahres.",
- "a1": {"v": "sivzYnF_7a0", "t": 0, "j": 0, "i": "", "n": "Testkarte – Titel in der Redaktion nachtragen", "ok": false, "q": ""},
- "a2": {"v": "", "t": 0, "j": 1985, "i": "Elán", "n": "Stužková", "ok": true, "q": "Supraphon"},
- "a3": {"v": "", "t": 0, "j": 1979, "i": "Katapult", "n": "Až", "ok": true, "q": "katapult.cz, SP 1.10.1979"},
- "a4": {"v": "", "t": 0, "j": 1966, "i": "Václav Neckář & Helena Vondráčková", "n": "Stín katedrál", "ok": true, "q": "Supraphon"},
- "a5": {"v": "", "t": 0, "j": 1970, "i": "Pavel Dydovič", "n": "Bláznova ukolébavka", "ok": true, "q": "Supraphon"},
- "a6": {"v": "", "t": 0, "j": 2000, "i": "No Name", "n": "Žily", "ok": true, "q": "Album Počkám si na zázrak"},
- "a7": {"v": "", "t": 0, "j": 2008, "i": "Marek Ztracený", "n": "Ztrácíš", "ok": true, "q": "Debütsingle"},
- "a8": {"v": "", "t": 0, "j": 2008, "i": "Xindl X", "n": "Anděl", "ok": true, "q": "Wikipedia"}
+ "a1": {
+  "v": "sivzYnF_7a0",
+  "t": 0,
+  "j": 0,
+  "i": "",
+  "n": "Testkarte – Titel in der Redaktion nachtragen",
+  "ok": false,
+  "q": ""
+ },
+ "a2": {
+  "v": "",
+  "t": 0,
+  "j": 1985,
+  "i": "Elán",
+  "n": "Stužková",
+  "ok": true,
+  "q": "Supraphon"
+ },
+ "a3": {
+  "v": "pEKbG_k8dcA",
+  "t": 0,
+  "j": 1979,
+  "i": "Katapult",
+  "n": "Až",
+  "ok": true,
+  "q": "katapult.cz, SP 1.10.1979"
+ },
+ "a4": {
+  "v": "",
+  "t": 0,
+  "j": 1966,
+  "i": "Václav Neckář & Helena Vondráčková",
+  "n": "Stín katedrál",
+  "ok": true,
+  "q": "Supraphon"
+ },
+ "a5": {
+  "v": "",
+  "t": 0,
+  "j": 1970,
+  "i": "Pavel Dydovič",
+  "n": "Bláznova ukolébavka",
+  "ok": true,
+  "q": "Supraphon"
+ },
+ "a6": {
+  "v": "Jp08wLtVS_Y",
+  "t": 0,
+  "j": 2000,
+  "i": "No Name",
+  "n": "Žily",
+  "ok": true,
+  "q": "Album Počkám si na zázrak"
+ },
+ "a7": {
+  "v": "",
+  "t": 0,
+  "j": 2008,
+  "i": "Marek Ztracený",
+  "n": "Ztrácíš",
+  "ok": true,
+  "q": "Debütsingle"
+ },
+ "a8": {
+  "v": "",
+  "t": 0,
+  "j": 2008,
+  "i": "Xindl X",
+  "n": "Anděl",
+  "ok": true,
+  "q": "Wikipedia"
+ },
+ "k1": {
+  "v": "pq_uxeY7Oq4",
+  "t": 0,
+  "j": 2001,
+  "i": "Anna K.",
+  "n": "Večírek za koncem",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2": {
+  "v": "nYZUKCWdF_c",
+  "t": 0,
+  "j": 2013,
+  "i": "Jelen",
+  "n": "Magdaléna",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3": {
+  "v": "ZkUlFxPWblA",
+  "t": 0,
+  "j": 1992,
+  "i": "Argema",
+  "n": "Jarošovský Pivovar",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1993 / Discogs 1992"
+ },
+ "k4": {
+  "v": "hEvt3S9XXT8",
+  "t": 0,
+  "j": 1987,
+  "i": "Lenka Filipová",
+  "n": "Za všechno může čas",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1992 / Discogs 1987"
+ },
+ "k5": {
+  "v": "VK71OLs-v9I",
+  "t": 0,
+  "j": 1987,
+  "i": "Žentour",
+  "n": "Všechno bude fajn",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1987 / Discogs 1989"
+ },
+ "k6": {
+  "v": "ZQ5_PJZSrJE",
+  "t": 0,
+  "j": 1999,
+  "i": "Jana Kirschner",
+  "n": "Líška",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7": {
+  "v": "WGideMxl0WA",
+  "t": 0,
+  "j": 1982,
+  "i": "Petr Novák",
+  "n": "Hvězdičko blýskavá",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1990 / Discogs 1982"
+ },
+ "k8": {
+  "v": "AanInYOfJZg",
+  "t": 0,
+  "j": 1979,
+  "i": "Helena Vondráčková",
+  "n": "Vzhůru k výškám",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2003 / Discogs 1979"
+ },
+ "k9": {
+  "v": "_aOxBVCGza4",
+  "t": 0,
+  "j": 2007,
+  "i": "Chinaski",
+  "n": "Zadarmo",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "ka": {
+  "v": "ArpZbZBmUvI",
+  "t": 0,
+  "j": 1997,
+  "i": "Petr Muk",
+  "n": "Přicházíš s láskou",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kb": {
+  "v": "ztVQbIro-3k",
+  "t": 0,
+  "j": 1990,
+  "i": "Petr Spálený",
+  "n": "Až mě andělé",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1993 / Discogs 1990"
+ },
+ "kc": {
+  "v": "bH68R3fAvg0",
+  "t": 0,
+  "j": 2025,
+  "i": "Michal David",
+  "n": "Život je náš",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kd": {
+  "v": "0LYFKCgB7Yc",
+  "t": 0,
+  "j": 1985,
+  "i": "Dalibor Janda",
+  "n": "Hurikán",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1986 / Discogs 1985"
+ },
+ "ke": {
+  "v": "Qvf1a4SbZPk",
+  "t": 0,
+  "j": 2004,
+  "i": "Team",
+  "n": "Nemám čo stratiť",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kf": {
+  "v": "aGfG7HwR-7o",
+  "t": 0,
+  "j": 2001,
+  "i": "Miroslav Žbirka",
+  "n": "Mám rád",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2001 / Discogs 2004"
+ },
+ "kg": {
+  "v": "WenljgH-Gxk",
+  "t": 0,
+  "j": 1984,
+  "i": "Jiří Korn",
+  "n": "To pan Chopin",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kh": {
+  "v": "hZdmNL_Xem4",
+  "t": 0,
+  "j": 1969,
+  "i": "Marta Kubišová",
+  "n": "Ring-o-ding",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1970 / Discogs 1969"
+ },
+ "ki": {
+  "v": "08DlOhdKvwY",
+  "t": 0,
+  "j": 2003,
+  "i": "Lucie",
+  "n": "Chci zas v tobě spát",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kj": {
+  "v": "2wIWlXZ0P8c",
+  "t": 0,
+  "j": 2006,
+  "i": "Robo Grigorov",
+  "n": "Povedzme",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kk": {
+  "v": "2sNkF_nZI2c",
+  "t": 0,
+  "j": 1992,
+  "i": "Richard Müller",
+  "n": "Nebude to ľahké",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kl": {
+  "v": "N3GMinAuWYg",
+  "t": 0,
+  "j": 1968,
+  "i": "Karel Gott",
+  "n": "Lady Carneval",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "km": {
+  "v": "VR902u_-deo",
+  "t": 0,
+  "j": 2001,
+  "i": "IMT Smile",
+  "n": "Ľudia nie sú zlí",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2007 / Discogs 2001"
+ },
+ "kn": {
+  "v": "GTptLJvbIdA",
+  "t": 0,
+  "j": 1981,
+  "i": "Jaroslav Uhlíř",
+  "n": "Severní vítr",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "ko": {
+  "v": "keoVENYhyYY",
+  "t": 0,
+  "j": 2000,
+  "i": "Helena Vondráčková",
+  "n": "Dlouhá noc",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kp": {
+  "v": "hA5HWeg_Il0",
+  "t": 0,
+  "j": 1997,
+  "i": "Wanastowi Vjecy",
+  "n": "Kouzlo",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kq": {
+  "v": "ZNeSt8Hmp1c",
+  "t": 0,
+  "j": 1972,
+  "i": "Petra Černocká",
+  "n": "Saxana",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1996 / Discogs 1972"
+ },
+ "kr": {
+  "v": "RMc4haHdWT4",
+  "t": 0,
+  "j": 2020,
+  "i": "Anna K.",
+  "n": "Na malou chvíli",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2023 / Discogs 2020"
+ },
+ "ks": {
+  "v": "OvCKKVTqFqs",
+  "t": 0,
+  "j": 2013,
+  "i": "Lucie Vondráčková",
+  "n": "S láskou nám je líp",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kt": {
+  "v": "FQNIPNbYZjc",
+  "t": 0,
+  "j": 1993,
+  "i": "Beáta Dubasová",
+  "n": "Vráť mi tie hviezdy",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "ku": {
+  "v": "fpscgbnhFwQ",
+  "t": 0,
+  "j": 2000,
+  "i": "Richard Müller",
+  "n": "Srdce jako kníže Rohan",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kv": {
+  "v": "WAPlKwA4gr4",
+  "t": 0,
+  "j": 1999,
+  "i": "František Nedvěd",
+  "n": "Devatenáct",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kw": {
+  "v": "VniK3LFYTgs",
+  "t": 0,
+  "j": 2014,
+  "i": "Xindl X",
+  "n": "Cudzinka v tvojej zemi",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "kx": {
+  "v": "u3KM0BFTgU4",
+  "t": 0,
+  "j": 1981,
+  "i": "Olympic",
+  "n": "Okno mé lásky",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "ky": {
+  "v": "1smrq4q2-P4",
+  "t": 0,
+  "j": 1996,
+  "i": "Nedvědi",
+  "n": "Kohout",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2006 / Discogs 1996"
+ },
+ "kz": {
+  "v": "LsWd--p-XZE",
+  "t": 0,
+  "j": 1999,
+  "i": "Kabát",
+  "n": "Šaman",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k10": {
+  "v": "pYadWSoyMHY",
+  "t": 0,
+  "j": 1988,
+  "i": "Jaroslav Uhlíř",
+  "n": "Dělání",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1993 / Discogs 1988"
+ },
+ "k11": {
+  "v": "imm_5kKK5Fg",
+  "t": 0,
+  "j": 1984,
+  "i": "Iveta Bartošová",
+  "n": "Knoflíky lásky",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1984"
+ },
+ "k12": {
+  "v": "m3qv5K3J03E",
+  "t": 0,
+  "j": 1991,
+  "i": "Wanastowi Vjecy",
+  "n": "Bedna od whisky",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k13": {
+  "v": "LgwOzLH36tw",
+  "t": 0,
+  "j": 1992,
+  "i": "Robo Grigorov",
+  "n": "Ona je madona",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k14": {
+  "v": "AFQjJj9SlWI",
+  "t": 0,
+  "j": 1992,
+  "i": "Michal Penk",
+  "n": "O bláznech",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1999 / Discogs 1992"
+ },
+ "k15": {
+  "v": "JMHS9o8KIGU",
+  "t": 0,
+  "j": 1988,
+  "i": "Tublatanka",
+  "n": "Pravda víťazí",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k16": {
+  "v": "_wGny8-guf8",
+  "t": 0,
+  "j": 2016,
+  "i": "Anna K.",
+  "n": "Vždycky se budeme znát",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2017 / Discogs 2016"
+ },
+ "k17": {
+  "v": "Y5FFlC_8bjM",
+  "t": 0,
+  "j": 2011,
+  "i": "Petr Kolář",
+  "n": "Navzdory hříchům",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k18": {
+  "v": "4GZx7Sv1zJ0",
+  "t": 0,
+  "j": 2005,
+  "i": "Petr Kolář",
+  "n": "Den kdy se vrátí láska",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k19": {
+  "v": "8KpPK74-A0k",
+  "t": 0,
+  "j": 1988,
+  "i": "Petr Kotvald",
+  "n": "Gejzír",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1990 / Discogs 1988"
+ },
+ "k1a": {
+  "v": "LRiG5FHRk7I",
+  "t": 0,
+  "j": 1971,
+  "i": "Pavol Hammel",
+  "n": "Medulienka",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1972 / Discogs 1971"
+ },
+ "k1b": {
+  "v": "Sty8zGc39TQ",
+  "t": 0,
+  "j": 1978,
+  "i": "Michal Tučný",
+  "n": "Prodavač",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1997 / Discogs 1978"
+ },
+ "k1c": {
+  "v": "1ZOOJX4Qd_c",
+  "t": 0,
+  "j": 1984,
+  "i": "Petra Janů",
+  "n": "Moje malá premiéra",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1989 / Discogs 1984"
+ },
+ "k1d": {
+  "v": "32SWsATFqek",
+  "t": 0,
+  "j": 1999,
+  "i": "Anna K.",
+  "n": "Nelítám nízko",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1e": {
+  "v": "fvnmK3Zs_kI",
+  "t": 0,
+  "j": 2024,
+  "i": "Jelen",
+  "n": "Všudezdejší",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1f": {
+  "v": "0Qm6dDNLGTo",
+  "t": 0,
+  "j": 1999,
+  "i": "Buty",
+  "n": "Nad stádem koní",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1g": {
+  "v": "gK3GyOCMH_k",
+  "t": 0,
+  "j": 1983,
+  "i": "Lenka Filipová",
+  "n": "Prý se tomu říká láska",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1992 / Discogs 1983"
+ },
+ "k1h": {
+  "v": "D5HweYLuqI0",
+  "t": 0,
+  "j": 2003,
+  "i": "Divokej Bill",
+  "n": "Znamení",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1i": {
+  "v": "1dVb3Tqb2rA",
+  "t": 0,
+  "j": 1994,
+  "i": "Žlutý pes",
+  "n": "Náruživá",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1j": {
+  "v": "UuwV6b4NAhI",
+  "t": 0,
+  "j": 1970,
+  "i": "Naďa Urbánková",
+  "n": "Půlnoc Je Období Zlé",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2004 / Discogs 1970"
+ },
+ "k1k": {
+  "v": "Y_S5GGGhHBY",
+  "t": 0,
+  "j": 1968,
+  "i": "Waldemar Matuška",
+  "n": "Slavíci z Madridu",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1994 / Discogs 1968"
+ },
+ "k1l": {
+  "v": "QVul07bKM2w",
+  "t": 0,
+  "j": 2000,
+  "i": "Helena Vondráčková",
+  "n": "To tehdy padal déšť",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2003 / Discogs 2000"
+ },
+ "k1m": {
+  "v": "TZPHkrQM_Z4",
+  "t": 0,
+  "j": 1986,
+  "i": "Marika Gombitová",
+  "n": "Správne dievčatá",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1n": {
+  "v": "xzi2vbGOJ7g",
+  "t": 0,
+  "j": 2011,
+  "i": "Mandrage",
+  "n": "Šrouby a matice",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1o": {
+  "v": "vophHdLWaIE",
+  "t": 0,
+  "j": 2023,
+  "i": "Jelen",
+  "n": "Za tebou",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1p": {
+  "v": "v_IxTrQDips",
+  "t": 0,
+  "j": 2017,
+  "i": "Mandrage",
+  "n": "Motýli",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1q": {
+  "v": "I7duytte3t8",
+  "t": 0,
+  "j": 1986,
+  "i": "Marika Gombitová",
+  "n": "Chlapci v pasci",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1r": {
+  "v": "OdR9nWhMjo4",
+  "t": 0,
+  "j": 1982,
+  "i": "Petr Kotvald",
+  "n": "Holky z naší školky",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1s": {
+  "v": "_0KRDsBvuKM",
+  "t": 0,
+  "j": 1986,
+  "i": "Peter Nagy",
+  "n": "Láska je tu s vami",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1987 / Discogs 1986"
+ },
+ "k1t": {
+  "v": "-J3klfk1604",
+  "t": 0,
+  "j": 2021,
+  "i": "Mirai",
+  "n": "Vedle Tebe Usínám",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1u": {
+  "v": "uDiKpLoFzwM",
+  "t": 0,
+  "j": 1985,
+  "i": "Karel Gott",
+  "n": "Muzika",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1v": {
+  "v": "F7IxWPV_fCU",
+  "t": 0,
+  "j": 1986,
+  "i": "Pavel Vítek",
+  "n": "Má svůj den",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2013 / Discogs 1986"
+ },
+ "k1w": {
+  "v": "k9OciPxubio",
+  "t": 0,
+  "j": 1988,
+  "i": "Michal Penk",
+  "n": "Má daleká",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1999 / Discogs 1988"
+ },
+ "k1x": {
+  "v": "fxmM-RN4vcY",
+  "t": 0,
+  "j": 2003,
+  "i": "Lucie Bílá",
+  "n": "eSeMeS",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1y": {
+  "v": "vRq938nhOQ8",
+  "t": 0,
+  "j": 2005,
+  "i": "Petr Muk",
+  "n": "Láska, ta nebezpečná věc",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k1z": {
+  "v": "3whSlQDYhdQ",
+  "t": 0,
+  "j": 2010,
+  "i": "Kristína",
+  "n": "Pri oltári",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k20": {
+  "v": "vTiEwF0orM8",
+  "t": 0,
+  "j": 1990,
+  "i": "Lucie",
+  "n": "Šrouby do hlavy",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k21": {
+  "v": "Jl4Pi3mHOxc",
+  "t": 0,
+  "j": 1985,
+  "i": "Olympic",
+  "n": "Je to tvá vina",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k22": {
+  "v": "MnYL2Eehj2U",
+  "t": 0,
+  "j": 2015,
+  "i": "Kryštof",
+  "n": "Srdcebeat",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k23": {
+  "v": "o0I18A7vrOw",
+  "t": 0,
+  "j": 1974,
+  "i": "Marie Rottrová",
+  "n": "Řeka lásky",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1996 / Discogs 1974"
+ },
+ "k24": {
+  "v": "sp__MuHvBmw",
+  "t": 0,
+  "j": 2000,
+  "i": "Richard Müller",
+  "n": "Baroko",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k25": {
+  "v": "Om0LP7MZRHk",
+  "t": 0,
+  "j": 1996,
+  "i": "MC Erik & Barbara",
+  "n": "Sen",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k26": {
+  "v": "RG2z-McLiF0",
+  "t": 0,
+  "j": 2000,
+  "i": "Pavol Habera",
+  "n": "Kým pri mne spíš",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k27": {
+  "v": "ybRwe_YBNds",
+  "t": 0,
+  "j": 1998,
+  "i": "Lucie",
+  "n": "Srdce",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2002 / Discogs 1998"
+ },
+ "k28": {
+  "v": "HK3UNBrRPpQ",
+  "t": 0,
+  "j": 1979,
+  "i": "Josef Laufer",
+  "n": "Pásek mi dej",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1980 / Discogs 1979"
+ },
+ "k29": {
+  "v": "hdmrJtsh91Q",
+  "t": 0,
+  "j": 1967,
+  "i": "Olympic",
+  "n": "Snad jsem to zavinil já",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2a": {
+  "v": "8B7ORHFkBiY",
+  "t": 0,
+  "j": 2023,
+  "i": "Lucie Vondráčková",
+  "n": "V šíleném kolotoči",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2b": {
+  "v": "cTw3MfAYzlM",
+  "t": 0,
+  "j": 1999,
+  "i": "Jana Kirschner",
+  "n": "V cudzom meste",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2c": {
+  "v": "awVl18Ku9T0",
+  "t": 0,
+  "j": 1984,
+  "i": "Peter Nagy",
+  "n": "Kristínka iba spí",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2d": {
+  "v": "TQZ-ZspingU",
+  "t": 0,
+  "j": 1998,
+  "i": "Alice Springs",
+  "n": "Dej mi pusu",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2e": {
+  "v": "VPsMc3YUZwo",
+  "t": 0,
+  "j": 1999,
+  "i": "Ilona Csáková",
+  "n": "Tornero",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2f": {
+  "v": "fNiyFl87hyc",
+  "t": 0,
+  "j": 2015,
+  "i": "Olga Lounová",
+  "n": "Jsem optimista",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2g": {
+  "v": "lV8DgKo6Ruc",
+  "t": 0,
+  "j": 1983,
+  "i": "Hana Zagorová",
+  "n": "Spěchám",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2h": {
+  "v": "ZlTNiE8AZ_k",
+  "t": 0,
+  "j": 1975,
+  "i": "Pavel Bobek",
+  "n": "Veď mě dál, cesto má",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2i": {
+  "v": "mtN2Sh0hmMU",
+  "t": 0,
+  "j": 1980,
+  "i": "Vladimír Mišík",
+  "n": "Variace na renesanční téma",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2j": {
+  "v": "vMIMi2Ovqx4",
+  "t": 0,
+  "j": 1967,
+  "i": "Eva Pilarová",
+  "n": "Rekviem",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1968 / Discogs 1967"
+ },
+ "k2k": {
+  "v": "181uA1C9uzs",
+  "t": 0,
+  "j": 2003,
+  "i": "IMT Smile",
+  "n": "Nič Nie Je Isté",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2l": {
+  "v": "pIE7t-MEU88",
+  "t": 0,
+  "j": 1968,
+  "i": "Helena Vondráčková",
+  "n": "Přejdi Jordán",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1969 / Discogs 1968"
+ },
+ "k2m": {
+  "v": "RhLDRKl8BTY",
+  "t": 0,
+  "j": 1984,
+  "i": "Dalibor Janda",
+  "n": "Hráli jsme kličkovanou",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1986 / Discogs 1984"
+ },
+ "k2n": {
+  "v": "SCuQlFhtYNw",
+  "t": 0,
+  "j": 1967,
+  "i": "Petr Spálený",
+  "n": "Plakalo bejby",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2000 / Discogs 1967"
+ },
+ "k2o": {
+  "v": "_nAy3lRD7Dw",
+  "t": 0,
+  "j": 2000,
+  "i": "Jan Kalousek",
+  "n": "Hvězdy se mění",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2p": {
+  "v": "YlhX07IwIrw",
+  "t": 0,
+  "j": 2017,
+  "i": "Michal Hrůza",
+  "n": "Pro Emu",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2q": {
+  "v": "qRL3LwBJ0ms",
+  "t": 0,
+  "j": 1985,
+  "i": "Karel Gott",
+  "n": "Pábitelé",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2r": {
+  "v": "410PwS1lg3Q",
+  "t": 0,
+  "j": 1985,
+  "i": "Tublatanka",
+  "n": "Šlabikár",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2s": {
+  "v": "5UjVNuuj0Xc",
+  "t": 0,
+  "j": 2000,
+  "i": "Holki",
+  "n": "Mám ráda",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2t": {
+  "v": "7JcJowl50Jk",
+  "t": 0,
+  "j": 1981,
+  "i": "Michal David",
+  "n": "Třetí galaxie",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1997 / Discogs 1981"
+ },
+ "k2u": {
+  "v": "pLVpYWwr6Ng",
+  "t": 0,
+  "j": 1983,
+  "i": "Vítězslav Vávra",
+  "n": "Jak svět přichází o básníky",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2007 / Discogs 1983"
+ },
+ "k2v": {
+  "v": "1OR-tdQvNPM",
+  "t": 0,
+  "j": 2019,
+  "i": "Kollárovci",
+  "n": "Vlasy Čierne",
+  "ok": true,
+  "q": "MusicBrainz+Discogs 2019"
+ },
+ "k2w": {
+  "v": "uKnNutYx3Sg",
+  "t": 0,
+  "j": 1993,
+  "i": "Jaroslav Uhlíř",
+  "n": "Není nutno",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2x": {
+  "v": "kCLhBugFj8M",
+  "t": 0,
+  "j": 2020,
+  "i": "Kryštof",
+  "n": "Hned Teď",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2021 / Discogs 2020"
+ },
+ "k2y": {
+  "v": "-qegUlpE10k",
+  "t": 0,
+  "j": 1995,
+  "i": "Pavol Habera",
+  "n": "Keď sa baba zblázni",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k2z": {
+  "v": "pCiavaj9OfQ",
+  "t": 0,
+  "j": 1998,
+  "i": "Ilona Csáková",
+  "n": "Proč mě nikdo nemá rád",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1999 / Discogs 1998"
+ },
+ "k30": {
+  "v": "5r2Rf6fxEbQ",
+  "t": 0,
+  "j": 1982,
+  "i": "Elán",
+  "n": "Ulica",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1982 / Discogs 1983"
+ },
+ "k31": {
+  "v": "DRSBTcq_Tvk",
+  "t": 0,
+  "j": 2023,
+  "i": "Kateřina Marie Tichá",
+  "n": "Plamen",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2024 / Discogs 2023"
+ },
+ "k32": {
+  "v": "6lc98isI0Zc",
+  "t": 0,
+  "j": 2025,
+  "i": "Tereza Kerndlová",
+  "n": "Diamanty",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k33": {
+  "v": "eDtGdyR_D8E",
+  "t": 0,
+  "j": 2002,
+  "i": "Elán",
+  "n": "Zanedbaný sex",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k34": {
+  "v": "sA0P8MibBAI",
+  "t": 0,
+  "j": 1990,
+  "i": "Team",
+  "n": "Držím ti miesto",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k35": {
+  "v": "1yNSAfpV2w0",
+  "t": 0,
+  "j": 1989,
+  "i": "Iveta Bartošová",
+  "n": "Útoč láskou",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k36": {
+  "v": "fTXWJtsVVtw",
+  "t": 0,
+  "j": 2000,
+  "i": "Pavol Habera",
+  "n": "Boli sme raz milovaní",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k37": {
+  "v": "BibNLUQG_-4",
+  "t": 0,
+  "j": 2019,
+  "i": "Karel Gott",
+  "n": "Srdce nehasnou",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k38": {
+  "v": "HXGHa4ri88k",
+  "t": 0,
+  "j": 1979,
+  "i": "Pavel Bobek",
+  "n": "Lásko, mně ubývá sil",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1992 / Discogs 1979"
+ },
+ "k39": {
+  "v": "OsAcWzkDAe4",
+  "t": 0,
+  "j": 1995,
+  "i": "Arakain",
+  "n": "Slečna Závist",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3a": {
+  "v": "aMSowUT8mLo",
+  "t": 0,
+  "j": 1988,
+  "i": "Miroslav Žbirka",
+  "n": "Len s ňou",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1991 / Discogs 1988"
+ },
+ "k3b": {
+  "v": "7owO9legLbI",
+  "t": 0,
+  "j": 2001,
+  "i": "Petr Hapka",
+  "n": "Kocour se schoulil na tvůj klín",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2002 / Discogs 2001"
+ },
+ "k3c": {
+  "v": "aMW9jjNLTCo",
+  "t": 0,
+  "j": 1986,
+  "i": "Karel Gott",
+  "n": "Čau, lásko",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1987 / Discogs 1986"
+ },
+ "k3d": {
+  "v": "Jq0R6DqNL-U",
+  "t": 0,
+  "j": 1975,
+  "i": "Petra Černocká",
+  "n": "Náklaďák",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2004 / Discogs 1975"
+ },
+ "k3e": {
+  "v": "DtW01mBYGzo",
+  "t": 0,
+  "j": 2021,
+  "i": "Jelen",
+  "n": "Ještě jednu noc",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3f": {
+  "v": "QDMjrixPLPU",
+  "t": 0,
+  "j": 2010,
+  "i": "Kristína",
+  "n": "Stonka",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3g": {
+  "v": "ChBTgvzYnNE",
+  "t": 0,
+  "j": 1980,
+  "i": "Václav Neckář",
+  "n": "Mýdlový princ",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1981 / Discogs 1980"
+ },
+ "k3h": {
+  "v": "W5XRuTv25KE",
+  "t": 0,
+  "j": 1992,
+  "i": "Iveta Bartošová",
+  "n": "Půlnoční Smíření",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3i": {
+  "v": "oq31uMlpHFo",
+  "t": 0,
+  "j": 1965,
+  "i": "Olympic",
+  "n": "Dej mi víc své lásky",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3j": {
+  "v": "UbDGAUzZbEI",
+  "t": 0,
+  "j": 1988,
+  "i": "Team",
+  "n": "Reklama na ticho",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3k": {
+  "v": "uN_eYHQ_Kc8",
+  "t": 0,
+  "j": 2007,
+  "i": "Ewa Farna",
+  "n": "Ticho",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3l": {
+  "v": "rhDU3viyBg8",
+  "t": 0,
+  "j": 1977,
+  "i": "Jiří Schelinger",
+  "n": "Šípková Růženka",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1990 / Discogs 1977"
+ },
+ "k3m": {
+  "v": "C50vdRwlSiI",
+  "t": 0,
+  "j": 1973,
+  "i": "Karel Zich",
+  "n": "Alenka v říši divů",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1981 / Discogs 1973"
+ },
+ "k3n": {
+  "v": "D8dY9Vp1HX8",
+  "t": 0,
+  "j": 1981,
+  "i": "Olympic",
+  "n": "Jasná zpráva",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3o": {
+  "v": "zHutkluFSpg",
+  "t": 0,
+  "j": 2006,
+  "i": "Divokej Bill",
+  "n": "Síť",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3p": {
+  "v": "OvG7zAsWBKc",
+  "t": 0,
+  "j": 1987,
+  "i": "Turbo",
+  "n": "Hráč",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3q": {
+  "v": "sWvLkTNSuMI",
+  "t": 0,
+  "j": 1998,
+  "i": "František Nedvěd",
+  "n": "Kočovní herci",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3r": {
+  "v": "x-FtrwheITQ",
+  "t": 0,
+  "j": 2026,
+  "i": "Ewa Farna",
+  "n": "Neříkej, co má se stát",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3s": {
+  "v": "dtQWmdEgE-c",
+  "t": 0,
+  "j": 1983,
+  "i": "Miroslav Žbirka",
+  "n": "Denisa",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3t": {
+  "v": "KICLeN3_hWY",
+  "t": 0,
+  "j": 1982,
+  "i": "Waldemar Matuška",
+  "n": "Eldorádo",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2001 / Discogs 1982"
+ },
+ "k3u": {
+  "v": "7De-UU9qB9Q",
+  "t": 0,
+  "j": 2017,
+  "i": "Mirai",
+  "n": "Když Nemůžeš, Tak Přidej",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3v": {
+  "v": "PTbiUrZgwQM",
+  "t": 0,
+  "j": 1985,
+  "i": "Peter Nagy",
+  "n": "Sme svoji",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3w": {
+  "v": "Q3h_YlglOKM",
+  "t": 0,
+  "j": 2001,
+  "i": "Marika Gombitová",
+  "n": "Šaty",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3x": {
+  "v": "AIiaXgANkZA",
+  "t": 0,
+  "j": 2020,
+  "i": "Marek Ztracený",
+  "n": "Tak se nezlob",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3y": {
+  "v": "U3Kc9YBpjYI",
+  "t": 0,
+  "j": 2023,
+  "i": "Marek Ztracený",
+  "n": "Vítr do plachet",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k3z": {
+  "v": "_5MORGychvs",
+  "t": 0,
+  "j": 1983,
+  "i": "Karel Zich",
+  "n": "Paráda",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1994 / Discogs 1983"
+ },
+ "k40": {
+  "v": "IuLaLwMnSQ0",
+  "t": 0,
+  "j": 1988,
+  "i": "Sagvan Tofi",
+  "n": "Dávej, ber",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2003 / Discogs 1988"
+ },
+ "k41": {
+  "v": "UG1N8PfOjbc",
+  "t": 0,
+  "j": 1991,
+  "i": "Žentour",
+  "n": "Proklínám",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k42": {
+  "v": "aFgCHslSYhw",
+  "t": 0,
+  "j": 2021,
+  "i": "Adam Ďurica",
+  "n": "Naše hriechy",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k43": {
+  "v": "18Tqeap8CX0",
+  "t": 0,
+  "j": 1985,
+  "i": "Elán",
+  "n": "Kráľovná bielych tenisiek",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k44": {
+  "v": "6WXOsCR1BPQ",
+  "t": 0,
+  "j": 2013,
+  "i": "Mandrage",
+  "n": "Tanči dokud můžeš",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k45": {
+  "v": "wj91fGplGm8",
+  "t": 0,
+  "j": 2004,
+  "i": "Aneta Langerová",
+  "n": "Voda živá",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k46": {
+  "v": "R2lZDxyKzZE",
+  "t": 0,
+  "j": 2009,
+  "i": "Tomáš Klus",
+  "n": "VeSmíru",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k47": {
+  "v": "pvpIN5A4WRU",
+  "t": 0,
+  "j": 2015,
+  "i": "Sebastian",
+  "n": "Toulavá",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k48": {
+  "v": "Sqwwg1yKSiM",
+  "t": 0,
+  "j": 1988,
+  "i": "Richard Müller",
+  "n": "Štěstí je krásná věc",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1988"
+ },
+ "k49": {
+  "v": "LQ-TN-mzQeo",
+  "t": 0,
+  "j": 1986,
+  "i": "Katapult",
+  "n": "Někdy příště",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4a": {
+  "v": "f-c-lvcPQkU",
+  "t": 0,
+  "j": 2018,
+  "i": "Lucie Vondráčková",
+  "n": "Stanice Svět",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4b": {
+  "v": "xS32YjMTc5Q",
+  "t": 0,
+  "j": 1987,
+  "i": "Petr Kotvald",
+  "n": "Je v tahu",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1991 / Discogs 1987"
+ },
+ "k4c": {
+  "v": "MdX5K2PFrwI",
+  "t": 0,
+  "j": 1995,
+  "i": "Argema",
+  "n": "Tohle je ráj",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4d": {
+  "v": "9Z7sw4Ltrvc",
+  "t": 0,
+  "j": 2003,
+  "i": "Alice Springs",
+  "n": "Vrať se mi zpátky",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4e": {
+  "v": "eiVpX1UTsh0",
+  "t": 0,
+  "j": 1975,
+  "i": "Waldemar Matuška",
+  "n": "Do věží",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1975"
+ },
+ "k4f": {
+  "v": "9ERWbWNF5M8",
+  "t": 0,
+  "j": 2002,
+  "i": "Hex",
+  "n": "V piatok podvečer",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4g": {
+  "v": "WUAi3gUNx30",
+  "t": 0,
+  "j": 1991,
+  "i": "Elán",
+  "n": "Sestrička z Kramárov",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4h": {
+  "v": "YjPDfy90WQo",
+  "t": 0,
+  "j": 2000,
+  "i": "Hana Zagorová",
+  "n": "Je naprosto nezbytné",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2001 / Discogs 2000"
+ },
+ "k4i": {
+  "v": "hAG07cmBPnQ",
+  "t": 0,
+  "j": 2016,
+  "i": "Xindl X",
+  "n": "Popelka",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4j": {
+  "v": "ZISy-GqEGqE",
+  "t": 0,
+  "j": 1984,
+  "i": "Hana Zagorová",
+  "n": "Můj čas",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1984"
+ },
+ "k4k": {
+  "v": "9rTM3PPLPkk",
+  "t": 0,
+  "j": 1991,
+  "i": "Oceán",
+  "n": "Naděje",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4l": {
+  "v": "kPCI8443TI0",
+  "t": 0,
+  "j": 2022,
+  "i": "Tereza Mašková",
+  "n": "Dívej se na mě",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4m": {
+  "v": "-uFVEjxtpvE",
+  "t": 0,
+  "j": 2023,
+  "i": "Slza",
+  "n": "Každej sám",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4n": {
+  "v": "VEbWTQw6NE0",
+  "t": 0,
+  "j": 1979,
+  "i": "Věra Špinarová",
+  "n": "Jednoho dne se vrátíš",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1993 / Discogs 1979"
+ },
+ "k4o": {
+  "v": "v0SmLO-TfKs",
+  "t": 0,
+  "j": 1975,
+  "i": "Pavol Hammel",
+  "n": "Učiteľka tanca",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4p": {
+  "v": "Per__YII6as",
+  "t": 0,
+  "j": 1984,
+  "i": "Josef Laufer",
+  "n": "Sbohem, lásko, já jedu dál",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2000 / Discogs 1984"
+ },
+ "k4q": {
+  "v": "g3peTPD7aZI",
+  "t": 0,
+  "j": 1983,
+  "i": "Michal David",
+  "n": "Non Stop",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1985 / Discogs 1983"
+ },
+ "k4r": {
+  "v": "kghCqyMLPFA",
+  "t": 0,
+  "j": 2010,
+  "i": "Kristína",
+  "n": "Horehronie",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4s": {
+  "v": "s9hpbnmfVfU",
+  "t": 0,
+  "j": 1973,
+  "i": "Petr Rezek",
+  "n": "Přátelství",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1999 / Discogs 1973"
+ },
+ "k4t": {
+  "v": "KTiwD4OTc80",
+  "t": 0,
+  "j": 2021,
+  "i": "Mirai",
+  "n": "Tenkrát",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4u": {
+  "v": "Dm-psTLlpbc",
+  "t": 0,
+  "j": 2001,
+  "i": "No Name",
+  "n": "Nie alebo áno",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4v": {
+  "v": "4R84fQ2P73E",
+  "t": 0,
+  "j": 2020,
+  "i": "Slza",
+  "n": "Paravany",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4w": {
+  "v": "XEgiINEvg8o",
+  "t": 0,
+  "j": 2026,
+  "i": "Ewa Farna",
+  "n": "Vzpomeneš si?",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4x": {
+  "v": "EpJV6ZCo84c",
+  "t": 0,
+  "j": 2011,
+  "i": "Wohnout",
+  "n": "Svaz českých bohémů",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4y": {
+  "v": "j-nOcsaCrc4",
+  "t": 0,
+  "j": 1969,
+  "i": "Karel Kryl",
+  "n": "Morituri te salutant",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k4z": {
+  "v": "ImbyN749SAg",
+  "t": 0,
+  "j": 2005,
+  "i": "Petr Kolář",
+  "n": "Vyznání",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k50": {
+  "v": "SAuLBciZ4qI",
+  "t": 0,
+  "j": 1999,
+  "i": "Jana Kirschner",
+  "n": "Modrá",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k51": {
+  "v": "JCe5dYHFUcc",
+  "t": 0,
+  "j": 2000,
+  "i": "No Name",
+  "n": "Život",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2015 / Discogs 2000"
+ },
+ "k52": {
+  "v": "ovWySlR67EM",
+  "t": 0,
+  "j": 2002,
+  "i": "Lucie Bílá",
+  "n": "Vokurky",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2003 / Discogs 2002"
+ },
+ "k53": {
+  "v": "kchORzadyKY",
+  "t": 0,
+  "j": 1978,
+  "i": "Miroslav Žbirka",
+  "n": "Zažni",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1986 / Discogs 1978"
+ },
+ "k54": {
+  "v": "dldSkRHhACI",
+  "t": 0,
+  "j": 1980,
+  "i": "Jiří Schelinger",
+  "n": "Jsem prý blázen jen",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1990 / Discogs 1980"
+ },
+ "k55": {
+  "v": "TbWTpfB34xo",
+  "t": 0,
+  "j": 2003,
+  "i": "No Name",
+  "n": "Lekná",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k56": {
+  "v": "zXnPKJ6AjyM",
+  "t": 0,
+  "j": 2017,
+  "i": "Kollárovci",
+  "n": "Neúprosný Čas",
+  "ok": true,
+  "q": "MusicBrainz+Discogs 2017"
+ },
+ "k57": {
+  "v": "vOCxKfq6qlo",
+  "t": 0,
+  "j": 1978,
+  "i": "Modus",
+  "n": "Veľký sen mora",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1978"
+ },
+ "k58": {
+  "v": "_eJ5zPWNvcU",
+  "t": 0,
+  "j": 1986,
+  "i": "Michal David",
+  "n": "Decibely lásky",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1996 / Discogs 1986"
+ },
+ "k59": {
+  "v": "YmhMSCAF_QE",
+  "t": 0,
+  "j": 1986,
+  "i": "Dalibor Janda",
+  "n": "Oheň, voda, vítr",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5a": {
+  "v": "vr4x3BgfbOU",
+  "t": 0,
+  "j": 1993,
+  "i": "David Koller",
+  "n": "Chci zas v tobě spát",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5b": {
+  "v": "c4CJKXmkxzs",
+  "t": 0,
+  "j": 2011,
+  "i": "Tomáš Klus",
+  "n": "Nina",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5c": {
+  "v": "-6bUJR6P8OE",
+  "t": 0,
+  "j": 1983,
+  "i": "Helena Vondráčková",
+  "n": "Sladké mámení",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5d": {
+  "v": "-s3w9TQ3IW0",
+  "t": 0,
+  "j": 2009,
+  "i": "David Deyl",
+  "n": "Akorát",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5e": {
+  "v": "RNBn1ptsmI0",
+  "t": 0,
+  "j": 1994,
+  "i": "Aleš Brichta",
+  "n": "Barák na vodstřel",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5f": {
+  "v": "zmnVlFqUMwI",
+  "t": 0,
+  "j": 2014,
+  "i": "Xindl X",
+  "n": "V blbým věku",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5g": {
+  "v": "IZ4HZoE3gAU",
+  "t": 0,
+  "j": 1984,
+  "i": "Miroslav Žbirka",
+  "n": "22 dní",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5h": {
+  "v": "AMCMQHJWBs0",
+  "t": 0,
+  "j": 2006,
+  "i": "Lucie Vondráčková",
+  "n": "Vítr",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2006 / Discogs 2007"
+ },
+ "k5i": {
+  "v": "pt8cgEmduFk",
+  "t": 0,
+  "j": 1967,
+  "i": "Marta Kubišová",
+  "n": "Nechte zvony znít",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1997 / Discogs 1967"
+ },
+ "k5j": {
+  "v": "XmDGwdbdNS8",
+  "t": 0,
+  "j": 1986,
+  "i": "Vašo Patejdl",
+  "n": "Ak nie si moja",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5k": {
+  "v": "BGHt0JO0hvc",
+  "t": 0,
+  "j": 2011,
+  "i": "Mandrage",
+  "n": "Františkovy Lázně",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5l": {
+  "v": "fnadU-cMr5s",
+  "t": 0,
+  "j": 1987,
+  "i": "Vašo Patejdl",
+  "n": "Voňavky dievčat",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5m": {
+  "v": "IfQNSlnkFUI",
+  "t": 0,
+  "j": 1989,
+  "i": "Petr Kotvald",
+  "n": "Milujem se čím dál víc",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1990 / Discogs 1989"
+ },
+ "k5n": {
+  "v": "_oeuAt54aSI",
+  "t": 0,
+  "j": 1995,
+  "i": "Mňága a Žďorp",
+  "n": "Nejlíp jim bylo",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1995 / Discogs 2001"
+ },
+ "k5o": {
+  "v": "-bTdbOiN6y8",
+  "t": 0,
+  "j": 2022,
+  "i": "Tereza Mašková",
+  "n": "Náš příběh",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5p": {
+  "v": "ZRsyLfX46W8",
+  "t": 0,
+  "j": 2017,
+  "i": "Chinaski",
+  "n": "Potkal jsem tě po letech",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5q": {
+  "v": "DfZ8hYzQbls",
+  "t": 0,
+  "j": 1987,
+  "i": "Iveta Bartošová",
+  "n": "Málo mě zná",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5r": {
+  "v": "1pBtO_cGsl4",
+  "t": 0,
+  "j": 2005,
+  "i": "Zuzana Smatanová",
+  "n": "Nekráčaj predo mnou",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5s": {
+  "v": "X9AW829W0rg",
+  "t": 0,
+  "j": 1982,
+  "i": "Michal Tučný",
+  "n": "Cesty toulavý",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2003 / Discogs 1982"
+ },
+ "k5t": {
+  "v": "jIPwzMgPVqE",
+  "t": 0,
+  "j": 1969,
+  "i": "Karel Kryl",
+  "n": "Anděl",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5u": {
+  "v": "WiH7WnCjdpo",
+  "t": 0,
+  "j": 1980,
+  "i": "Lenka Filipová",
+  "n": "Zamilovaná",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1999 / Discogs 1980"
+ },
+ "k5v": {
+  "v": "TCZooIYe5Pw",
+  "t": 0,
+  "j": 2023,
+  "i": "Jelen",
+  "n": "Touha a pláč",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5w": {
+  "v": "c7KrZQni1bg",
+  "t": 0,
+  "j": 1993,
+  "i": "Premier",
+  "n": "Hrobař",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1994 / Discogs 1993"
+ },
+ "k5x": {
+  "v": "4rE3z99GXfg",
+  "t": 0,
+  "j": 2015,
+  "i": "Slza",
+  "n": "Celibát",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5y": {
+  "v": "8qbLKINAnec",
+  "t": 0,
+  "j": 2000,
+  "i": "Kabát",
+  "n": "Bára",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k5z": {
+  "v": "B_RGmW1eji4",
+  "t": 0,
+  "j": 1986,
+  "i": "Hana Hegerová",
+  "n": "Levandulová",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1987 / Discogs 1986"
+ },
+ "k60": {
+  "v": "2WTMsKTP6kI",
+  "t": 0,
+  "j": 1997,
+  "i": "Petr Hapka",
+  "n": "Dívám se, dívám",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2002 / Discogs 1997"
+ },
+ "k61": {
+  "v": "hvDqFXGcinw",
+  "t": 0,
+  "j": 1993,
+  "i": "Yo Yo Band",
+  "n": "Rybitví",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k62": {
+  "v": "ELXvjT04YZw",
+  "t": 0,
+  "j": 1985,
+  "i": "Václav Neckář",
+  "n": "Křídla Iluzí",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2009 / Discogs 1985"
+ },
+ "k63": {
+  "v": "wVVzFA0gqhw",
+  "t": 0,
+  "j": 1976,
+  "i": "Hana Zagorová",
+  "n": "Studánko stříbrná",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k64": {
+  "v": "R_JBbPtamAc",
+  "t": 0,
+  "j": 1995,
+  "i": "Jaromír Nohavica",
+  "n": "Kometa",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k65": {
+  "v": "LmGnw3AH1Xg",
+  "t": 0,
+  "j": 1989,
+  "i": "Team",
+  "n": "Lietam v tom tiež",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k66": {
+  "v": "jdzU2Vca6YU",
+  "t": 0,
+  "j": 1992,
+  "i": "Karel Gott",
+  "n": "Když muž se ženou snídá",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k67": {
+  "v": "gUSVCwcPS0w",
+  "t": 0,
+  "j": 2017,
+  "i": "Tomáš Klus",
+  "n": "A Pak",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2018 / Discogs 2017"
+ },
+ "k68": {
+  "v": "_nKNpSgEyMM",
+  "t": 0,
+  "j": 2005,
+  "i": "Chinaski",
+  "n": "Tabáček",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k69": {
+  "v": "U-C8O9bY3ck",
+  "t": 0,
+  "j": 2000,
+  "i": "Petr Muk",
+  "n": "Neusínej",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6a": {
+  "v": "FHQ_YfP4cf4",
+  "t": 0,
+  "j": 1983,
+  "i": "Michal David",
+  "n": "Colu, pijeme colu",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1996 / Discogs 1983"
+ },
+ "k6b": {
+  "v": "xboAgqYnutU",
+  "t": 0,
+  "j": 1992,
+  "i": "Lucie Bílá",
+  "n": "Útěk",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6c": {
+  "v": "JUlKdZRvpFc",
+  "t": 0,
+  "j": 1998,
+  "i": "Iveta Bartošová",
+  "n": "Nekonečná",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6d": {
+  "v": "Khm7JgBxYrI",
+  "t": 0,
+  "j": 1981,
+  "i": "Michal Tučný",
+  "n": "Poslední kovboj",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1993 / Discogs 1981"
+ },
+ "k6e": {
+  "v": "dx7ARlzSTXg",
+  "t": 0,
+  "j": 2009,
+  "i": "Lucie Vondráčková",
+  "n": "Laska Umi Vic",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6f": {
+  "v": "mo8FtvxMRbo",
+  "t": 0,
+  "j": 2003,
+  "i": "IMT Smile",
+  "n": "Kým stúpa dym",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6g": {
+  "v": "Fbx5lIG9Ir4",
+  "t": 0,
+  "j": 1976,
+  "i": "Karol Duchoň",
+  "n": "V dolinách",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1985 / Discogs 1976"
+ },
+ "k6h": {
+  "v": "WCFLvjkowQo",
+  "t": 0,
+  "j": 2014,
+  "i": "Michal Hrůza",
+  "n": "Zakázané uvolnění",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6i": {
+  "v": "VBXCeyMUZdc",
+  "t": 0,
+  "j": 1986,
+  "i": "Peter Nagy",
+  "n": "Poďme sa zachrániť",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6j": {
+  "v": "zTD51KfsFEY",
+  "t": 0,
+  "j": 1982,
+  "i": "Miroslav Žbirka",
+  "n": "Biely kvet",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6k": {
+  "v": "Hfavmsc7y1A",
+  "t": 0,
+  "j": 2013,
+  "i": "Kollárovci",
+  "n": "Goraľu Cy Či Ne Žaľ",
+  "ok": true,
+  "q": "MusicBrainz+Discogs 2013"
+ },
+ "k6l": {
+  "v": "cZvQxBOsGZQ",
+  "t": 0,
+  "j": 2017,
+  "i": "Ewa Farna",
+  "n": "Všechno nebo nic",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2020 / Discogs 2017"
+ },
+ "k6m": {
+  "v": "DffyMxLIGp4",
+  "t": 0,
+  "j": 1985,
+  "i": "Balet",
+  "n": "Hej pane diskžokej",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6n": {
+  "v": "kuZ7dH4kJEI",
+  "t": 0,
+  "j": 2023,
+  "i": "Marek Ztracený",
+  "n": "Moje milá",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6o": {
+  "v": "V4KqOjveYnE",
+  "t": 0,
+  "j": 1995,
+  "i": "Buty",
+  "n": "František",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6p": {
+  "v": "XgI5TJDtmS8",
+  "t": 0,
+  "j": 1986,
+  "i": "Banket",
+  "n": "Po schodoch",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6q": {
+  "v": "eEOIISJvUjc",
+  "t": 0,
+  "j": 2000,
+  "i": "Hana Zagorová",
+  "n": "Za každou chvíli s tebou platím",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2001 / Discogs 2000"
+ },
+ "k6r": {
+  "v": "w7cslDd6bMg",
+  "t": 0,
+  "j": 1991,
+  "i": "Pavol Habera",
+  "n": "Je to vo hviezdach",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6s": {
+  "v": "8jeMDF0nOOs",
+  "t": 0,
+  "j": 1982,
+  "i": "Věra Špinarová",
+  "n": "Píseň svou mi tenkrát hrál",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2000 / Discogs 1982"
+ },
+ "k6t": {
+  "v": "doig5WlTcwI",
+  "t": 0,
+  "j": 1976,
+  "i": "Vladimír Mišík",
+  "n": "Stříhali dohola malého chlapečka",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1977 / Discogs 1976"
+ },
+ "k6u": {
+  "v": "HHTy_c4zC-w",
+  "t": 0,
+  "j": 1964,
+  "i": "Yvonne Přenosilová",
+  "n": "Roň slzy",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6v": {
+  "v": "LHjOjr4GS4I",
+  "t": 0,
+  "j": 1985,
+  "i": "Tublatanka",
+  "n": "Dnes",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1987 / Discogs 1985"
+ },
+ "k6w": {
+  "v": "gOqv-VBrXeA",
+  "t": 0,
+  "j": 2014,
+  "i": "Chinaski",
+  "n": "Víno",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6x": {
+  "v": "4tHPlp9HGqQ",
+  "t": 0,
+  "j": 2010,
+  "i": "Keks",
+  "n": "Jak děkuje se andělům",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k6y": {
+  "v": "doQe2n0Fjy8",
+  "t": 0,
+  "j": 1975,
+  "i": "Petr Rezek",
+  "n": "Jsi",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1999 / Discogs 1975"
+ },
+ "k6z": {
+  "v": "Gyk6FMPlvTE",
+  "t": 0,
+  "j": 2016,
+  "i": "Xindl X",
+  "n": "Na vodě",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k70": {
+  "v": "EcH9RZRZBek",
+  "t": 0,
+  "j": 1985,
+  "i": "Turbo",
+  "n": "Chtěl jsem mít",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1986 / Discogs 1985"
+ },
+ "k71": {
+  "v": "gCtJOcFi9SY",
+  "t": 0,
+  "j": 2000,
+  "i": "Čechomor",
+  "n": "Proměny",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2000 / Discogs 2001"
+ },
+ "k72": {
+  "v": "K0x2rHr5kXk",
+  "t": 0,
+  "j": 1966,
+  "i": "Yvonne Přenosilová",
+  "n": "Boty proti lásce",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1993 / Discogs 1966"
+ },
+ "k73": {
+  "v": "B0pibAWs4lo",
+  "t": 0,
+  "j": 2006,
+  "i": "Ewa Farna",
+  "n": "Měls mě vůbec rád",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k74": {
+  "v": "xi3XJ931huo",
+  "t": 0,
+  "j": 1993,
+  "i": "Yo Yo Band",
+  "n": "Karviná",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k75": {
+  "v": "5TW7R-s39Zs",
+  "t": 0,
+  "j": 2004,
+  "i": "Gladiator",
+  "n": "Keď sa láska podarí",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k76": {
+  "v": "Q6ROid-SRrw",
+  "t": 0,
+  "j": 1988,
+  "i": "Lucie",
+  "n": "MARIE",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2025 / Discogs 1988"
+ },
+ "k77": {
+  "v": "3Jjgb0Dck08",
+  "t": 0,
+  "j": 1998,
+  "i": "Lucie Bílá",
+  "n": "Zpíváš mi requiem",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k78": {
+  "v": "t4XlpoZyDig",
+  "t": 0,
+  "j": 2021,
+  "i": "Mirai",
+  "n": "Lítej",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k79": {
+  "v": "sfQ8mD2-0FI",
+  "t": 0,
+  "j": 1996,
+  "i": "Daniel Landa",
+  "n": "Touha",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2007 / Discogs 1996"
+ },
+ "k7a": {
+  "v": "VlRbdDMRkOA",
+  "t": 0,
+  "j": 1987,
+  "i": "Lenka Filipová",
+  "n": "Ať žije show",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1992 / Discogs 1987"
+ },
+ "k7b": {
+  "v": "cZZufErXtSY",
+  "t": 0,
+  "j": 1987,
+  "i": "Beáta Dubasová",
+  "n": "Sme také, aké sme",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7c": {
+  "v": "DsLNgGr3adY",
+  "t": 0,
+  "j": 2015,
+  "i": "Slza",
+  "n": "Lhůta Záruční",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7d": {
+  "v": "2lx4vLeqL3U",
+  "t": 0,
+  "j": 2015,
+  "i": "Kryštof",
+  "n": "Ty a já",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7e": {
+  "v": "2dsHuR5Dn9E",
+  "t": 0,
+  "j": 1987,
+  "i": "Citron",
+  "n": "Radegast",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7f": {
+  "v": "SKIWxirvNtQ",
+  "t": 0,
+  "j": 2020,
+  "i": "Katarína Knechtová",
+  "n": "Svety",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7g": {
+  "v": "TBLvKyE_KP4",
+  "t": 0,
+  "j": 2003,
+  "i": "Divokej Bill",
+  "n": "Pocit",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7h": {
+  "v": "yiE8lUgwPbc",
+  "t": 0,
+  "j": 1994,
+  "i": "Žlutý pes",
+  "n": "Sametová",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7i": {
+  "v": "YFM_c2gVrpI",
+  "t": 0,
+  "j": 1997,
+  "i": "Jakub Smolík",
+  "n": "Jen blázen žárlí",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1997"
+ },
+ "k7j": {
+  "v": "tMcCRPUewek",
+  "t": 0,
+  "j": 1980,
+  "i": "Jiří Schelinger",
+  "n": "Jahody mražený",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1990 / Discogs 1980"
+ },
+ "k7k": {
+  "v": "72-m3wmkSjo",
+  "t": 0,
+  "j": 1996,
+  "i": "Wanastowi Vjecy",
+  "n": "Andělé",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7l": {
+  "v": "LBSC1gXO3FM",
+  "t": 0,
+  "j": 2005,
+  "i": "Peha",
+  "n": "Za tebou",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7m": {
+  "v": "oWTS6brjFik",
+  "t": 0,
+  "j": 1967,
+  "i": "Naďa Urbánková",
+  "n": "Drahý Můj",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1967"
+ },
+ "k7n": {
+  "v": "RILuP_wfX9o",
+  "t": 0,
+  "j": 1969,
+  "i": "Naďa Urbánková",
+  "n": "Závidím",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1969"
+ },
+ "k7o": {
+  "v": "2rDgjqof_rM",
+  "t": 0,
+  "j": 2001,
+  "i": "Holki",
+  "n": "Jsi senzační",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7p": {
+  "v": "pasIzjqY0Fk",
+  "t": 0,
+  "j": 1987,
+  "i": "Dalibor Janda",
+  "n": "Vždycky jsem to já",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7q": {
+  "v": "8Z7hKi9w3zE",
+  "t": 0,
+  "j": 2003,
+  "i": "No Name",
+  "n": "Prvá",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7r": {
+  "v": "g5DpYqGXL0c",
+  "t": 0,
+  "j": 2000,
+  "i": "Kabát",
+  "n": "Na sever",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7s": {
+  "v": "Tf14RPv33Q0",
+  "t": 0,
+  "j": 1981,
+  "i": "Helena Vondráčková",
+  "n": "Každá trampota má svou mez",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2013 / Discogs 1981"
+ },
+ "k7t": {
+  "v": "5o0wKvsEYgo",
+  "t": 0,
+  "j": 1991,
+  "i": "Peter Nagy",
+  "n": "S nohami na stole",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1996 / Discogs 1991"
+ },
+ "k7u": {
+  "v": "r8aGWmHpXyU",
+  "t": 0,
+  "j": 1986,
+  "i": "Brontosauři",
+  "n": "Růže z papíru",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2001 / Discogs 1986"
+ },
+ "k7v": {
+  "v": "lP-R7hIBg0s",
+  "t": 0,
+  "j": 1994,
+  "i": "Aleš Brichta",
+  "n": "Dívka s perlami ve vlasech",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7w": {
+  "v": "PvBJsvToM10",
+  "t": 0,
+  "j": 2023,
+  "i": "Marek Ztracený",
+  "n": "Originál",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7x": {
+  "v": "_l824oy4xnE",
+  "t": 0,
+  "j": 1966,
+  "i": "Václav Neckář",
+  "n": "Lékořice",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7y": {
+  "v": "mdObE-XmqDE",
+  "t": 0,
+  "j": 2011,
+  "i": "Verona",
+  "n": "Ztracená bloudím",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k7z": {
+  "v": "Z6WWBd3LCVk",
+  "t": 0,
+  "j": 2006,
+  "i": "Divokej Bill",
+  "n": "Čmelák",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k80": {
+  "v": "vV6Uj37SVBI",
+  "t": 0,
+  "j": 2021,
+  "i": "Kryštof",
+  "n": "Co Bude Pak",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k81": {
+  "v": "UiQfviwTqZc",
+  "t": 0,
+  "j": 1993,
+  "i": "Janek Ledecký",
+  "n": "Pěkná, pěkná, pěkná",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k82": {
+  "v": "ckNMjjxNWGk",
+  "t": 0,
+  "j": 1969,
+  "i": "Blue Effect",
+  "n": "Slunečný hrob",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1991 / Discogs 1969"
+ },
+ "k83": {
+  "v": "mkKp4EH8ThI",
+  "t": 0,
+  "j": 2002,
+  "i": "Ready Kirken",
+  "n": "Černý brejle",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k84": {
+  "v": "rvbXkrzSej0",
+  "t": 0,
+  "j": 2008,
+  "i": "Katarína Knechtová",
+  "n": "Muoj Bože",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k85": {
+  "v": "dJO2mUGAZBs",
+  "t": 0,
+  "j": 2012,
+  "i": "Lucie Vondráčková",
+  "n": "Ty jsi ten nej",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2013 / Discogs 2012"
+ },
+ "k86": {
+  "v": "vaEERbPpIX0",
+  "t": 0,
+  "j": 1991,
+  "i": "Lucie",
+  "n": "Černí andělé",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k87": {
+  "v": "44F5RC9F_KM",
+  "t": 0,
+  "j": 2017,
+  "i": "Mirai",
+  "n": "Chci tančit",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k88": {
+  "v": "tI0ZFdJ85cE",
+  "t": 0,
+  "j": 1986,
+  "i": "Sagvan Tofi",
+  "n": "Večírek",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2003 / Discogs 1986"
+ },
+ "k89": {
+  "v": "JsqRvf-EuFE",
+  "t": 0,
+  "j": 1988,
+  "i": "Jiří Zmožek",
+  "n": "Už mi, lásko, není dvacet let",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1990 / Discogs 1988"
+ },
+ "k8a": {
+  "v": "ZYdHSIYxajA",
+  "t": 0,
+  "j": 1971,
+  "i": "Václav Neckář",
+  "n": "Dr. Dam di dam",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1973 / Discogs 1971"
+ },
+ "k8b": {
+  "v": "0jWRLOdY18A",
+  "t": 0,
+  "j": 2021,
+  "i": "Jelen",
+  "n": "Někde kolem",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8c": {
+  "v": "A1KN5Mop6-U",
+  "t": 0,
+  "j": 2018,
+  "i": "Xindl X",
+  "n": "Dřevo",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8d": {
+  "v": "RWY2HxUI8uw",
+  "t": 0,
+  "j": 1994,
+  "i": "Elán",
+  "n": "Kočka",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8e": {
+  "v": "w6tKXRbINUo",
+  "t": 0,
+  "j": 1980,
+  "i": "Vítězslav Vávra",
+  "n": "Dívka Gloria",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2010 / Discogs 1980"
+ },
+ "k8f": {
+  "v": "oXyZY3iRcy4",
+  "t": 0,
+  "j": 1986,
+  "i": "Brontosauři",
+  "n": "Na kameni kámen",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2001 / Discogs 1986"
+ },
+ "k8g": {
+  "v": "KegPASjPFvg",
+  "t": 0,
+  "j": 2009,
+  "i": "Mandrage",
+  "n": "Hledá se žena",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8h": {
+  "v": "PshOXKpdgNw",
+  "t": 0,
+  "j": 1977,
+  "i": "Karol Duchoň",
+  "n": "Čardáš dvoch sŕdc",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1985 / Discogs 1977"
+ },
+ "k8i": {
+  "v": "FMTkxg8rg-w",
+  "t": 0,
+  "j": 2021,
+  "i": "Kollárovci",
+  "n": "Len tebe spievam",
+  "ok": true,
+  "q": "MusicBrainz+Discogs 2021"
+ },
+ "k8j": {
+  "v": "qLIntudy9ss",
+  "t": 0,
+  "j": 1992,
+  "i": "Václav Neckář",
+  "n": "Miluju a maluju",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8k": {
+  "v": "7yXbT9W20-8",
+  "t": 0,
+  "j": 1994,
+  "i": "Kabát",
+  "n": "Colorado",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8l": {
+  "v": "byVo29Ce5d4",
+  "t": 0,
+  "j": 2001,
+  "i": "Petr Hapka",
+  "n": "Bude mi lehká zem",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8m": {
+  "v": "krgnackBy1o",
+  "t": 0,
+  "j": 2000,
+  "i": "No Name",
+  "n": "Ty a tvoja sestra",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8n": {
+  "v": "VK7krb2zGnk",
+  "t": 0,
+  "j": 1988,
+  "i": "Michal David",
+  "n": "Pár přátel",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8o": {
+  "v": "-wgukRtyR9k",
+  "t": 0,
+  "j": 2002,
+  "i": "Kollárovci",
+  "n": "Z Kolačkova Parobci",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2002 / Discogs 2006"
+ },
+ "k8p": {
+  "v": "EGB3sI5jKH0",
+  "t": 0,
+  "j": 1991,
+  "i": "Pavol Habera",
+  "n": "Láska, necestuj tým vlakom",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8q": {
+  "v": "mGVPET1wp8E",
+  "t": 0,
+  "j": 1991,
+  "i": "Lucie",
+  "n": "Zkamenělý dítě",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8r": {
+  "v": "SESYrZn67zI",
+  "t": 0,
+  "j": 1963,
+  "i": "Eva Pilarová",
+  "n": "Oliver Twist",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2001 / Discogs 1963"
+ },
+ "k8s": {
+  "v": "OiFmYz6wJLI",
+  "t": 0,
+  "j": 1999,
+  "i": "Ilona Csáková",
+  "n": "Jedno tajemství",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8t": {
+  "v": "naVTKZc9otU",
+  "t": 0,
+  "j": 2010,
+  "i": "Nightwork",
+  "n": "Slunce v duši",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8u": {
+  "v": "rddAMWCWOUc",
+  "t": 0,
+  "j": 2024,
+  "i": "Tomáš Klus",
+  "n": "Dokola",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8v": {
+  "v": "lus-v7dQcyQ",
+  "t": 0,
+  "j": 1986,
+  "i": "Petra Janů",
+  "n": "Říkej mi",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1989 / Discogs 1986"
+ },
+ "k8w": {
+  "v": "juxKdjqFy48",
+  "t": 0,
+  "j": 2011,
+  "i": "Olga Lounová",
+  "n": "K výškam",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8x": {
+  "v": "Mn8tem1aatY",
+  "t": 0,
+  "j": 1977,
+  "i": "Modus",
+  "n": "Úsmev",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 1998 / Discogs 1977"
+ },
+ "k8y": {
+  "v": "PTjttFge_rI",
+  "t": 0,
+  "j": 1969,
+  "i": "Karel Kryl",
+  "n": "Bratříčku, zavírej vrátka",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k8z": {
+  "v": "ZqDRSu1Dep8",
+  "t": 0,
+  "j": 1987,
+  "i": "Marika Gombitová",
+  "n": "Tak si so mnou opakuj",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k90": {
+  "v": "2JIbTmxQm9E",
+  "t": 0,
+  "j": 1995,
+  "i": "MC Erik & Barbara",
+  "n": "Keď príde láska",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k91": {
+  "v": "SPgPEAafDec",
+  "t": 0,
+  "j": 2001,
+  "i": "Mig 21",
+  "n": "Snadné je žít",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ },
+ "k92": {
+  "v": "A8kR22m9T2A",
+  "t": 0,
+  "j": 2001,
+  "i": "Ready Kirken",
+  "n": "Zejtra mám",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2006 / Discogs 2001"
+ },
+ "k93": {
+  "v": "NarGPAeha50",
+  "t": 0,
+  "j": 2010,
+  "i": "Tereza Kerndlová",
+  "n": "Schody z nebe",
+  "ok": true,
+  "q": "älteres Jahr von MusicBrainz 2011 / Discogs 2010"
+ },
+ "k94": {
+  "v": "7H9-yfGQOpE",
+  "t": 0,
+  "j": 2003,
+  "i": "Divokej Bill",
+  "n": "Malování",
+  "ok": true,
+  "q": "MusicBrainz+Discogs"
+ }
 }
