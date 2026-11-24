@@ -1,5 +1,65 @@
 [
 {
+"v": "19aA1MdnXN0",
+"i": "Richard Müller",
+"n": "Nebude to lahke",
+"j": "1992",
+"vt": "(Ersatz, vorher in DE gesperrt)",
+"k": "",
+"o": true,
+"e": true
+},
+{
+"v": "DT1p3dybgLQ",
+"i": "Jaroslav Uhlíř",
+"n": "Severni vitr",
+"j": "1981",
+"vt": "(Ersatz, vorher in DE gesperrt)",
+"k": "",
+"o": true,
+"e": true
+},
+{
+"v": "mQqdVX4OzTo",
+"i": "František Nedvěd",
+"n": "Kocovni herci",
+"j": "1998",
+"vt": "(Ersatz, vorher in DE gesperrt)",
+"k": "",
+"o": true,
+"e": true
+},
+{
+"v": "bIdxgGnA8u0",
+"i": "Václav Neckář",
+"n": "Lekorice",
+"j": "1966",
+"vt": "(Ersatz, vorher in DE gesperrt)",
+"k": "",
+"o": true,
+"e": true
+},
+{
+"v": "XbIMk-8O8KM",
+"i": "Václav Neckář",
+"n": "Dr Dam di dam",
+"j": "1971",
+"vt": "(Ersatz, vorher in DE gesperrt)",
+"k": "",
+"o": true,
+"e": true
+},
+{
+"v": "8F2u0dEY79o",
+"i": "Lucie Vondráčková",
+"n": "Laska umi vic",
+"j": "2009",
+"vt": "(Ersatz, vorher in DE gesperrt)",
+"k": "",
+"o": true,
+"e": true
+},
+{
 "v": "IZ4HZoE3gAU",
 "i": "Miroslav Žbirka",
 "n": "22 dni",
@@ -640,16 +700,6 @@
 "e": false
 },
 {
-"v": "2sNkF_nZI2c",
-"i": "Richard Müller",
-"n": "Nebude to lahke",
-"j": "1992",
-"vt": "Nebude to lahke",
-"k": "Richard Müller - Topic",
-"o": true,
-"e": false
-},
-{
 "v": "ZkUlFxPWblA",
 "i": "Argema",
 "n": "Jarosovsky pivovar",
@@ -996,16 +1046,6 @@
 "j": "1981",
 "vt": "Okno mé lásky (Láska)",
 "k": "Olympic - Topic",
-"o": true,
-"e": false
-},
-{
-"v": "GTptLJvbIdA",
-"i": "Jaroslav Uhlíř",
-"n": "Severni vitr",
-"j": "1981",
-"vt": "Severni vitr",
-"k": "Jaroslav Uhlíř - Topic",
 "o": true,
 "e": false
 },
@@ -1476,16 +1516,6 @@
 "j": "1998",
 "vt": "Nekonečná",
 "k": "Iveta Bartošová - Topic",
-"o": true,
-"e": false
-},
-{
-"v": "sWvLkTNSuMI",
-"i": "František Nedvěd",
-"n": "Kocovni herci",
-"j": "1998",
-"vt": "Kocovni herci (Rainy Day People)",
-"k": "Frantisek Nedved - Topic",
 "o": true,
 "e": false
 },
@@ -1970,16 +2000,6 @@
 "e": false
 },
 {
-"v": "_l824oy4xnE",
-"i": "Václav Neckář",
-"n": "Lekorice",
-"j": "1966",
-"vt": "Lékořice",
-"k": "Václav Neckář - Topic",
-"o": true,
-"e": false
-},
-{
 "v": "hdmrJtsh91Q",
 "i": "Olympic",
 "n": "Snad jsem to zavinil ja",
@@ -2006,16 +2026,6 @@
 "j": "1968",
 "vt": "Slavíci z Madridu (Rossignol Anglais)",
 "k": "Waldemar Matuška - Topic",
-"o": true,
-"e": false
-},
-{
-"v": "ZYdHSIYxajA",
-"i": "Václav Neckář",
-"n": "Dr Dam di dam",
-"j": "1971",
-"vt": "Dr. Dam di Dam",
-"k": "Václav Neckář - Topic",
 "o": true,
 "e": false
 },
@@ -2836,16 +2846,6 @@
 "j": "2009",
 "vt": "Tomas Klus - VeSmiru (Video)",
 "k": "TomasKlusVEVO",
-"o": true,
-"e": false
-},
-{
-"v": "dx7ARlzSTXg",
-"i": "Lucie Vondráčková",
-"n": "Laska umi vic",
-"j": "2009",
-"vt": "Laska umi vic",
-"k": "Lucie Vondráčková - Topic",
 "o": true,
 "e": false
 },
