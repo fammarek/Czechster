@@ -24,6 +24,8 @@
 - Die Vorderseite ist für alle Karten identisch (nur QR-Code und Kartencode ändern sich), unabhängig vom
   Jahrzehnt der Rückseite.
 - Das Orange der 60er (#E69F00) ist in Ordnung und bleibt.
+- 2010er-Leitfarbe #D55E00 bleibt (Entscheidung des Besitzers, obwohl sie bei Rot-Grün-Schwäche nahe an den 60ern liegt) →
+  2010er müssen sich über ein eindeutig modernes Leitobjekt und kantige Formen von den 60ern abheben, nicht folkloristisch.
 - 90er-Leitfarbe #F0E442 (Spezifikation); #D9C400 war bei Rot-Grün nicht von den 60ern zu trennen.
 - Runde 3 freigegeben mit „weiter so“. Bewährt: Leitobjekt als helle Silhouette auf der Achse, Formen,
   die wie Zeichen/Symbole/Gesichter/Augen wirken, werden konsequent ersetzt.
