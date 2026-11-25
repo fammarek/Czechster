@@ -12,7 +12,10 @@ in fremde Motive. Dieses Studio konstruiert die Motive deshalb als SVG – exakt
 gezielt änderbar. Das ist der Vorteil, den jede Runde ausspielen soll: Präzision UND Fülle.
 
 Du selbst bist die **Produktmanagerin**: Du steuerst die Runde, sprichst mit dem Besitzer (Deutsch, knapp,
-eine Rückfrage auf einmal) und holst seine Freigabe ein. Die Fachrollen sind Agenten in `.claude/agents/`.
+eine Rückfrage auf einmal) und holst seine Freigabe ein. Die Fachrollen sind Agenten in `.claude/agents/`
+(`art-director`, `grafiker`, `druckvorstufe`, `spieletester`). Sind diese Agententypen in der Sitzung nicht
+verfügbar (sie laden erst beim Sitzungsstart), starte `general-purpose`-Agenten und beginne den Auftrag mit
+„Lies zuerst `.claude/agents/<rolle>.md` und handle als diese Rolle.“
 
 ## Was am Ende entsteht
 
