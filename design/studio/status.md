@@ -27,6 +27,7 @@
 - 2010er-Leitfarbe #D55E00 bleibt (Entscheidung des Besitzers, obwohl sie bei Rot-Grün-Schwäche nahe an den 60ern liegt) →
   2010er müssen sich über ein eindeutig modernes Leitobjekt und kantige Formen von den 60ern abheben, nicht folkloristisch.
 - 90er-Leitfarbe #F0E442 (Spezifikation); #D9C400 war bei Rot-Grün nicht von den 60ern zu trennen.
+- Runde 4 freigegeben mit „Freigegeben“. Gelernt: dunkle Scheiben mit hellem Mittelpunkt wirken wie Augen, Stabgitter wie Zähne/Grill – vermeiden.
 - Runde 3 freigegeben mit „weiter so“. Bewährt: Leitobjekt als helle Silhouette auf der Achse, Formen,
   die wie Zeichen/Symbole/Gesichter/Augen wirken, werden konsequent ersetzt.
 - Die Jahreszahl sitzt auf allen Rückseiten exakt an derselben Stelle, egal welches Jahrzehnt (Oberkante
@@ -44,6 +45,8 @@
 | hinten_80_2 | **freigegeben** Runde 2 (ohne Blitze) → `design/motive/hinten_80_2.svg` |
 | hinten_90_1 | **freigegeben** Runde 3 → `design/motive/hinten_90_1.svg` |
 | hinten_90_2 | **freigegeben** Runde 3 → `design/motive/hinten_90_2.svg` |
-| hinten_00_1 / _2 | offen |
-| hinten_10_1 / _2 | offen |
+| hinten_00_1 | **freigegeben** Runde 4 → `design/motive/hinten_00_1.svg` |
+| hinten_00_2 | **freigegeben** Runde 4 → `design/motive/hinten_00_2.svg` |
+| hinten_10_1 | **freigegeben** Runde 4 → `design/motive/hinten_10_1.svg` |
+| hinten_10_2 | **freigegeben** Runde 4 (Kopfhörer) → `design/motive/hinten_10_2.svg` |
 | hinten_20_1 / _2 | offen |
