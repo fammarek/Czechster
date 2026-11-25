@@ -34,8 +34,8 @@
 | hinten_60_1 | **freigegeben** Runde 2 → `design/motive/hinten_60_1.svg` |
 | hinten_60_2 | **freigegeben** Runde 2 → `design/motive/hinten_60_2.svg` |
 | hinten_70_1 / _2 | offen |
-| hinten_80_1 | **freigegeben** Runde 1 → `design/motive/hinten_80_1.svg` |
-| hinten_80_2 | Runde 2: Blitze entfernen (Besitzer: SS-Runen-Wirkung), dann erneut vorlegen |
+| hinten_80_1 | **freigegeben** Runde 1, ohne Blitze neu freigegeben Runde 2 → `design/motive/hinten_80_1.svg` |
+| hinten_80_2 | **freigegeben** Runde 2 (ohne Blitze) → `design/motive/hinten_80_2.svg` |
 | hinten_90_1 / _2 | offen |
 | hinten_00_1 / _2 | offen |
 | hinten_10_1 / _2 | offen |
