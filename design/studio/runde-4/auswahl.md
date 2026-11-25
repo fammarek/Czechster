@@ -126,3 +126,9 @@ und noch nicht vergeben (vergeben: Single, Radio, LP, Discokugel, Kassette, Boxe
 Mischpult, Equalizer). Frontal mit Polstern in Kantenansicht gibt es keine Augenwirkung; kantig facettiert grenzt
 er sich klar von den runden 60ern ab. Neues Briefing: `briefing-hinten_10_2-neu.md`. Folge für später: Die
 20er dürfen den Kopfhörer dann nicht mehr als Leitobjekt nehmen (Stilbibel-Liste dort anpassen).
+
+## hinten_10_2 (neu, Kopfhörer)
+
+Gewählt: **Ansatz A** mit Feinschliff. B fällt durch: dunkle Eckscheiben mit hellem Punkt lesen sich als Augen,
+das Stabgitter als Grill – zusammen ein Robotergesicht (No-Go). Feinschliff A: Dreiecksgruppen neben den
+Ohrmuscheln raus, mittlere Pegelbalken entschärfen (kein „Mund“), Ohrmuscheln wenn möglich größer.

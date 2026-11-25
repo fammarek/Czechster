@@ -21,3 +21,19 @@
 - 10_2-b 3 (Akkordeon erkennbar, aber folkloristisch nach 60ern)
 - Farbe: 00er gut von 70ern unterscheidbar (Textfelder ähnlich). 10er nahe an 60ern – Besitzer behält #D55E00 →
   10er brauchen eindeutig moderne Leitobjekte und kantige Formen.
+
+## Spieletest 10_2 neu
+- 10_2-neu-a 2–3: Kopfhörer lesbar (Bügel oben mit zwei Ohrmuscheln, kantig, passt zu 2010ern). Gesichtsgefahr
+  gering: Eckrosetten mit Raute wirken ornamental, nicht wie Augen; die gestapelten Balken zwischen den
+  Muscheln könnten mit viel Fantasie ein Mund sein, wirken aber eher wie ein Pegel. Keine Blitze/Runen.
+  Die kleinen dunklen Dreiecke neben den Muscheln sind unruhig, im Zweifel weglassen.
+- 10_2-neu-b 4: Gesichts-No-Go. Dunkle Eckkreise mit einem hellen Punkt in der Mitte lesen sich wie Augen mit
+  Pupillen, das Stabgitter in der Mitte wie Kühlergrill/Zähne; zusammen ein Roboter- bzw. Autogesicht. Den
+  Kopfhörer erkennt man kaum, eher Boombox oder Kühlergrill.
+- Jahrzehnt: normal orange gegen ockergelb der 60er; bei schummrigem Licht nur mäßig getrennt. In der
+  Rot-Grün-Reihe klar besser: 10er dunkles Oliv, 60er helles Gelb, vor allem der Helligkeitsunterschied trägt.
+  Aus 2 m erkennbar, die Verwechslungsgefahr liegt bei 10er gegen 60er.
+- Text: bei beiden gleich und sehr gut. Jahr aus 1 m sofort lesbar, Interpret/Titel mühelos, Ornament bleibt
+  außerhalb des Textfelds. Rote/blaue Hilfslinien in den Vorschauen dürfen nicht in die Druckdatei.
+- Empfehlung: A. Wichtigste Änderung: die Dreiecksgruppen neben den Ohrmuscheln entfernen, damit der Kopfhörer
+  als einzige Form klar steht.
