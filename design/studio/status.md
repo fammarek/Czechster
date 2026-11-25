@@ -13,14 +13,19 @@
   (Negativbeispiel: Grok zeichnete Indianer mit Beil).
 - Leitfarben je Jahrzehnt laut Stilbibel (Varianten 1–7).
 - Kein Grok mehr; das Studio konstruiert alles selbst.
+- Runde 1 (vorne, hinten_80_1) freigegeben mit „gute Arbeit, Lob ans Team, weiter so“. Dieses Niveau ist der
+  Maßstab für alle weiteren Rückseiten: Kopf-/Fußfeld mit einem klaren Jahrzehnt-Leitobjekt auf der Achse
+  (80er: Kassette), dazu kleinteiliges Konfetti/Raster, Eckrosetten um (11,11), Leitfarbe als kräftiger Grund
+  im Kopf-/Fußfeld, glatte helle Freifläche 8,19,49,59, ruhiger Beschnitt (Punktraster/Grün-auf-Grün).
 
 ## Motive
 | Motiv | Stand |
 |---|---|
-| vorne | offen (Grok-Bild nur Referenz) |
+| vorne | **freigegeben** Runde 1 → `design/motive/vorne.svg` |
 | hinten_60_1 / _2 | offen |
 | hinten_70_1 / _2 | offen |
-| hinten_80_1 / _2 | offen |
+| hinten_80_1 | **freigegeben** Runde 1 → `design/motive/hinten_80_1.svg` |
+| hinten_80_2 | offen |
 | hinten_90_1 / _2 | offen |
 | hinten_00_1 / _2 | offen |
 | hinten_10_1 / _2 | offen |
