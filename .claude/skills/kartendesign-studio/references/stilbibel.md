@@ -50,7 +50,7 @@ Jahrzehnt über Formen und Musikobjekte – als geometrische Ornamente, nicht al
 - **70er**: geschwungene Regenbogenstreifen, Bögen, Blüten als Geometrie, Langspielplatte,
   Discokugel als Facettenraster, Scheinwerferstrahlen
 - **80er**: Memphis-Zickzack und Konfetti-Formen, Raster, Kassette, Synthesizer-Tasten,
-  Lautsprechermembranen als konzentrische Kreise, Blitze, Perspektivgitter
+  Lautsprechermembranen als konzentrische Kreise, Perspektivgitter
 - **90er**: CD-Scheiben, Walkman-Kopfhörer, Collage-Kanten als Geometrie, Squiggles, Fernsehrahmen,
   Akustikgitarre
 - **00er**: flache Kreisblasen, MP3-Player und Kabel als Linien, Pixelquadrate, Bühnenbögen,
@@ -65,6 +65,6 @@ Variante 1 und 2 eines Jahrzehnts unterscheiden sich in der Bildidee (z. B. 1 = 
 
 ## Verboten
 
-Personen, Figuren, Gesichter, Tiere, Waffen, Landschaften, Flaggen, Wappen, Logos, Markenzeichen, Text,
+**Blitze und runenartige Zacken (gezackte Striche, eckige S-/Z-Formen) – wirken wie SS-Runen, absolutes No-Go des Besitzers**, Symbole extremistischer Ideologien auch in Andeutung, Hakenkreuz-ähnliche Drehformen, Personen, Figuren, Gesichter, Tiere, Waffen, Landschaften, Flaggen, Wappen, Logos, Markenzeichen, Text,
 Buchstaben, Ziffern (auch nicht als Deko), Fotos, Verläufe mit Banding, Schatten, 3D, Glanzeffekte, Nachahmung
 bekannter kommerzieller Musikspiele.

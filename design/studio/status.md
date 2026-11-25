@@ -18,14 +18,22 @@
   (80er: Kassette), dazu kleinteiliges Konfetti/Raster, Eckrosetten um (11,11), Leitfarbe als kräftiger Grund
   im Kopf-/Fußfeld, glatte helle Freifläche 8,19,49,59, ruhiger Beschnitt (Punktraster/Grün-auf-Grün).
 
+- **ABSOLUTES NO-GO: Blitze und alles Runenartige.** Der Blitz auf hinten_80_2 sah aus wie eine SS-Rune.
+  Keine Blitze, keine gezackten Doppelstriche, keine eckigen S- oder Z-Zacken, keine Formen, die an Runen oder
+  Symbole extremistischer Ideologien erinnern – auch nicht abstrahiert. Im Zweifel weglassen.
+- Die Vorderseite ist für alle Karten identisch (nur QR-Code und Kartencode ändern sich), unabhängig vom
+  Jahrzehnt der Rückseite.
+- Das Orange der 60er (#E69F00) ist in Ordnung und bleibt.
+
 ## Motive
 | Motiv | Stand |
 |---|---|
 | vorne | **freigegeben** Runde 1 → `design/motive/vorne.svg` |
-| hinten_60_1 / _2 | offen |
+| hinten_60_1 | **freigegeben** Runde 2 → `design/motive/hinten_60_1.svg` |
+| hinten_60_2 | **freigegeben** Runde 2 → `design/motive/hinten_60_2.svg` |
 | hinten_70_1 / _2 | offen |
 | hinten_80_1 | **freigegeben** Runde 1 → `design/motive/hinten_80_1.svg` |
-| hinten_80_2 | offen |
+| hinten_80_2 | Runde 2: Blitze entfernen (Besitzer: SS-Runen-Wirkung), dann erneut vorlegen |
 | hinten_90_1 / _2 | offen |
 | hinten_00_1 / _2 | offen |
 | hinten_10_1 / _2 | offen |
