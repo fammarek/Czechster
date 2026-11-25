@@ -44,6 +44,8 @@ geäußert hat. Lies sie zu Beginn jeder Sitzung; lege sie an, falls sie fehlt.
 3. **Entwurf – Agent `grafiker`, parallel.** Starte für jedes Motiv zwei Grafiker mit unterschiedlichem
    Ansatz (im Auftrag „Ansatz A: …“ / „Ansatz B: …“ aus dem Briefing benennen), alle im selben Zug, damit sie
    gleichzeitig arbeiten. Jeder liefert `entwurf-<motiv>-<a|b>.svg`, rendert ihn und prüft ihn selbst.
+   Gib jedem einen eigenen Arbeitsordner für Hilfsskripte (`<scratchpad>/<motiv>-<a|b>/`), sonst
+   überschreiben sich parallele Grafiker gegenseitig ihre Generatoren.
 
 4. **Druckvorstufe – Agent `druckvorstufe`.** Prüft alle Entwürfe mit `scripts/render.js --pruefen` und meldet
    je Datei BESTANDEN / NACHBESSERN mit Messwerten. Was durchfällt, geht mit der Meldung einmal zurück an
