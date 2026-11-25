@@ -15,7 +15,8 @@
 ## Freiflächen (Attribute am `<svg>`, Werte in mm: x,y,Breite,Höhe)
 
 Rückseite: `data-frei` – die **lichte** Fläche, die glatt im hellen Hintergrund bleibt; Rahmenlinien liegen
-außerhalb. Standard `8,19,49,59` (x 8–57, y 19–78). Mindestens 47 × 56 mm, mittig (Symmetrie).
+außerhalb. **Immer exakt `8,19,49,59`** (x 8–57, y 19–78) – auf allen Rückseiten gleich, denn das Jahr steht
+auf jeder Karte an derselben Stelle (Oberkante 22 mm vom Dateirand; Wunsch des Besitzers).
 Darin stehen Jahr (Archivo Black 16,5 mm, bis 43 mm breit), Interpret (≤ 2 Zeilen, 15 → 10 pt), Titel
 (≤ 2 Zeilen) und unten der Kartencode, alles mit ≥ 1 mm Luft. Kopf- und Fußornament müssen sich deshalb auf
 y 7–18 und 79–90 beschränken (plus Beschnitt) – dort dicht und reich, nicht in die Freifläche hinein.

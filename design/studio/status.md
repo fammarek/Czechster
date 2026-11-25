@@ -24,6 +24,8 @@
 - Die Vorderseite ist für alle Karten identisch (nur QR-Code und Kartencode ändern sich), unabhängig vom
   Jahrzehnt der Rückseite.
 - Das Orange der 60er (#E69F00) ist in Ordnung und bleibt.
+- Die Jahreszahl sitzt auf allen Rückseiten exakt an derselben Stelle, egal welches Jahrzehnt (Oberkante
+  22 mm vom Dateirand); Freifläche deshalb überall exakt 8,19,49,59. Gilt auch für das Druckskript.
 
 ## Motive
 | Motiv | Stand |

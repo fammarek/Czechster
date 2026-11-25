@@ -53,9 +53,10 @@ function seite(overlay) {
     } else {
       // Satz wie im Druck: Jahr 16,5 mm, Interpret ≤ 2 Zeilen (15 → min. 10 pt), Titel ≤ 2 Zeilen (12 → min. 10 pt),
       // Kartencode fest unten in der Freifläche. Alles mit ≥ 1 mm Luft zum Rand der Freifläche.
+      // Das Jahr steht auf JEDER Rückseite exakt gleich: Oberkante 22 mm vom Dateirand (Wunsch des Besitzers).
       const [fx, fy, fw, fh] = rechteck(attr('data-frei')) || [8, 19, 49, 59];
       inhalt += `<div id="frei" style="position:absolute;left:${fx}mm;top:${fy}mm;width:${fw}mm;height:${fh}mm;color:#1A1A1A;text-align:center">
-        <div id="satz" style="position:absolute;left:1mm;right:1mm;top:1mm;bottom:6mm;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div id="satz" style="position:absolute;left:1mm;right:1mm;top:${22 - fy}mm;bottom:6mm;display:flex;flex-direction:column;align-items:center;justify-content:flex-start">
           <div id="jahr" style="font:400 16.5mm/1 'Archivo Black';letter-spacing:-.25mm">${beispiel[0]}</div>
           <div id="interpret" style="font:700 15pt/1.2 'Noto Sans';margin-top:3.5mm">${beispiel[1]}</div>
           <div id="titel" style="font:400 12pt/1.25 'Noto Sans';margin-top:1.6mm">${beispiel[2]}</div></div>
@@ -149,6 +150,7 @@ function seite(overlay) {
       if (luft < 0.9) fehler.push(`Text passt nicht mit Luft in die Freifläche (kleinster Abstand ${luft.toFixed(1)} mm) – Freifläche vergrößern.`);
       if (satz.zI > 2 || satz.zT > 2) fehler.push('Interpret oder Titel braucht mehr als zwei Zeilen – Freifläche zu schmal.');
     }
+    if (fr && fr.join(',') !== '8,19,49,59') fehler.push(`data-frei ist ${fr.join(',')} – alle Rückseiten müssen exakt 8,19,49,59 haben, damit Jahr und Text überall an derselben Stelle stehen.`);
     if (fr && (fr[2] < 47 || fr[3] < 56)) fehler.push(`Freifläche zu klein (${fr[2]} × ${fr[3]} mm, mindestens 47 × 56).`);
     // 5) Leitfarbe außerhalb der Freifläche
     if (dekade && fr) {
