@@ -59,16 +59,18 @@ function seite(overlay) {
     inhalt += `<div style="position:absolute;left:3mm;top:3mm;width:59mm;height:91mm;border:.25mm dashed #e00;border-radius:5mm"></div>
       <div style="position:absolute;left:7mm;top:7mm;width:51mm;height:83mm;border:.25mm dotted #00f"></div>`;
   }
-  return `<!doctype html><html><head><meta charset="utf-8"><style>${fonts}*{margin:0;padding:0}html,body{width:65mm;height:97mm;overflow:hidden}</style></head>
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${fonts}*{margin:0;padding:0}html{zoom:${768 / (65 / 25.4 * 96)}}html,body{width:65mm;height:97mm;overflow:hidden}</style></head>
     <body><img src="${svgUrl}" style="position:absolute;left:0;top:0;width:65mm;height:97mm">${inhalt}</body></html>`;
 }
 
 (async () => {
   const b = await chromium.launch();
-  const p = await b.newPage({ viewport: { width: 246, height: 367 }, deviceScaleFactor: 768 / (65 / 25.4 * 96) });
+  // Seite exakt 768 × 1146 px: mm-Maße per zoom skalieren statt per Geräte-Pixelfaktor (sonst rundet Chromium
+  // die Bildbreite auf 246 CSS-px auf, und die Spiegelachse liegt ein halbes Pixel daneben).
+  const p = await b.newPage({ viewport: { width: 768, height: 1146 }, deviceScaleFactor: 1 });
   const shot = async (html) => {
     await p.setContent(html); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(50);
-    const src = PNG.sync.read(await p.screenshot({ clip: { x: 0, y: 0, width: 246, height: 367 } }));
+    const src = PNG.sync.read(await p.screenshot({ clip: { x: 0, y: 0, width: 768, height: 1146 } }));
     const o = new PNG({ width: 768, height: 1146 }); PNG.bitblt(src, o, 0, 0, 768, 1146, 0, 0); return o;
   };
   const roh = await shot(seite(false)), vor = await shot(seite(true));
