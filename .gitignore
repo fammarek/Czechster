@@ -3,3 +3,5 @@ pruefbericht.md
 __pycache__/
 *.pyc
 .DS_Store
+.studio-werkzeug/
+design/studio/**/*.png
