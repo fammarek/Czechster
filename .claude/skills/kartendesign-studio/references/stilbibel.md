@@ -57,7 +57,7 @@ Jahrzehnt über Formen und Musikobjekte – als geometrische Ornamente, nicht al
   Stroboskop-Strahlen, Lautsprecherboxen
 - **10er**: Equalizer-Balken, Schallwellen, Polygone, Lichterketten als Punktreihen, Konfetti-Dreiecke,
   Papierschnitt-Ornamente
-- **20er**: weiche Bögen, Kopfhörer, Klangwellen, Sterne, Vinyl mit Rillen, Glitch-Streifen,
+- **20er**: weiche Bögen, Klangwellen, Sterne, Vinyl mit Rillen, Glitch-Streifen,
   Rauten mit Schimmer-Abstufung
 
 Variante 1 und 2 eines Jahrzehnts unterscheiden sich in der Bildidee (z. B. 1 = Schallplatte/Strahlen,
