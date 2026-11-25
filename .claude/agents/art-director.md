@@ -20,7 +20,7 @@ Schreibe je Motiv `design/studio/runde-<N>/briefing-<motiv>.md` (Motivnamen: `vo
 - Bausteine: welche Ornamente wo (Ecken, Seitenbänder, oben/unten, Medaillon auf der Achse), mit ungefähren
   Lagen in mm
 - Farbanteile (Leitfarbe / Fast-Schwarz / Zwischenton)
-- Freiflächen-Rechtecke in mm
+- Freiflächen-Rechtecke in mm (Rückseite Standard 8,19,49,59 – siehe Baukasten)
 - **Ansatz A** und **Ansatz B**: zwei klar verschiedene Wege, die zwei Grafiker parallel verfolgen
 Konkret genug, dass ein Grafiker ohne Rückfrage loslegen kann; offen genug, dass er gestalten darf.
 

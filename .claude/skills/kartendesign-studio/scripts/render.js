@@ -51,12 +51,15 @@ function seite(overlay) {
       const code = rechteck(attr('data-code'));
       if (code) inhalt += `<div style="position:absolute;left:${code[0]}mm;top:${code[1]}mm;width:${code[2]}mm;height:${code[3]}mm;display:flex;align-items:center;justify-content:center;font:400 3mm/1 'Noto Sans';color:#1A1A1A">k1x</div>`;
     } else {
-      const [fx, fy, fw, fh] = rechteck(attr('data-frei')) || [9, 22, 47, 53];
-      inhalt += `<div style="position:absolute;left:${fx}mm;top:${fy}mm;width:${fw}mm;height:${fh}mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#1A1A1A">
-        <div style="font:400 18.7mm/1 'Archivo Black';letter-spacing:-.3mm">${beispiel[0]}</div>
-        <div style="font:700 15pt/1.2 'Noto Sans';margin-top:4mm;max-width:${fw - 2}mm">${beispiel[1]}</div>
-        <div style="font:400 12pt/1.25 'Noto Sans';margin-top:1.8mm;max-width:${fw - 2}mm">${beispiel[2]}</div>
-        <div style="font:400 3mm/1 'Noto Sans';margin-top:3mm;opacity:.7">k1x</div></div>`;
+      // Satz wie im Druck: Jahr 16,5 mm, Interpret ≤ 2 Zeilen (15 → min. 10 pt), Titel ≤ 2 Zeilen (12 → min. 10 pt),
+      // Kartencode fest unten in der Freifläche. Alles mit ≥ 1 mm Luft zum Rand der Freifläche.
+      const [fx, fy, fw, fh] = rechteck(attr('data-frei')) || [8, 19, 49, 59];
+      inhalt += `<div id="frei" style="position:absolute;left:${fx}mm;top:${fy}mm;width:${fw}mm;height:${fh}mm;color:#1A1A1A;text-align:center">
+        <div id="satz" style="position:absolute;left:1mm;right:1mm;top:1mm;bottom:6mm;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div id="jahr" style="font:400 16.5mm/1 'Archivo Black';letter-spacing:-.25mm">${beispiel[0]}</div>
+          <div id="interpret" style="font:700 15pt/1.2 'Noto Sans';margin-top:3.5mm">${beispiel[1]}</div>
+          <div id="titel" style="font:400 12pt/1.25 'Noto Sans';margin-top:1.6mm">${beispiel[2]}</div></div>
+        <div id="code" style="position:absolute;left:0;right:0;bottom:1.5mm;font:400 3mm/1 'Noto Sans';opacity:.7">k1x</div></div>`;
     }
     inhalt += `<div style="position:absolute;left:3mm;top:3mm;width:59mm;height:91mm;border:.25mm dashed #e00;border-radius:5mm"></div>
       <div style="position:absolute;left:7mm;top:7mm;width:51mm;height:83mm;border:.25mm dotted #00f"></div>`;
@@ -75,7 +78,28 @@ function seite(overlay) {
     const src = PNG.sync.read(await p.screenshot({ clip: { x: 0, y: 0, width: 768, height: 1146 } }));
     const o = new PNG({ width: 768, height: 1146 }); PNG.bitblt(src, o, 0, 0, 768, 1146, 0, 0); return o;
   };
-  const roh = await shot(seite(false)), vor = await shot(seite(true));
+  const roh = await shot(seite(false));
+  // Vorschau: lange Namen verkleinern wie im Druck und messen, ob der Text mit Luft in die Freifläche passt
+  let satz = null;
+  const vor = await (async () => {
+    await p.setContent(seite(true)); await p.evaluate(() => document.fonts.ready);
+    satz = await p.evaluate(() => {
+      const f = document.getElementById('frei'); if (!f) return null;
+      const mm = f.getBoundingClientRect().width / parseFloat(f.style.width);
+      const z = (e) => Math.round(e.offsetHeight / parseFloat(getComputedStyle(e).lineHeight));
+      for (const id of ['interpret', 'titel']) { const e = document.getElementById(id); let pt = id === 'interpret' ? 15 : 12;
+        while (z(e) > 2 && pt > 10) { pt -= 0.5; e.style.fontSize = pt + 'pt'; } }
+      const fr = f.getBoundingClientRect(), r = (id) => document.getElementById(id).getBoundingClientRect();
+      const rg = document.createRange(); rg.selectNodeContents(document.getElementById('satz')); const t = rg.getBoundingClientRect();
+      const c = r('code');
+      return { links: (t.left - fr.left) / mm, rechts: (fr.right - t.right) / mm, oben: (t.top - fr.top) / mm, unten: (c.top - t.bottom) / mm,
+        codeUnten: (fr.bottom - c.bottom) / mm, zI: z(document.getElementById('interpret')), zT: z(document.getElementById('titel')),
+        jahrBreite: r('jahr').width / mm };
+    });
+    await p.waitForTimeout(50);
+    const src = PNG.sync.read(await p.screenshot({ clip: { x: 0, y: 0, width: 768, height: 1146 } }));
+    const o = new PNG({ width: 768, height: 1146 }); PNG.bitblt(src, o, 0, 0, 768, 1146, 0, 0); return o;
+  })();
   await b.close();
   const basis = datei.replace(/\.svg$/, '');
   fs.writeFileSync(basis + '.png', PNG.sync.write(roh));
@@ -119,7 +143,13 @@ function seite(overlay) {
   if (istVorne) { flaeche(rechteck(attr('data-titel')), 'Titelstreifen', false); flaeche(rechteck(attr('data-qr')), 'QR-Feld', false); }
   else {
     const fr = rechteck(attr('data-frei')); flaeche(fr, 'Freifläche', true);
-    if (fr && (fr[2] < 45 || fr[3] < 50)) fehler.push(`Freifläche zu klein (${fr[2]} × ${fr[3]} mm, mindestens 45 × 50).`);
+    if (satz) {
+      const luft = Math.min(satz.links, satz.rechts, satz.oben, satz.unten);
+      console.log(`Textsatz: Jahr ${satz.jahrBreite.toFixed(1)} mm breit, Interpret ${satz.zI} Zeile(n), Titel ${satz.zT} Zeile(n), kleinster Abstand zum Rand der Freifläche ${luft.toFixed(1)} mm (Ziel ≥ 1)`);
+      if (luft < 0.9) fehler.push(`Text passt nicht mit Luft in die Freifläche (kleinster Abstand ${luft.toFixed(1)} mm) – Freifläche vergrößern.`);
+      if (satz.zI > 2 || satz.zT > 2) fehler.push('Interpret oder Titel braucht mehr als zwei Zeilen – Freifläche zu schmal.');
+    }
+    if (fr && (fr[2] < 47 || fr[3] < 56)) fehler.push(`Freifläche zu klein (${fr[2]} × ${fr[3]} mm, mindestens 47 × 56).`);
     // 5) Leitfarbe außerhalb der Freifläche
     if (dekade && fr) {
       const L0 = parseInt(LEIT[dekade].slice(1), 16), lc = [L0 >> 16, (L0 >> 8) & 255, L0 & 255];

@@ -4,7 +4,7 @@
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 97" width="65mm" height="97mm"
-     data-motiv="hinten_80_1" data-frei="9,22,47,53">
+     data-motiv="hinten_80_1" data-frei="8,19,49,59">
 ```
 
 - Eine Einheit = 1 mm. Datei 65 × 97 mm inkl. 3 mm Beschnitt. Fertige Karte: x 3–62, y 3–94.
@@ -14,9 +14,11 @@
 
 ## Freiflächen (Attribute am `<svg>`, Werte in mm: x,y,Breite,Höhe)
 
-Rückseite: `data-frei` – ein Rechteck, das glatt im hellen Hintergrund bleibt. Empfohlen `9,22,47,53`
-(x 9–56, y 22–75). Darf größer sein, nicht kleiner als 45 × 50 mm, und muss mittig liegen (Symmetrie).
-Ein feiner Rahmen um die Freifläche ist erwünscht, aber außerhalb des Rechtecks.
+Rückseite: `data-frei` – die **lichte** Fläche, die glatt im hellen Hintergrund bleibt; Rahmenlinien liegen
+außerhalb. Standard `8,19,49,59` (x 8–57, y 19–78). Mindestens 47 × 56 mm, mittig (Symmetrie). Hintergrund:
+Darin stehen Jahr (Archivo Black 16,5 mm, bis 43 mm breit), Interpret (≤ 2 Zeilen, 15 → 10 pt), Titel
+(≤ 2 Zeilen) und unten der Kartencode, alles mit ≥ 1 mm Luft. Kopf- und Fußornament müssen sich deshalb auf
+y 7–18 und 79–90 beschränken (plus Beschnitt) – dort dicht und reich, nicht in die Freifläche hinein.
 
 Vorderseite: `data-titel` (Streifen für den Schriftzug „Czechster“, z. B. `7,13,51,10`) und `data-qr`
 (Feld für das weiße QR-Feld 35 × 38 mm plus Rand, z. B. `12.5,28,40,43`). Beide glatt in Grundfarbe.
