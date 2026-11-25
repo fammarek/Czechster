@@ -24,6 +24,9 @@
 - Die Vorderseite ist für alle Karten identisch (nur QR-Code und Kartencode ändern sich), unabhängig vom
   Jahrzehnt der Rückseite.
 - Das Orange der 60er (#E69F00) ist in Ordnung und bleibt.
+- 90er-Leitfarbe #F0E442 (Spezifikation); #D9C400 war bei Rot-Grün nicht von den 60ern zu trennen.
+- Runde 3 freigegeben mit „weiter so“. Bewährt: Leitobjekt als helle Silhouette auf der Achse, Formen,
+  die wie Zeichen/Symbole/Gesichter/Augen wirken, werden konsequent ersetzt.
 - Die Jahreszahl sitzt auf allen Rückseiten exakt an derselben Stelle, egal welches Jahrzehnt (Oberkante
   22 mm vom Dateirand); Freifläche deshalb überall exakt 8,19,49,59. Gilt auch für das Druckskript.
 
@@ -33,10 +36,12 @@
 | vorne | **freigegeben** Runde 1 → `design/motive/vorne.svg` |
 | hinten_60_1 | **freigegeben** Runde 2 → `design/motive/hinten_60_1.svg` |
 | hinten_60_2 | **freigegeben** Runde 2 → `design/motive/hinten_60_2.svg` |
-| hinten_70_1 / _2 | offen |
+| hinten_70_1 | **freigegeben** Runde 3 → `design/motive/hinten_70_1.svg` |
+| hinten_70_2 | **freigegeben** Runde 3 → `design/motive/hinten_70_2.svg` |
 | hinten_80_1 | **freigegeben** Runde 1, ohne Blitze neu freigegeben Runde 2 → `design/motive/hinten_80_1.svg` |
 | hinten_80_2 | **freigegeben** Runde 2 (ohne Blitze) → `design/motive/hinten_80_2.svg` |
-| hinten_90_1 / _2 | offen |
+| hinten_90_1 | **freigegeben** Runde 3 → `design/motive/hinten_90_1.svg` |
+| hinten_90_2 | **freigegeben** Runde 3 → `design/motive/hinten_90_2.svg` |
 | hinten_00_1 / _2 | offen |
 | hinten_10_1 / _2 | offen |
 | hinten_20_1 / _2 | offen |
