@@ -5,3 +5,4 @@ __pycache__/
 .DS_Store
 .studio-werkzeug/
 design/studio/**/*.png
+design/motive/hinten_*.png
