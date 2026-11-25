@@ -57,8 +57,9 @@ aus zwei Metern „Schallplatte“.
 
 ## Ansatz B – „Hülle als Raute“ (Art-déco-Medaillon, Single im Lochcover)
 Die Single steckt in einer Papierhülle, die auf der Spitze steht: Raute 15 × 11 mm (Spitzen bei x 25 / 40,
-y 7 / 18) in `#E69F00` mit Doppellinien-Kontur, mittig das runde Lochcover-Fenster r 3,6, durch das Etikett und
-Puk zu sehen sind; zwei dunkle Scheibenkanten (Kreissegmente r 5,3) schauen links und rechts aus der Hülle.
+y 7,2 / 17,8) in `#E69F00` mit Doppellinien-Kontur, mittig das runde Lochcover-Fenster r 3,6, durch das Etikett und
+Puk zu sehen sind; die dunkle Scheibe (r 5,3, gleiches Zentrum) schaut an den vier Rautenkanten als schmale Kreissegmente heraus
+(die Raute hat nur ca. 4,3 mm Innenradius).
 Links und rechts verlaufen statt Bögen gestufte Op-Art-Streifen (Bänder, deren Breite nach außen von 1,2 auf
 0,4 mm abnimmt, `#1A1A1A` auf Orange) bis zur Eckrosette, dazwischen Sterne. Wirkung: näher an der Raute der
 Vorderseite, grafischer und flacher – Hülle und Puk tragen das Jahrzehnt.
