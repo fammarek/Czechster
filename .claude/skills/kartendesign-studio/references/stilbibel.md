@@ -33,7 +33,7 @@ Jahrzehnt aus zwei Metern erkennt.
 | 60 | `#E69F00` | `#FAEAC7` |
 | 70 | `#56B4E9` | `#DAEEFA` |
 | 80 | `#009E73` | `#C7EAE0` |
-| 90 | `#D9C400` | `#FBF7CA` |
+| 90 | `#F0E442` (zurück zur Spezifikation: #D9C400 war bei Rot-Grün-Schwäche nicht von den 60ern zu trennen) | `#FBF7CA` |
 | 00 | `#0072B2` | `#CCE3F0` |
 | 10 | `#D55E00` | `#F7DFCC` |
 | 20 | `#CC79A7` | `#F4E2EC` |

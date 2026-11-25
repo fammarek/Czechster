@@ -27,7 +27,7 @@ const rechteck = (s) => s ? s.split(',').map(Number) : null;
 const istVorne = !!attr('data-qr');
 const motiv = attr('data-motiv') || path.basename(datei, '.svg');
 const dekade = (motiv.match(/hinten_(\d\d)/) || [])[1];
-const LEIT = { 60: '#E69F00', 70: '#56B4E9', 80: '#009E73', 90: '#D9C400', '00': '#0072B2', 10: '#D55E00', 20: '#CC79A7' };
+const LEIT = { 60: '#E69F00', 70: '#56B4E9', 80: '#009E73', 90: '#F0E442', '00': '#0072B2', 10: '#D55E00', 20: '#CC79A7' };
 const beispiel = tIdx >= 0 ? args[tIdx + 1].split('|') : ['1985', 'Václav Neckář & Helena Vondráčková', 'Stříhali dohola malého chlapečka'];
 
 const font = (fam, w, sub) => {
