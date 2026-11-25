@@ -47,7 +47,9 @@ function seite(overlay) {
       inhalt += `<div style="position:absolute;left:${tx}mm;top:${ty}mm;width:${tw}mm;height:${th}mm;display:flex;align-items:center;justify-content:center;font:400 7.2mm/1 'Archivo Black';color:#1A1A1A">Czechster</div>`;
       inhalt += `<div style="position:absolute;left:${qx + qw / 2 - 17.5}mm;top:${qy + qh / 2 - 19}mm;width:35mm;height:38mm;background:#fff;border-radius:2mm">
         <div style="position:absolute;left:2.5mm;top:2.5mm;width:30mm;height:30mm;background:repeating-conic-gradient(#000 0 25%,#fff 0 50%) 0 0/3mm 3mm"></div>
-        <div style="position:absolute;left:0;right:0;top:34mm;text-align:center;font:400 2.8mm/1 'Noto Sans'">k1x</div></div>`;
+        ${attr('data-code') ? '' : `<div style="position:absolute;left:0;right:0;top:34mm;text-align:center;font:400 2.8mm/1 'Noto Sans'">k1x</div>`}</div>`;
+      const code = rechteck(attr('data-code'));
+      if (code) inhalt += `<div style="position:absolute;left:${code[0]}mm;top:${code[1]}mm;width:${code[2]}mm;height:${code[3]}mm;display:flex;align-items:center;justify-content:center;font:400 3mm/1 'Noto Sans';color:#1A1A1A">k1x</div>`;
     } else {
       const [fx, fy, fw, fh] = rechteck(attr('data-frei')) || [9, 22, 47, 53];
       inhalt += `<div style="position:absolute;left:${fx}mm;top:${fy}mm;width:${fw}mm;height:${fh}mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#1A1A1A">
