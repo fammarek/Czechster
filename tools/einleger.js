@@ -13,22 +13,23 @@ const font = (fam, w, f) => `@font-face{font-family:'${fam}';font-weight:${w};sr
 
 // Regeln nach dem Vorbild des Originals (in eigenen Worten), dazu die gemeinsame Variante.
 // Regeln nach dem Vorbild des Originals (in eigenen Worten), ohne Chips und ohne Einspruch; dazu die gemeinsame Variante.
+// Regeln nach dem Vorbild des Originals (in eigenen Worten), ohne Chips und ohne Einspruch; dazu die gemeinsame Variante.
 const TEXT = {
   de: { o: 'Original <i>(2–10 Personen)</i>', schritte: [
-    'Alle bekommen 1 Karte mit dem <b>Jahr nach oben</b> – der Start der eigenen Zeitleiste.',
-    'Reihum: Karte <b>scannen</b> (QR-Seite), Lied hören – Titel und Jahr bleiben verdeckt.',
-    'Karte in die eigene Zeitleiste legen: <b>davor, dahinter oder dazwischen</b>, je nachdem, wann das Lied erschienen ist.',
+    'Karten mischen, Stapel mit dem <b>QR-Code nach oben</b> – die Jahre bleiben verdeckt.',
+    'Alle ziehen 1 Karte und legen sie mit dem <b>Jahr nach oben</b> vor sich – der Start der eigenen Zeitleiste.',
+    'Reihum: oberste Karte <b>scannen</b>, Lied hören und die Karte verdeckt in die eigene Zeitleiste legen: <b>davor, dahinter oder dazwischen</b>.',
     'Karte umdrehen: Richtig gelegt → <b>Karte bleibt</b>. Falsch → Karte ist raus.',
-    'Wer zuerst <b>10 Karten</b> in der Zeitleiste hat, gewinnt.'],
-    g: 'Gemeinsam', gtext: 'Alle spielen zusammen an <b>einer Zeitleiste</b>: Lied hören, gemeinsam das <b>Jahr schätzen</b> und die Karte in die passende <b>Lücke</b> legen. Richtig → Karte bleibt, falsch → raus. Nach <b>3 Fehlern</b> ist Schluss – wie lang wird eure Zeitleiste?',
+    'Gespielt wird, bis jemand <b>10 Karten</b> in der Zeitleiste hat – diese Person gewinnt.'],
+    g: 'Gemeinsam', gtext: 'Alle spielen zusammen an <b>einer Zeitleiste</b>: Lied hören, gemeinsam das <b>Jahr schätzen</b> und die Karte in die passende <b>Lücke</b> legen. Richtig → Karte bleibt, falsch → raus. Gespielt wird, bis die Zeitleiste <b>10 Karten</b> hat.',
     app: 'App: QR-Code scannen, Kamera erlauben, am besten in Chrome.' },
   cs: { o: 'Originál <i>(2–10 hráčů)</i>', schritte: [
-    'Každý dostane 1 kartu <b>rokem nahoru</b> – začátek vlastní časové osy.',
-    'Postupně: kartu <b>naskenuj</b> (strana s QR kódem) a poslouchej – název a rok zůstávají skryté.',
-    'Vlož kartu do své osy: <b>před, za nebo mezi</b> ostatní, podle toho, kdy píseň vyšla.',
+    'Zamíchejte karty a položte balíček <b>QR kódem nahoru</b> – roky zůstávají skryté.',
+    'Každý si vezme 1 kartu a položí ji před sebe <b>rokem nahoru</b> – začátek vlastní časové osy.',
+    'Postupně: horní kartu <b>naskenuj</b>, poslouchej a vlož kartu do své osy: <b>před, za nebo mezi</b> ostatní.',
     'Otoč kartu: Správně → <b>karta zůstává</b>. Špatně → karta jde ze hry.',
-    'Kdo má jako první <b>10 karet</b> ve své ose, vyhrává.'],
-    g: 'Společně', gtext: 'Všichni hrají spolu na <b>jedné časové ose</b>: poslechněte si píseň, společně <b>odhadněte rok</b> a vložte kartu do správné <b>mezery</b>. Správně → karta zůstává, špatně → jde ze hry. Po <b>3 chybách</b> je konec – jak dlouhá bude vaše osa?',
+    'Hraje se, dokud někdo nemá ve své ose <b>10 karet</b> – ten vyhrává.'],
+    g: 'Společně', gtext: 'Všichni hrají spolu na <b>jedné časové ose</b>: poslechněte si píseň, společně <b>odhadněte rok</b> a vložte kartu do správné <b>mezery</b>. Správně → karta zůstává, špatně → jde ze hry. Hraje se, dokud osa nemá <b>10 karet</b>.',
     app: 'Aplikace: naskenuj QR kód, povol kameru, nejlépe v Chrome.' }
 };
 
