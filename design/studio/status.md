@@ -60,4 +60,4 @@ Schachtel: meinspiel.de Spielkartenbox 1 (100 × 133 × 20 mm, Mittelsteg, passt
 wird bedruckt. Druckdatei 175 × 207 mm, Maße in `scripts/schachtel.js` (aus dem Datenblatt). Ein Motiv-SVG, drei Farbsätze.
 | Motiv | Status |
 |---|---|
-| deckel (Teil 1–3) | in Arbeit |
+| deckel (Teil 1–3) | fertig (Entwurf B, Ecken ohne Ringe), Farben Ocker #C9A227 · Blau #5E9FC4 · Ziegelrot #D7645D → `design/motive/deckel.svg` |
