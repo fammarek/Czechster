@@ -52,3 +52,12 @@
 | hinten_10_2 | **freigegeben** Runde 4 (Kopfhörer) → `design/motive/hinten_10_2.svg` |
 | hinten_20_1 | **freigegeben** Runde 5 (Vinyl) → `design/motive/hinten_20_1.svg` |
 | hinten_20_2 | **freigegeben** Runde 5 (Klangwellen) → `design/motive/hinten_20_2.svg` |
+
+## Schachteln (Runde 6)
+
+Wunsch des Besitzers: „3 Designs für die Schachteln, Design gleich, andere Farbe … Czechster – Untertitel Teil 1, Teil 2, Teil 3.“
+Schachtel: meinspiel.de Spielkartenbox 1 (100 × 133 × 20 mm, Mittelsteg, passt für 110 Karten 59 × 91), nur der Deckel
+wird bedruckt. Druckdatei 175 × 207 mm, Maße in `scripts/schachtel.js` (aus dem Datenblatt). Ein Motiv-SVG, drei Farbsätze.
+| Motiv | Status |
+|---|---|
+| deckel (Teil 1–3) | in Arbeit |
