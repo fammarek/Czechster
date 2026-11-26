@@ -13,9 +13,9 @@
 <clipPath id="utF"><rect x="50.4" y="136.75" width="10.3" height="12.1"/></clipPath>
 <g id="kopfL"><g clip-path="url(#kFan)">
 <polygon points="55,45.4 76,45.4 75.5,50.6 55,46.1" fill="#A8841E"/>
-<polygon points="55,45.4 76,45.4 75.5,50.6 55,46.1" fill="url(#pK3)"/>
+<polygon points="55,45.4 76,45.4 75.5,50.6 55,46.1" fill="url(#pK)"/>
 <polygon points="55,57 76,57 75.5,50.6 55,56.2" fill="#A8841E"/>
-<polygon points="55,57 76,57 75.5,50.6 55,56.2" fill="url(#pK3)"/>
+<polygon points="55,57 76,57 75.5,50.6 55,56.2" fill="url(#pK)"/>
 <polygon points="75.5,50.6 55,46.1 55,46.94" fill="#A8841E"/>
 <polygon points="75.5,50.6 55,46.94 55,47.78" fill="url(#pD)"/>
 <polygon points="75.5,50.6 55,47.78 55,48.62" fill="#A8841E"/>
