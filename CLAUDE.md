@@ -11,6 +11,7 @@ Der Besitzer spricht Deutsch. Antworte auf Deutsch, knapp, und stelle Rückfrage
 | Pfad | Zweck |
 |---|---|
 | `index.html` | Spielseite (Scanner + verdeckter YouTube-Player) |
+| `jsQR.js` | QR-Leser jsQR 1.4.0 (Apache-2.0), lokal eingebunden statt vom CDN |
 | `redaktion.html` | Liest die YouTube-Music-Playlist ein, pflegt Jahr/Schreibweise, erzeugt `songs.json` |
 | `check.html` | Testet, ob jedes Video wirklich anläuft |
 | `karten.html` | Druckbögen; druckt nur Karten mit `ok: true` |

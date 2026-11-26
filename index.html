@@ -89,7 +89,7 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
+<script src="jsQR.js"></script><!-- jsQR 1.4.0 (Apache-2.0), lokal statt CDN -->
 <script>
 (function(){
   "use strict";
@@ -225,13 +225,20 @@
   mainBtn.onclick=scanClick;
   $("cancelScan").onclick=stopScan;
 
+  // Eingebauter Erkenner (Android/Chrome), sonst jsQR
+  var detector=null;
+  try{ if("BarcodeDetector" in window) detector=new BarcodeDetector({formats:["qr_code"]}); }catch(e){ detector=null; }
+  var busy=false, frame=0;
+
   function startScan(){
     if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
       fail("Dieser Browser gibt die Kamera nicht frei. Scanne mit der Kamera-App, der Link öffnet diese Seite."); return;
     }
+    if(!window.jsQR&&!detector){ fail("Der QR-Leser konnte nicht geladen werden. Seite neu laden oder mit der Kamera-App scannen."); return; }
     hide(errBox);
+    $("scanMsg").textContent="QR-Code der Karte ins Feld halten";
     wrap.classList.add("on");
-    navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}},audio:false})
+    navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"},width:{ideal:1280},height:{ideal:720}},audio:false})
       .then(function(st){ stream=st; cam.srcObject=st; cam.play(); raf=requestAnimationFrame(tick); })
       .catch(function(){ stopScan(); fail("Kein Kamerazugriff. In Safari: „aA“ in der Adresszeile → Website-Einstellungen → Kamera erlauben."); });
   }
@@ -240,17 +247,34 @@
     if(stream){ stream.getTracks().forEach(function(t){t.stop()}); stream=null; }
     wrap.classList.remove("on");
   }
+  function treffer(text){
+    var code=normalise(text);
+    if(songs[code]){ if(navigator.vibrate) navigator.vibrate(30); stopScan(); play(code); return true; }
+    $("scanMsg").textContent="Dieser Code gehört nicht zum Spiel";
+    return false;
+  }
+  // jsQR abwechselnd auf das ganze Bild und auf die Bildmitte (vergrößert) anwenden
+  function leseJsQR(){
+    var w=cam.videoWidth,h=cam.videoHeight; if(!w||!h) return null;
+    var ganz=(frame%2===0), side=Math.min(w,h)*(ganz?1:0.6), sx=(w-side)/2, sy=(h-side)/2, sw=side, sh=side, n=640;
+    if(ganz){ sx=0; sy=0; sw=w; sh=h; }
+    var s=Math.min(1,n/Math.max(sw,sh)); cv.width=Math.round(sw*s); cv.height=Math.round(sh*s);
+    ctx.drawImage(cam,sx,sy,sw,sh,0,0,cv.width,cv.height);
+    var hit=jsQR(ctx.getImageData(0,0,cv.width,cv.height).data,cv.width,cv.height,{inversionAttempts:(frame%6===5)?"attemptBoth":"dontInvert"});
+    return hit&&hit.data?hit.data:null;
+  }
   function tick(){
-    if(cam.readyState===cam.HAVE_ENOUGH_DATA&&window.jsQR){
-      var w=cam.videoWidth,h=cam.videoHeight,side=Math.min(w,h)*0.7;
-      cv.width=cv.height=420;
-      ctx.drawImage(cam,(w-side)/2,(h-side)/2,side,side,0,0,420,420);
-      var hit=jsQR(ctx.getImageData(0,0,420,420).data,420,420,{inversionAttempts:"dontInvert"});
-      if(hit&&hit.data){
-        var code=normalise(hit.data);
-        if(songs[code]){ if(navigator.vibrate) navigator.vibrate(30); stopScan(); play(code); return; }
-        $("scanMsg").textContent="Dieser Code gehört nicht zum Spiel";
+    raf=null;
+    if(!stream) return;
+    if(cam.readyState>=cam.HAVE_CURRENT_DATA&&!busy){
+      frame++;
+      if(detector&&frame%2===0){
+        busy=true;
+        detector.detect(cam).then(function(r){ busy=false; if(r&&r.length&&treffer(r[0].rawValue)) return; if(stream&&!raf) raf=requestAnimationFrame(tick); })
+          .catch(function(){ busy=false; detector=null; if(stream&&!raf) raf=requestAnimationFrame(tick); });
+        return;
       }
+      if(window.jsQR){ var t=leseJsQR(); if(t&&treffer(t)) return; }
     }
     raf=requestAnimationFrame(tick);
   }
