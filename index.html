@@ -4,62 +4,98 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#101418">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#C9A227">
 <title>Czechster</title>
 <style>
-  :root{--bg:#101418;--line:#2a333c;--fg:#eef2f5;--dim:#8d9aa6;--accent:#e0533d;--r:16px}
+  @font-face{font-family:"Archivo Black";src:url(schrift/archivo-black-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F}
+  @font-face{font-family:"Archivo Black";src:url(schrift/archivo-black-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF}
+  @font-face{font-family:"Noto Sans";font-weight:400;src:url(schrift/noto-sans-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F}
+  @font-face{font-family:"Noto Sans";font-weight:400;src:url(schrift/noto-sans-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF}
+  @font-face{font-family:"Noto Sans";font-weight:700;src:url(schrift/noto-sans-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F}
+  @font-face{font-family:"Noto Sans";font-weight:700;src:url(schrift/noto-sans-latin-ext-700-normal.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF}
+
+  /* Farben der Kartenvorderseite */
+  :root{--ocker:#C9A227;--dunkel:#A8841E;--licht:#E3C25A;--ink:#1A1A1A;--creme:#FAF1D6;--r:14px}
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--fg);
-    font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  body{margin:0;color:var(--ink);background-color:var(--ocker);
+    background-image:radial-gradient(circle,var(--dunkel) 0 1.1px,transparent 1.6px);background-size:9px 9px;
+    font:16px/1.45 "Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     display:flex;flex-direction:column;
-    padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+    padding:calc(env(safe-area-inset-top) + 14px) 26px calc(env(safe-area-inset-bottom) + 14px);
     overscroll-behavior:none;user-select:none;-webkit-user-select:none}
-  header{padding:14px 0 6px;display:flex;justify-content:space-between;align-items:baseline}
-  h1{font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin:0;color:var(--dim);font-weight:600}
-  #count{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
-  main{flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;padding-bottom:12px}
-  .btn{display:block;width:100%;border:0;border-radius:var(--r);font-family:inherit;font-weight:600;font-size:19px;line-height:1;
-    padding:22px 18px;color:#fff;background:var(--accent);transition:transform .08s ease}
+  /* Doppelrahmen wie auf der Karte */
+  body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:1}
+  body::before{inset:calc(env(safe-area-inset-top) + 8px) 8px calc(env(safe-area-inset-bottom) + 8px);border:2px solid var(--ink);border-radius:22px}
+  body::after{inset:calc(env(safe-area-inset-top) + 13px) 13px calc(env(safe-area-inset-bottom) + 13px);border:1px solid var(--ink);border-radius:17px}
+
+  header{position:relative;padding:14px 0 4px;text-align:center}
+  h1{margin:0;font:400 clamp(30px,9.5vw,42px)/1 "Archivo Black",sans-serif;letter-spacing:.01em}
+  .zier{display:flex;align-items:center;justify-content:center;gap:8px;margin:9px auto 0;max-width:260px}
+  .zier::before,.zier::after{content:"";flex:1;height:5px;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+  .zier i{width:9px;height:9px;background:var(--ink);transform:rotate(45deg);box-shadow:0 0 0 2px var(--ocker),0 0 0 3px var(--ink)}
+  #count{display:block;margin-top:6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;font-variant-numeric:tabular-nums}
+
+  main{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px;padding-bottom:6px}
+  .btn{display:block;width:100%;border:0;border-radius:var(--r);font:400 19px/1 "Archivo Black",sans-serif;letter-spacing:.02em;
+    padding:21px 18px;color:var(--licht);background:var(--ink);
+    box-shadow:inset 0 0 0 3px var(--ink),inset 0 0 0 4px var(--licht);transition:transform .08s ease}
   .btn:active{transform:scale(.98)}
-  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg);font-size:16px;padding:16px}
+  .btn.ghost{background:var(--creme);color:var(--ink);font:700 16px/1 "Noto Sans",sans-serif;padding:16px;
+    box-shadow:inset 0 0 0 2px var(--ink),inset 0 0 0 5px var(--creme),inset 0 0 0 6px var(--ink)}
 
   /* Plattenteller: liegt ueber dem Player und verdeckt ihn vollstaendig */
-  .stage{position:relative;aspect-ratio:1;margin:0 auto;width:min(78vw,340px,46vh);
-    border-radius:50%;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 50px -20px #000}
-  #ytBox{position:absolute;inset:0;opacity:.001;pointer-events:none}
-  .disc{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;
-    background:repeating-radial-gradient(circle at 50% 50%,#1c2228 0 2px,#151a20 2px 4px)}
-  .disc::before{content:"";position:absolute;width:32%;aspect-ratio:1;border-radius:50%;background:var(--accent)}
-  .disc::after{content:"";position:absolute;width:4%;aspect-ratio:1;border-radius:50%;background:var(--bg)}
-  .disc i{position:absolute;top:8%;left:49%;width:2%;height:20%;background:#ffffff14;border-radius:2px}
+  .stage{position:relative;aspect-ratio:1;margin:0 auto;width:min(76vw,340px,44vh);border-radius:50%;
+    background:repeating-conic-gradient(from 0deg,var(--ink) 0 3deg,var(--licht) 3deg 7.5deg);
+    box-shadow:0 0 0 3px var(--ink),0 0 0 7px var(--ocker),0 0 0 9px var(--ink)}
+  .stage::after{content:"";position:absolute;inset:6.5%;border-radius:50%;background:var(--ocker);box-shadow:0 0 0 2px var(--ink)}
+  #ytBox{position:absolute;inset:0;opacity:.001;pointer-events:none;border-radius:50%;overflow:hidden}
+  .disc{position:absolute;inset:9.5%;border-radius:50%;z-index:2;display:grid;place-items:center;
+    background:repeating-radial-gradient(circle at 50% 50%,#1A1A1A 0 2px,#2a2620 2px 3px,#1A1A1A 3px 5px);
+    box-shadow:0 0 0 2px var(--ink)}
+  .disc::before{content:"";position:absolute;width:36%;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle,var(--ocker) 0 58%,var(--ink) 58% 62%,var(--licht) 62% 100%)}
+  .disc::after{content:"";position:absolute;width:13%;aspect-ratio:1;background:var(--ink);transform:rotate(45deg);
+    box-shadow:0 0 0 3px var(--ocker),0 0 0 4.5px var(--ink)}
+  .disc i{position:absolute;top:7%;left:49%;width:2%;height:22%;background:#E3C25A33;border-radius:2px}
+  .stage.zu{position:absolute;left:-200vw}   /* nicht display:none, sonst stoppt der Player */
   .stage.spin .disc{animation:spin 3.6s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion:reduce){.stage.spin .disc{animation:none}}
-  #stageLbl{text-align:center;font-family:inherit;font-weight:600;font-size:13px;line-height:1;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);min-height:14px}
+  #stageLbl{text-align:center;font:700 12px/1 "Noto Sans",sans-serif;letter-spacing:.18em;text-transform:uppercase;min-height:13px}
+
+  /* Aufloesung: die Rueckseite der Karte mit dem Jahrzehnt-Motiv */
+  #reveal{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .karte{position:relative;width:min(70vw,290px,calc(50vh * 59 / 91));aspect-ratio:59/91;border-radius:8.5%/5.5%;overflow:hidden;
+    container-type:inline-size;box-shadow:0 0 0 2px var(--ink),0 14px 30px -14px #000a;background:#fff}
+  .karte img{position:absolute;width:110.17%;left:-5.08%;top:-3.3%;height:auto;display:block}
+  .satz{position:absolute;left:8.47%;width:83.05%;top:20.88%;bottom:19.5%;display:flex;flex-direction:column;align-items:center;text-align:center;color:var(--ink)}
+  #year{font:400 27.97cqw/1 "Archivo Black",sans-serif;letter-spacing:-.4cqw;font-variant-numeric:tabular-nums}
+  #artist{font:700 8.97cqw/1.2 "Noto Sans",sans-serif;margin-top:5.93cqw}
+  #title{font:400 7.18cqw/1.25 "Noto Sans",sans-serif;margin-top:2.71cqw}
+  #kcode{position:absolute;left:0;right:0;bottom:18.5%;text-align:center;font:400 5.08cqw/1 "Noto Sans",sans-serif;opacity:.7}
+  #warn{font-size:13px;font-weight:700;background:var(--creme);padding:4px 10px;border-radius:8px;box-shadow:inset 0 0 0 1.5px var(--ink)}
+  #warn:empty{display:none}
 
   #scanWrap{position:fixed;inset:0;background:#000;z-index:50;display:none}
   #scanWrap.on{display:block}
   #cam{width:100%;height:100%;object-fit:cover}
   #reticle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    width:64vw;max-width:340px;aspect-ratio:1;border:2px solid #fff6;border-radius:24px}
+    width:64vw;max-width:340px;aspect-ratio:1;border:3px solid var(--ocker);border-radius:24px;
+    box-shadow:0 0 0 2px #000,inset 0 0 0 2px #000}
   #scanUI{position:absolute;left:20px;right:20px;bottom:calc(env(safe-area-inset-bottom) + 24px)}
   #scanMsg{color:#fff;text-align:center;font-size:15px;text-shadow:0 2px 8px #000;margin:0 0 14px}
 
   .row{display:flex;gap:10px}.row>*{flex:1}
-  #reveal{text-align:center;display:flex;flex-direction:column;gap:4px}
-  #year{font-family:inherit;font-weight:800;font-size:46px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-  #meta{font-size:14px;color:var(--dim)}
-  #warn{font-size:12px;color:#e0a13d}
   .hide{display:none !important}
-  #err{background:#3a1f1c;border:1px solid #6b3027;border-radius:12px;padding:14px;font-size:14px}
-  #err a{color:var(--fg)}
-  footer{padding:10px 0 16px;text-align:center;font-size:12px;color:#5c6973}
+  #err{background:var(--creme);border-radius:12px;padding:14px;font-size:14px;box-shadow:inset 0 0 0 2px #8A3C00}
+  #err a{color:var(--ink)}
+  footer{padding:4px 0 10px;text-align:center;font-size:12px;font-weight:700}
 </style>
 </head>
 <body>
-<header><h1>Czechster</h1><span id="count"></span></header>
+<header><h1>Czechster</h1><div class="zier"><i></i></div><span id="count"></span></header>
 
 <main>
   <div class="stage" id="stage">
@@ -68,7 +104,12 @@
   </div>
   <div id="stageLbl">bereit</div>
 
-  <div id="reveal" class="hide"><div id="year"></div><div id="meta"></div><div id="warn"></div></div>
+  <div id="reveal" class="hide">
+    <div class="karte"><img id="motiv" alt="">
+      <div class="satz"><div id="year"></div><div id="artist"></div><div id="title"></div></div>
+      <div id="kcode"></div></div>
+    <div id="warn"></div>
+  </div>
   <div id="err" class="hide"></div>
 
   <button class="btn" id="main">Karte scannen</button>
@@ -85,7 +126,7 @@
   <div id="reticle"></div>
   <div id="scanUI">
     <p id="scanMsg">QR-Code der Karte ins Feld halten</p>
-    <button class="btn ghost" id="cancelScan" style="background:#0009">Abbrechen</button>
+    <button class="btn ghost" id="cancelScan">Abbrechen</button>
   </div>
 </div>
 
@@ -108,6 +149,11 @@
   fetch("songs.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     for(var k in d){ if(k.charAt(0)!=="_") songs[k]=d[k]; }
     loaded=true;
+    // Rueckseiten-Motiv wie in tools/druckdateien.js: je Jahrzehnt nach Jahr/Code sortiert abwechselnd 1, 2
+    var liste=[]; for(var c0 in songs){ var x=songs[c0]; if(x.ok&&x.v&&x.j) liste.push(c0); }
+    liste.sort(function(a,b){ return songs[a].j-songs[b].j||a.localeCompare(b); });
+    var zl={}; liste.forEach(function(c1){ var d=String(Math.floor(songs[c1].j/10)*10).slice(2); zl[d]=(zl[d]||0)+1;
+      songs[c1].motiv="hinten_"+d+"_"+(zl[d]%2?1:2); });
     var n=0; for(var c in songs){ if(songs[c].v) n++; }
     $("count").textContent=n+" Karten";
     var h=hashCode();
@@ -170,12 +216,12 @@
   }
 
   function play(code){
-    hide(errBox); hide(revealBox);
+    hide(errBox); hide(revealBox); stage.classList.remove("zu"); lbl.classList.remove("hide");
     if(!loaded){ setTimeout(function(){play(code)},200); return; }
     var s=songs[code];
     if(!s){ fail("Der Code <b>"+esc(code)+"</b> gehört zu keiner Karte dieses Spiels."); return; }
     if(!s.v){ fail("Für <b>"+esc(code)+"</b> ist noch kein Video eingetragen."); return; }
-    current=s;
+    current=s; current.code=code;
     history.replaceState(null,"","#"+code);
     controls.classList.remove("hide");
     mainBtn.textContent="Nächste Karte scannen";
@@ -207,10 +253,21 @@
   };
   $("revealBtn").onclick=function(){
     if(!current) return;
-    $("year").textContent=current.j||"—";
-    $("meta").textContent=[current.i,current.n].filter(Boolean).join(" · ")||"keine Angaben hinterlegt";
-    $("warn").textContent=current.ok?"":"Jahr noch nicht geprüft";
+    var s=current, d=s.j?String(Math.floor(s.j/10)*10).slice(2):null;
+    $("motiv").src="design/motive/"+(s.motiv||(d?"hinten_"+d+"_1":"hinten_80_1"))+".svg";
+    $("year").textContent=s.j||"—";
+    $("artist").textContent=s.i||"";
+    $("title").textContent=s.n||"";
+    $("kcode").textContent=s.code||"";
+    $("warn").textContent=s.ok?"":"Jahr noch nicht geprüft";
+    stage.classList.add("zu"); lbl.classList.add("hide");
     revealBox.classList.remove("hide");
+    // wie im Druck: Interpret und Titel hoechstens zwei Zeilen, notfalls kleiner
+    [["artist",8.97],["title",7.18]].forEach(function(p){
+      var e=$(p[0]), f=p[1], lh=function(){ return parseFloat(getComputedStyle(e).lineHeight); };
+      e.style.fontSize="";
+      while(e.offsetHeight>lh()*2.2&&f>6){ f-=0.3; e.style.fontSize=f+"cqw"; }
+    });
   };
 
   /* ---------- Scanner ---------- */
