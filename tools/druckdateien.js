@@ -15,6 +15,10 @@
  * Karten mit ok:true, Video und Jahr; aufgeteilt auf Spiele zu höchstens 110 Karten, nach Jahr reihum
  * ausgeteilt, damit jedes Spiel auch allein spielbar ist. Jeder QR-Code wird nach dem Rendern gelesen und geprüft.
  *
+ * Zusätzlich je Spiel zwei PDFs für den PDF-Upload bei meinspiel.de (Leitfaden 8.1): Spiel_<n>_Vorderseiten.pdf und
+ * Spiel_<n>_Rueckseiten.pdf, je eine Seite 65 × 97 mm pro Karte, Seite k vorne gehört zu Seite k hinten.
+ * Die Seiten enthalten die geprüften 300-dpi-PNGs unverändert (verlustfrei, keine Vektoren, Farben sRGB).
+ *
  * Braucht Node, Playwright und die npm-Pakete qrcode, jsqr, pngjs sowie @fontsource/archivo-black und
  * @fontsource/noto-sans (alles richtet .claude/skills/kartendesign-studio/scripts/einrichten.sh ein):
  *   NODE_PATH=.studio-werkzeug/node_modules node tools/druckdateien.js [ziel] [fontsource-ordner]
@@ -157,7 +161,20 @@ function mitDpi(buf) {
         bericht.push(`${k.code} ${k.i} – ${k.n}: Luft ${satz.luft.toFixed(1)} mm, Zeilen ${satz.zI}/${satz.zT}`);
       fs.writeFileSync(path.join(ordner, `${nr}_Czechster_Back_${k.code}_${k.j}.png`), await foto());
     }
-    console.log(`Spiel ${s + 1}: ${spiele[s].length} Karten → ${ordner}`);
+    // PDFs: dieselben PNGs, gleiche Reihenfolge, eine Seite je Karte
+    for (const [seite, name] of [['Front', 'Vorderseiten'], ['Back', 'Rueckseiten']]) {
+      const bilder = fs.readdirSync(ordner).filter(f => f.includes(`_Czechster_${seite}_`) && f.endsWith('.png')).sort();
+      if (bilder.length !== spiele[s].length) throw new Error(`${name}: ${bilder.length} statt ${spiele[s].length} Bilder`);
+      const pdfSeite = await browser.newPage();
+      await pdfSeite.setContent(`<!doctype html><html><head><style>@page{size:65mm 97mm;margin:0}*{margin:0;padding:0}
+        img{display:block;width:65mm;height:97mm;page-break-after:always;break-after:page}img:last-child{page-break-after:auto;break-after:auto}</style></head><body>`
+        + bilder.map(f => `<img src="data:image/png;base64,${fs.readFileSync(path.join(ordner, f)).toString('base64')}">`).join('') + '</body></html>');
+      await pdfSeite.evaluate(() => Promise.all([...document.images].map(i => i.decode())));
+      await pdfSeite.pdf({ path: path.join(ZIEL, `Spiel_${s + 1}_${name}.pdf`), width: '65mm', height: '97mm', printBackground: true,
+        margin: { top: 0, right: 0, bottom: 0, left: 0 }, preferCSSPageSize: true });
+      await pdfSeite.close();
+    }
+    console.log(`Spiel ${s + 1}: ${spiele[s].length} Karten → ${ordner} + 2 PDFs`);
   }
   await browser.close();
   console.log('Rückseiten je Motiv: ' + Object.keys(motivZahl).sort().map(m => `${m} ${motivZahl[m]}`).join(', '));
