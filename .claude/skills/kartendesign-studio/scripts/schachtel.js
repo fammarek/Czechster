@@ -63,6 +63,16 @@ function seite(overlay) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>${fonts}*{margin:0;padding:0}html{zoom:${2067 / (175 / 25.4 * 96)}}html,body{width:175mm;height:207mm;overflow:hidden;position:relative}</style></head><body>${h}</body></html>`;
 }
 
+// 300 dpi im PNG vermerken (pHYs), Pixelmaß unverändert
+function mitDpi(buf) {
+  const t = []; for (let n = 0; n < 256; n++) { let c = n; for (let j = 0; j < 8; j++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; }
+  const crc = (b) => { let x = 0xffffffff; for (const v of b) x = t[(x ^ v) & 255] ^ (x >>> 8); return (x ^ 0xffffffff) >>> 0; };
+  const data = Buffer.alloc(9); data.writeUInt32BE(11811, 0); data.writeUInt32BE(11811, 4); data[8] = 1;
+  const typ = Buffer.from('pHYs'), len = Buffer.alloc(4), c = Buffer.alloc(4);
+  len.writeUInt32BE(9); c.writeUInt32BE(crc(Buffer.concat([typ, data])));
+  return Buffer.concat([buf.slice(0, 33), len, typ, data, c, buf.slice(33)]);
+}
+
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 2067, height: 2445 }, deviceScaleFactor: 1 });
   const laden = async (html) => { await p.setContent(html); await p.evaluate(() => document.fonts.ready);
@@ -77,7 +87,7 @@ function seite(overlay) {
         fl: [...document.querySelectorAll('.fl')].map(e => passe(e) / (96 / 25.4)) };
     }); };
   const groessen = await laden(seite(false));
-  const druck = await p.screenshot({ type: 'png' });
+  const druck = mitDpi(await p.screenshot({ type: 'png' }));
   fs.writeFileSync(aus + '.png', druck);
   await laden(seite(true));
   fs.writeFileSync(aus + '-vorschau.png', await p.screenshot({ type: 'png' }));
