@@ -91,18 +91,21 @@
   .hide{display:none !important}
   #err{background:var(--creme);border-radius:12px;padding:14px;font-size:14px;box-shadow:inset 0 0 0 2px #8A3C00}
   #err a{color:var(--ink)}
+  #lang{position:absolute;bottom:-6px;right:0;display:flex;border-radius:9px;overflow:hidden;box-shadow:inset 0 0 0 1.5px var(--ink);z-index:2}
+  #lang button{border:0;background:transparent;color:var(--ink);font:700 11px/1 "Noto Sans",sans-serif;letter-spacing:.08em;padding:6px 8px;min-width:34px}
+  #lang button.on{background:var(--ink);color:var(--licht)}
   footer{padding:4px 0 10px;text-align:center;font-size:12px;font-weight:700}
 </style>
 </head>
 <body>
-<header><h1>Czechster</h1><div class="zier"><i></i></div><span id="count"></span></header>
+<header><div id="lang"><button data-l="de">DE</button><button data-l="cs">CZ</button></div><h1>Czechster</h1><div class="zier"><i></i></div><span id="count"></span></header>
 
 <main>
   <div class="stage" id="stage">
     <div id="ytBox"><div id="yt"></div></div>
     <div class="disc"><i></i></div>
   </div>
-  <div id="stageLbl">bereit</div>
+  <div id="stageLbl" data-t="bereit">bereit</div>
 
   <div id="reveal" class="hide">
     <div class="karte"><img id="motiv" alt="">
@@ -112,21 +115,21 @@
   </div>
   <div id="err" class="hide"></div>
 
-  <button class="btn" id="main">Karte scannen</button>
+  <button class="btn" id="main" data-t="scannen">Karte scannen</button>
   <div class="row hide" id="controls">
-    <button class="btn ghost" id="toggle">Pause</button>
-    <button class="btn ghost" id="revealBtn">Auflösen</button>
+    <button class="btn ghost" id="toggle" data-t="pause">Pause</button>
+    <button class="btn ghost" id="revealBtn" data-t="aufloesen">Auflösen</button>
   </div>
 </main>
 
-<footer>Ein Handy scannt und spielt — reihum weitergeben.</footer>
+<footer data-t="footer">Ein Handy scannt und spielt — reihum weitergeben.</footer>
 
 <div id="scanWrap">
   <video id="cam" playsinline muted></video>
   <div id="reticle"></div>
   <div id="scanUI">
-    <p id="scanMsg">QR-Code der Karte ins Feld halten</p>
-    <button class="btn ghost" id="cancelScan">Abbrechen</button>
+    <p id="scanMsg" data-t="halten">QR-Code der Karte ins Feld halten</p>
+    <button class="btn ghost" id="cancelScan" data-t="abbrechen">Abbrechen</button>
   </div>
 </div>
 
@@ -137,6 +140,52 @@
   var $=function(id){return document.getElementById(id)};
   var stage=$("stage"), lbl=$("stageLbl"), mainBtn=$("main"), controls=$("controls"),
       revealBox=$("reveal"), errBox=$("err");
+
+  /* ---------- Sprache (DE/CZ) ---------- */
+  var TXT={
+    de:{bereit:"bereit",scannen:"Karte scannen",naechste:"Nächste Karte scannen",abspielen:"▶ Abspielen",pause:"Pause",weiter:"Weiter",
+      aufloesen:"Auflösen",laeuft:"läuft",pausiert:"pause",ende:"ende",blockiert:"blockiert",laedt:"lädt",antippen:"Plattenteller antippen",
+      karten:" Karten",footer:"Ein Handy scannt und spielt — reihum weitergeben.",halten:"QR-Code der Karte ins Feld halten",abbrechen:"Abbrechen",
+      fremd:"Dieser Code gehört nicht zum Spiel",ungeprueft:"Jahr noch nicht geprüft",
+      e_json:"songs.json konnte nicht geladen werden.",e_yt:"YouTube ist nicht erreichbar — besteht eine Internetverbindung?",
+      e_recht:"Der Rechteinhaber hat das Einbetten gesperrt",e_weg:"Das Video wurde entfernt oder ist privat",e_fehler:"Wiedergabefehler ",
+      e_auslassen:". Diese Karte auslassen und in der Redaktion eine andere Aufnahme eintragen.",
+      e_code:function(c){return "Der Code <b>"+c+"</b> gehört zu keiner Karte dieses Spiels.";},
+      e_video:function(c){return "Für <b>"+c+"</b> ist noch kein Video eingetragen.";},
+      e_browser:"Dieser Browser gibt die Kamera nicht frei. Scanne mit der Kamera-App, der Link öffnet diese Seite.",
+      e_leser:"Der QR-Leser konnte nicht geladen werden. Seite neu laden oder mit der Kamera-App scannen.",
+      e_kamera:"Kein Kamerazugriff. In Safari: „aA“ in der Adresszeile → Website-Einstellungen → Kamera erlauben."},
+    cs:{bereit:"připraveno",scannen:"Naskenovat kartu",naechste:"Naskenovat další kartu",abspielen:"▶ Přehrát",pause:"Pauza",weiter:"Pokračovat",
+      aufloesen:"Odhalit",laeuft:"hraje",pausiert:"pauza",ende:"konec",blockiert:"blokováno",laedt:"načítá se",antippen:"Klepněte na gramofon",
+      karten:" karet",footer:"Jeden telefon skenuje a hraje — posílejte ho dokola.",halten:"Namiřte QR kód karty do rámečku",abbrechen:"Zrušit",
+      fremd:"Tento kód do hry nepatří",ungeprueft:"Rok zatím není ověřen",
+      e_json:"Soubor songs.json se nepodařilo načíst.",e_yt:"YouTube není dostupný — jste připojeni k internetu?",
+      e_recht:"Vlastník práv zakázal vkládání videa",e_weg:"Video bylo odstraněno nebo je soukromé",e_fehler:"Chyba přehrávání ",
+      e_auslassen:". Tuto kartu přeskočte a v redakci zadejte jinou nahrávku.",
+      e_code:function(c){return "Kód <b>"+c+"</b> nepatří k žádné kartě této hry.";},
+      e_video:function(c){return "Ke kódu <b>"+c+"</b> zatím není přiřazeno video.";},
+      e_browser:"Tento prohlížeč nepovoluje přístup ke kameře. Naskenujte kód aplikací Fotoaparát, odkaz otevře tuto stránku.",
+      e_leser:"Čtečku QR kódů se nepodařilo načíst. Obnovte stránku nebo skenujte aplikací Fotoaparát.",
+      e_kamera:"Bez přístupu ke kameře. V Safari: „aA“ v adresním řádku → Nastavení webu → Povolit kameru."}
+  };
+  var lang="de";
+  try{ lang=localStorage.getItem("czechster-sprache")||""; }catch(e){ lang=""; }
+  if(!TXT[lang]) lang=/^(cs|sk)/i.test(navigator.language||"")?"cs":"de";
+  function T(k){ return TXT[lang][k]; }
+  // Elemente mit wechselndem Text merken sich ihren Schluessel, damit ein Sprachwechsel sie mitnimmt
+  function setT(el,k){ el.setAttribute("data-t",k); el.textContent=T(k); }
+  var letzterFehler=null;
+  function sprache(l){
+    lang=l; try{ localStorage.setItem("czechster-sprache",l); }catch(e){}
+    document.documentElement.lang=l;
+    [].forEach.call(document.querySelectorAll("[data-t]"),function(el){ el.textContent=T(el.getAttribute("data-t")); });
+    [].forEach.call(document.querySelectorAll("#lang button"),function(b){ b.classList.toggle("on",b.getAttribute("data-l")===l); });
+    if(zahl!==null) $("count").textContent=zahl+T("karten");
+    if(current&&!revealBox.classList.contains("hide")) $("warn").textContent=current.ok?"":T("ungeprueft");
+    if(letzterFehler&&!errBox.classList.contains("hide")) errBox.innerHTML=letzterFehler();
+  }
+  var zahl=null;
+  [].forEach.call(document.querySelectorAll("#lang button"),function(b){ b.onclick=function(){ sprache(b.getAttribute("data-l")); }; });
 
   var songs={}, loaded=false;
   var apiReady=false, player=null, playerReady=false;
@@ -155,20 +204,20 @@
     var zl={}; liste.forEach(function(c1){ var d=String(Math.floor(songs[c1].j/10)*10).slice(2); zl[d]=(zl[d]||0)+1;
       songs[c1].motiv="hinten_"+d+"_"+(zl[d]%2?1:2); });
     var n=0; for(var c in songs){ if(songs[c].v) n++; }
-    $("count").textContent=n+" Karten";
+    zahl=n; $("count").textContent=n+T("karten");
     var h=hashCode();
     if(h){                       // ueber die iOS-Kamera geoeffnet: es fehlt noch die Tipp-Geste
-      mainBtn.textContent="▶ Abspielen";
+      setT(mainBtn,"abspielen");
       mainBtn.onclick=function(){ mainBtn.onclick=scanClick; play(h); };
     }
-  }).catch(function(){ fail("songs.json konnte nicht geladen werden."); });
+  }).catch(function(){ fail(function(){return T("e_json");}); });
 
   function hashCode(){ return normalise(location.hash.replace(/^#/,"")); }
 
   /* ---------- YouTube ---------- */
   var tag=document.createElement("script");
   tag.src="https://www.youtube.com/iframe_api";
-  tag.onerror=function(){ fail("YouTube ist nicht erreichbar — besteht eine Internetverbindung?"); };
+  tag.onerror=function(){ fail(function(){return T("e_yt");}); };
   document.head.appendChild(tag);
   window.onYouTubeIframeAPIReady=function(){ apiReady=true; if(wantPlay||unlocking) build(); };
 
@@ -195,17 +244,16 @@
       if(e.data===S.PLAYING){ player.pauseVideo(); unlocking=false; }
       return;
     }
-    if(e.data===S.PLAYING){ clearTimeout(watchdog); stage.classList.add("spin"); lbl.textContent="läuft"; $("toggle").textContent="Pause"; stage.onclick=null; }
-    else if(e.data===S.PAUSED){ stage.classList.remove("spin"); lbl.textContent="pause"; $("toggle").textContent="Weiter"; }
-    else if(e.data===S.ENDED){ stage.classList.remove("spin"); lbl.textContent="ende"; }
+    if(e.data===S.PLAYING){ clearTimeout(watchdog); stage.classList.add("spin"); setT(lbl,"laeuft"); setT($("toggle"),"pause"); stage.onclick=null; }
+    else if(e.data===S.PAUSED){ stage.classList.remove("spin"); setT(lbl,"pausiert"); setT($("toggle"),"weiter"); }
+    else if(e.data===S.ENDED){ stage.classList.remove("spin"); setT(lbl,"ende"); }
   }
   function onError(e){
     if(unlocking){ unlocking=false; return; }
     clearTimeout(watchdog);
-    stage.classList.remove("spin"); lbl.textContent="blockiert";
-    var n=e.data, why=(n===101||n===150)?"Der Rechteinhaber hat das Einbetten gesperrt"
-      :(n===100)?"Das Video wurde entfernt oder ist privat":"Wiedergabefehler "+n;
-    fail(why+". Diese Karte auslassen und in der Redaktion eine andere Aufnahme eintragen.");
+    stage.classList.remove("spin"); setT(lbl,"blockiert");
+    var n=e.data;
+    fail(function(){ var why=(n===101||n===150)?T("e_recht"):(n===100)?T("e_weg"):T("e_fehler")+n; return why+T("e_auslassen"); });
   }
 
   /* ---------- Abspielen ---------- */
@@ -219,13 +267,13 @@
     hide(errBox); hide(revealBox); stage.classList.remove("zu"); lbl.classList.remove("hide");
     if(!loaded){ setTimeout(function(){play(code)},200); return; }
     var s=songs[code];
-    if(!s){ fail("Der Code <b>"+esc(code)+"</b> gehört zu keiner Karte dieses Spiels."); return; }
-    if(!s.v){ fail("Für <b>"+esc(code)+"</b> ist noch kein Video eingetragen."); return; }
+    if(!s){ fail(function(){return T("e_code")(esc(code));}); return; }
+    if(!s.v){ fail(function(){return T("e_video")(esc(code));}); return; }
     current=s; current.code=code;
     history.replaceState(null,"","#"+code);
     controls.classList.remove("hide");
-    mainBtn.textContent="Nächste Karte scannen";
-    lbl.textContent="lädt";
+    setT(mainBtn,"naechste");
+    setT(lbl,"laedt");
     stage.classList.remove("spin");
     if(!player){ wantPlay=s; build(); return; }       // Player entsteht direkt mit diesem Song
     if(!playerReady){ wantPlay=s; return; }           // onReady uebernimmt
@@ -240,7 +288,7 @@
     watchdog=setTimeout(function(){
       var st=player.getPlayerState?player.getPlayerState():-1;
       if(st!==YT.PlayerState.PLAYING&&st!==YT.PlayerState.BUFFERING){
-        lbl.textContent="Plattenteller antippen";
+        setT(lbl,"antippen");
         stage.onclick=function(){ player.unMute(); player.playVideo(); };
       }
     },1800);
@@ -259,7 +307,7 @@
     $("artist").textContent=s.i||"";
     $("title").textContent=s.n||"";
     $("kcode").textContent=s.code||"";
-    $("warn").textContent=s.ok?"":"Jahr noch nicht geprüft";
+    $("warn").textContent=s.ok?"":T("ungeprueft");
     stage.classList.add("zu"); lbl.classList.add("hide");
     revealBox.classList.remove("hide");
     // wie im Druck: Interpret und Titel hoechstens zwei Zeilen, notfalls kleiner
@@ -289,15 +337,15 @@
 
   function startScan(){
     if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
-      fail("Dieser Browser gibt die Kamera nicht frei. Scanne mit der Kamera-App, der Link öffnet diese Seite."); return;
+      fail(function(){return T("e_browser");}); return;
     }
-    if(!window.jsQR&&!detector){ fail("Der QR-Leser konnte nicht geladen werden. Seite neu laden oder mit der Kamera-App scannen."); return; }
+    if(!window.jsQR&&!detector){ fail(function(){return T("e_leser");}); return; }
     hide(errBox);
-    $("scanMsg").textContent="QR-Code der Karte ins Feld halten";
+    setT($("scanMsg"),"halten");
     wrap.classList.add("on");
     navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"},width:{ideal:1280},height:{ideal:720}},audio:false})
       .then(function(st){ stream=st; cam.srcObject=st; cam.play(); raf=requestAnimationFrame(tick); })
-      .catch(function(){ stopScan(); fail("Kein Kamerazugriff. In Safari: „aA“ in der Adresszeile → Website-Einstellungen → Kamera erlauben."); });
+      .catch(function(){ stopScan(); fail(function(){return T("e_kamera");}); });
   }
   function stopScan(){
     if(raf) cancelAnimationFrame(raf); raf=null;
@@ -307,7 +355,7 @@
   function treffer(text){
     var code=normalise(text);
     if(songs[code]){ if(navigator.vibrate) navigator.vibrate(30); stopScan(); play(code); return true; }
-    $("scanMsg").textContent="Dieser Code gehört nicht zum Spiel";
+    setT($("scanMsg"),"fremd");
     return false;
   }
   // jsQR abwechselnd auf das ganze Bild und auf die Bildmitte (vergrößert) anwenden
@@ -336,9 +384,10 @@
     raf=requestAnimationFrame(tick);
   }
 
-  function fail(html){ errBox.innerHTML=html; errBox.classList.remove("hide"); }
+  function fail(f){ letzterFehler=f; errBox.innerHTML=f(); errBox.classList.remove("hide"); }
   function hide(el){ el.classList.add("hide"); }
   function esc(s){ return String(s).replace(/[<>&]/g,function(c){return {"<":"&lt;",">":"&gt;","&":"&amp;"}[c]}); }
+  sprache(lang);
 })();
 </script>
 </body>
